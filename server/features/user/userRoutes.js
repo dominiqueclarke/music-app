@@ -32,6 +32,8 @@ module.exports = app => {
     , userCtrl.saveFBMusicLikes
     , userCtrl.createUser
   )
+
+  //app.put('/api/users/:id', );
 	// //Auth 0 callback handler
 	// app.get(
 	// 	'/auth/facebook/callback',

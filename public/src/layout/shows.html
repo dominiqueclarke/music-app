@@ -1,7 +1,8 @@
 <div>This is the shows
 
 <p>User data: {{vm.currentUser}}</p>
-<div id="waveform"></div>
-<div ng-repeat="show in vm.shows">
-<show show="show"></show>
+<div class="shows-container">
+  <div class="box" ng-repeat="show in vm.shows">
+    <show class="" show="show" index="$index"></show>
+  </div>
 </div>
