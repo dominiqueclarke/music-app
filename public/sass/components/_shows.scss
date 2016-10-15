@@ -1,3 +1,6 @@
+#map {
+  height:300px;
+}
 .shows-container {
   margin: 10px auto;
   width: 90%;
@@ -20,30 +23,39 @@
     justify-content:center;
     align-items:center;
     background-color:color("grey", "lighten-4");
-  }
-  .knob-wrapper {
-    position:absolute;
-  }
-  .artwork {
-      width:350px;
-      height:350px;
-      -webkit-filter: none; /* Chrome, Safari, Opera */
-      filter: none;
-      transition: all .2s ease-in-out;
-      z-index:2;
-      &.active {
-        -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-        filter: grayscale(100%);
+    .venue-image {
+      width:100%;
+      height:100%;
+      position:absolute;
+      opacity:0;
+      background-size:cover;
+      background-repeat:no-repeat;
+    }
+    .knob-wrapper {
+      position:absolute;
+    }
+    .artwork {
+        width:350px;
+        height:350px;
+        -webkit-filter: none; /* Chrome, Safari, Opera */
+        filter: none;
         transition: all .2s ease-in-out;
-        height:100px;
-        width:100px;
-        border-radius:50%;
-        -webkit-animation: rotating 2s linear infinite;
-        -moz-animation: rotating 2s linear infinite;
-        -ms-animation: rotating 2s linear infinite;
-        animation: rotating 2s linear infinite;
-      }
+        z-index:2;
+        &.active {
+          -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+          filter: grayscale(100%);
+          transition: all .2s ease-in-out;
+          height:100px;
+          width:100px;
+          border-radius:50%;
+          -webkit-animation: rotating 2s linear infinite;
+          -moz-animation: rotating 2s linear infinite;
+          -ms-animation: rotating 2s linear infinite;
+          animation: rotating 2s linear infinite;
+        }
+    }
   }
+
   .box {
     display:flex;
     justify-content:center;

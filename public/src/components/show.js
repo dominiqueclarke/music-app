@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import knobw from 'jquery-knob';
 
-export default function() {
+export default function(mapService) {
   return {
     restrict: 'E'
     , replace: true
@@ -11,10 +11,10 @@ export default function() {
       show: "="
       , index: "="
     }
-    , controller ($scope) {
-
+    , controller ($scope, mapService) {
 
       const vm = this;
+      vm.getPlaceData = mapService.getPlaceData;
       vm.apply = $scope.$apply;
       vm.eval = $scope.$eval;
       //console.log(vm.show);
@@ -24,14 +24,14 @@ export default function() {
       let songCounter = 0;
       let artistCounter = 0;
 
-
+      //vm.getPlaceData = showsService.getPlaceData();
       vm.playSong = (show, index) => {
-        const container = `.event${index}`
+        const artworkContainer = `.showImage${index}`
         // console.log('show', show);
         // console.log('artist data', show.artistData[0])
         // console.log('song previews', show.artistData[0].songPrevivews[0]);
         // console.log('preview url', show.artistData[0].songPrevivews[0].previewUrl);
-        const artwork = angular.element( document.querySelector( container ) );
+        const artwork = angular.element( document.querySelector( artworkContainer ) );
         artwork.addClass('active');
         if(vm.songRef === show.artistData[0].songPreviews[songCounter].previewUrl) {
           console.log(vm.currentSongAudio.currentTime);
@@ -102,7 +102,7 @@ export default function() {
 
             console.log(vm.currentSongTime);
             vm.apply();
-            $(`img.event${index}.artwork`).attr('src', currentSong.songArtworkUrl);
+            $(`img.showImage${index}.artwork`).attr('src', currentSong.songArtworkUrl);
             vm.currentSongAudio.play();
             $(vm.currentSongAudio).on("ended", function() {
               console.log("All Done!");
@@ -125,7 +125,7 @@ export default function() {
       vm.stopSong = (index) => {
         console.log(vm.currentSong);
         vm.currentSongAudio.pause();
-        const artwork = angular.element( document.querySelector( `.event${index}` ) );
+        const artwork = angular.element( document.querySelector( `.showImage${index}` ) );
         artwork.removeClass('active');
       }
     }

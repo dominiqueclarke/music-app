@@ -17,6 +17,7 @@ import shows from "./layout/shows.html";
 import userService from "./services/userService.js"
 import musicService from "./services/musicService.js"
 import showsService from "./services/showsService.js"
+import mapService from "./services/mapService.js"
 
 //directives
 import show from "./components/show.js";
@@ -33,6 +34,7 @@ angular.module('music', [uiRouter, angularMaterialize])
   .service('userService', userService)
   .service('musicService', musicService)
   .service('showsService', showsService)
+  .service('mapService', mapService)
   .directive('show', show)
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");

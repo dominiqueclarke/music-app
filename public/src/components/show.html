@@ -1,34 +1,14 @@
 <div
   class="show-container"
-  ng-mouseenter="vm.playSong(show, index)"
+  ng-mouseenter="vm.playSong(show, index); vm.getPlaceData(show, index)"
   ng-mouseleave="vm.stopSong(index)"
 >
-
-<!-- <p>this is repeating</p>
-<p>{{show.Venue.Name}}</p> -->
-<img class="event{{index}} artwork" ng-src="{{show.artistData[0].artistArtworkUrl}}"
-
-/>
-<p class="byline">{{vm.byline}}</p>
-<input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
-<div class="caption z-depth-1">{{show.Artists[0].Name}}
-  <p>{{show.Date}}</p>
-</div>
-<!-- <p>{{show.Venue.Address}}</p>
-<p>{{show.Venue.City}}</p>
-<p>{{show.Venue.State}}</p>
-<p>{{show.Venue.ZipCode}}</p>
-<p>{{show.Date}}</p>
-<p>{{show.TicketUrl}}</p> -->
-<!-- <p>{{show.Artists}}</p> -->
-<!-- <div ng-repeat="artist in show.Artists">
-  {{$index}}
-  <p>{{artist.Name}}</p>
-  <p
-    ng-mouseenter="vm.playSong(artist.songPreviews[0].previewURL, index)"
-    ng-mouseleave="vm.stopSong()"
-  >
-    {{artist.songPreviews[0].previewURL}}</p>
-    <div></div> -->
+  <div class="venue-image show{{index}}"></div>
+  <img class="showImage{{index}} artwork" ng-src="{{show.artistData[0].artistArtworkUrl}}"/>
+  <p class="byline">{{vm.byline}}</p>
+  <input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
+  <div class="caption z-depth-1">{{show.Artists[0].Name}}
+    <p>{{show.Date}}</p>
+  </div>
 
 </div>

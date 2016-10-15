@@ -1,7 +1,9 @@
-export default function($http, userService, musicService, showsService) {
+import config from "../../../config.js";
+import googleMapsLoader from 'google-maps';
+export default function($http, userService, musicService, showsService, mapService) {
 
    const vm = this;
-
+   console.log(mapService);
    const getCurrentUser = userService.getCurrentUser;
 
    const shows2 = showsService.getShowsData;
@@ -25,6 +27,10 @@ export default function($http, userService, musicService, showsService) {
 
    vm.shows = showsService.getSampleShows();
    vm.shows = vm.shows.data.Events;
+   mapService.getMap(vm.shows);
+
+
+
    console.log('shows', vm.shows);
 
    // function getJamBaseData() {
