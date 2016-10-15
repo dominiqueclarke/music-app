@@ -1,7 +1,27 @@
 <div>
-  <h3>This is the login</h3>
-  <a href="/auth/facebook">Login with Facebook</a>
-
-
+  <!-- <h3>This is the login</h3>
+  {{zipCodeInput}}
+  <a ng-click="vm.saveZipCode(zipCodeInput)" href="/auth/facebook">Login with Facebook</a>
+  <button >Submit</button> -->
+      <div id="homepage-hero-module">
+      <!-- <div> -->
+          <canvas id="c"></canvas>
+          <div class="video-container">
+              <div class="filter"></div>
+              <video id="v" autoplay loop class="fillWidth">
+                  <source src="./assets/video/Cheer-Up.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                  <source src="./assets/video/Cheer-Up.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+              </video>
+              <div class="poster hidden">
+                  <!-- <img src="PATH_TO_JPEG" alt=""> -->
+              </div>
+          </div>
+          <div class="tagline">
+            <div class="tagline1 z-depth-2"><h2>HEARING</h2></div>
+            <div class="tagline2 z-depth-2"><h2>is Believing</h2></div>
+            <div class="sub-heading"></div>
+            <input type="text" ng-model="zipCodeInput"></input>
+  <a class="btn" ng-click="vm.saveZipCode(zipCodeInput)" href="/auth/facebook">Login with Facebook</a>          </div>
+      </div>
 
 </div>

@@ -9,13 +9,12 @@
 
 const userCtrl = require('./userCtrl.js');
 const passport = require('passport');
-const middleware = require('../middleware/middleware.js');
 
 module.exports = app => {
-  app.get('/auth/facebook',
+  app.get('/auth/facebook', 
     passport.authenticate(
         'facebook',
-        {authType: 'rerequest', scope: ['user_friends', 'user_likes', 'email']}
+        {authType: 'rerequest', scope: ['user_friends', 'user_likes', 'email', 'user_location']}
     )
   );
 
@@ -31,9 +30,10 @@ module.exports = app => {
     , userCtrl.getUserFBMusicLikes
     , userCtrl.saveFBMusicLikes
     , userCtrl.createUser
-  )
+  );
 
-  //app.put('/api/users/:id', );
+  app.put('/api/users/:id', userCtrl.updateUser);
+
 	// //Auth 0 callback handler
 	// app.get(
 	// 	'/auth/facebook/callback',

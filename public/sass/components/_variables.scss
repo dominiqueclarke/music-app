@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Contrail+One');
+
 /* ==========================================================================
    Materialize variables
    ========================================================================== */
@@ -33,11 +35,11 @@
 /* 1. Colors
    ========================================================================== */
 
-$primary-color: color("materialize-red", "lighten-2") !default;
+$primary-color: color("yellow", "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("teal", "lighten-1") !default;
+$secondary-color: color("yellow", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
@@ -134,6 +136,8 @@ $dropdown-item-height: 50px !default;
 
 /* 9. Fonts
    ========================================================================== */
+$heading-font: "Contrail One";
+$body-font: "Times New Roman";
 
 /* 10. Forms
    ========================================================================== */

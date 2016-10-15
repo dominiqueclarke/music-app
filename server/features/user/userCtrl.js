@@ -5,7 +5,63 @@ const rp = require("request-promise");
 const mongoose = require("mongoose");
 
 module.exports = {
-  getUserFBMusicLikes(req, res, next) {
+  userExists(req, res, next) {
+    console.log('exist check');
+    if (!req.user) throw new Error('user null');
+    User.findOne({
+      fbID: req.user.id
+    }, (err, user) => {
+      // if (err) {return} res.redirect('/#/error');
+      // if (user) return res.redirect('/#/user');
+      if (err) {
+        return res.status(500).json(err);
+      }
+      if (user) {
+        return res.status(200).json(user);
+      }
+      next();
+    });
+  }
+  , createUser(req, res) {
+    console.log('user created');
+    const user = req.user;
+    const userData = {
+      email: user._json.email,
+      fbID: user.id,
+      created: new Date().getTime(),
+      artistsFollowing: res.locals.artistIDs,
+      fullName: `${user.name.givenName} ${user.name.familyName}`,
+      firstName: user.name.givenName,
+      lastName: user.name.familyName
+    }
+    new User(userData).save(function(err, user) {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      if(user) {
+        return res.status(200).json(user);
+      }
+    });
+  }
+  , updateUser(req, res) {
+    console.log('lastShowRequest', req.body.lastShowsRequest);
+    User.findByIdAndUpdate({
+      _id: req.params.id
+    }
+    , {lastShowsRequest: req.body.lastShowsRequest}
+    , function(err, user) {
+      console.log(err);
+      console.log(user);
+      if(err) {
+        console.log('cant find user');
+        return res.status(500).json(err);
+      }
+      if(user) {
+        return res.status(200).json(user);
+      }
+    });
+  }
+  , getUserFBMusicLikes(req, res, next) {
     let musicLikes = [];
     const music = req.user._json.music;
     musicLikes = musicLikes.concat(music.data);
@@ -71,7 +127,7 @@ module.exports = {
                 artistIDs.push(artist._id);
                 new Artist(artist).save(function(err, artist) {
                   if (err) {
-                    throw err;
+                    return res.status(500).json(err);
                   }
                 });
                 resolve();
@@ -87,37 +143,6 @@ module.exports = {
         next();
       });
     }
-  },
-  userExists(req, res, next) {
-    console.log('exist check');
-    if (!req.user) throw new Error('user null');
-    User.findOne({
-      fbID: req.user.id
-    }, (err, user) => {
-      // if (err) {return} res.redirect('/#/error');
-      // if (user) return res.redirect('/#/user');
-      if (err) {
-        return res.status(500).json(err);
-      }
-      if (user) {
-        return res.status(200).json(user)
-      }
-      next();
-    });
-  }
-  , createUser(req, res) {
-    console.log('user created');
-    const user = req.user;
-    const userData = {
-      email: user._json.email,
-      fbID: user.id,
-      created: new Date().getTime(),
-      artistsFollowing: res.locals.artistIDs,
-      fullName: `${user.name.givenName} ${user.name.familyName}`,
-      firstName: user.name.givenName,
-      lastName: user.name.familyName
-    }
-  
   }
 }
 

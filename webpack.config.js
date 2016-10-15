@@ -18,6 +18,14 @@ module.exports = {
           test: /\.html$/
           , loader: "html"
         }
+        , {
+          test: /\.(png|jpg)$/
+          , loader: "url-loader?limit=8192"
+        }
+        , {
+          test: /\.mp4$/
+          , loader: 'url?limit=10000&mimetype=video/mp4'
+        }
       ]
     }
     , resolve: {
@@ -28,6 +36,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery'
     })
+  ]
+  , externals: [
+    'canvas'
   ]
   , output: {
     path:`${__dirname}/public`

@@ -1,6 +1,6 @@
 <div
   class="show-container"
-  ng-mouseenter="vm.playSong(show.artistData[0].songPreviews[0].previewURL, index)"
+  ng-mouseenter="vm.playSong(show, index)"
   ng-mouseleave="vm.stopSong(index)"
 >
 
@@ -9,8 +9,10 @@
 <img class="event{{index}} artwork" ng-src="{{show.artistData[0].artistArtworkUrl}}"
 
 />
-<div class="caption">{{show.Artists[0].Name}}
-  <p>{{ show.Date}}</p>
+<p class="byline">{{vm.byline}}</p>
+<input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
+<div class="caption z-depth-1">{{show.Artists[0].Name}}
+  <p>{{show.Date}}</p>
 </div>
 <!-- <p>{{show.Venue.Address}}</p>
 <p>{{show.Venue.City}}</p>

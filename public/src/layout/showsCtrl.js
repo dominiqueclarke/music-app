@@ -1,15 +1,31 @@
-export default function($http, userService, musicService) {
+export default function($http, userService, musicService, showsService) {
 
    const vm = this;
 
    const getCurrentUser = userService.getCurrentUser;
 
+   const shows2 = showsService.getShowsData;
+   console.log('from showsCtrl', sessionStorage.zipCode);
+
    getCurrentUser().then(function(currentUser) {
       vm.currentUser = currentUser;
+      // shows2(vm.currentUser, sessionStorage.zipCode).then(function(results) {
+      //   //console.log(vm.currentUser)
+      //   console.log('results of api call', results);
+      // })
    });
 
-   vm.shows = musicService.getMusicPreviews();
-   console.log(vm.shows);
+  //  shows2(vm.currentUser).then(function(results) {
+  //    console.log(vm.currentUser)
+  //    console.log(results);
+  //  })
+
+
+
+
+   vm.shows = showsService.getSampleShows();
+   vm.shows = vm.shows.data.Events;
+   console.log('shows', vm.shows);
 
    // function getJamBaseData() {
    //   return $http({
