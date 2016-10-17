@@ -3,6 +3,9 @@ import knob from 'jquery-knob';
 
 export default function() {
   this.createTimer = (currentSongAudio, index) => {
+    console.log('this fired');
+    console.log(currentSongAudio);
+    console.log(index);
     function updateValue(knob) {
       currentSongAudio.ontimeupdate = () => {
         knob.val(Math.floor(currentSongAudio.currentTime * 10000)).trigger('change');

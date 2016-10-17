@@ -2,8 +2,13 @@
 
 <p>User data: {{vm.currentUser}}</p>
 <div id="map"></div>
+<div id="nextShow">
+  <span class="featured-show">
+    <show show="vm.featuredShow" index="vm.featuredIndex"></show>
+  </span>
+</div>
 <div class="shows-container">
   <div class="box" ng-repeat="show in vm.shows">
-    <show class="" show="show" index="$index"></show>
+    <show show="show" index="$index"></show>
   </div>
 </div>

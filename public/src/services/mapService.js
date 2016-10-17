@@ -8,7 +8,7 @@ import urlencode from 'urlencode'
 
 export default function($http) {
 
-  this.getMap = (shows) => {
+  this.getMap = (venues) => {
     mapboxgl.accessToken = config.mapBox.apiKey;
     //const client = new MapboxClient(config.mapBox.apiKey);
     const showPoints = {
@@ -19,17 +19,15 @@ export default function($http) {
       }
     };
     const promiseArray = [];
-    shows.forEach(function(entry, index) {
-      const query = urlencode(`${entry.Venue.Address}, ${entry.Venue.City}, ${entry.Venue.State}`);
+    venues.forEach(function(venue, index) {
+      const query = urlencode(`${venue.address}, ${venue.city}, ${venue.state}`);
       promiseArray.push(new Promise((resolve, reject) => {
           $http({
             url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${config.mapBox.apiKey}`
             , type: 'GET'
           }).then(pointRes => {
-          //  console.log(pointRe);
             const showPoint = pointRes.data.features[0]
-                showPoint.properties.title = entry.Venue.Name
-                console.log(showPoint);
+                showPoint.properties.title = venue.name;
                 showPoints.data.features.push(showPoint);
                 // if(index === shows.length - 1) {
                 //   console.log(showPoints);
@@ -39,39 +37,10 @@ export default function($http) {
           })
         }
       ));
-      // client.geocodeForward(`${entry.Venue.Address}, ${entry.Venue.City}, ${entry.Venue.State}`, function(err, res) {
-      //   const showPoint = res.features[0]
-      //   showPoint.properties.title = entry.Venue.Name
-      //   console.log(showPoint);
-      //   showPoints.data.features.push(showPoint);
-      //   if(index === shows.length - 1) {
-      //     console.log(showPoints);
-      //     console.log(createMap);
-      //   }
-      // });
     });
-    Promise.all(promiseArray).then(results => {
-      console.log('this are the results', results);
-      console.log(showPoints);
-      createMap(showPoints);
+    return Promise.all(promiseArray).then(results => {
+      return createMap(showPoints);
     })
-
-    // const promiseArray = [];
-    // shows.forEach(function(entry, index) {
-    //   promiseArray.push(new Promise(client.geocodeForward(`${entry.Venue.Address}, ${entry.Venue.City}, ${entry.Venue.State}`, function(err, res) {
-    //     const showPoint = res.features[0]
-    //     showPoint.properties.title = entry.Venue.Name
-    //     console.log(showPoint);
-    //     showPoints.data.features.push(showPoint);
-    //     // if(index === shows.length - 1) {
-    //     //   console.log(showPoints);
-    //     //   //createMap(showPoints);
-    //     // }
-    //   })));
-    // });
-    // Promise.all(promiseArray).then(results => {
-    //   console.log('promiseArray results', results);
-    // })
   }
       // mapboxgl.accessToken = config.mapBox.apiKey;
       // const client = new MapboxClient('YOUR_ACCESS_TOKEN');

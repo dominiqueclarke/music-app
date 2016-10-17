@@ -2,21 +2,6 @@ import config from '../../../config.js';
 import googleMapsLoader from 'google-maps';
 
 export default function($http, musicService) {
-  // this.getPlaceData = (show) => {
-  //   googleMapsLoader.KEY = config.googleMaps.apiKey;
-  //   googleMapsLoader.LIBRARIES = ['geometry', 'places'];
-  //   const places = new google.maps.places.PlacesService(map);
-  //   geocoder.geocode({
-  //     'address': `${shows[0].Venue.Address}, ${shows[0].Venue.City}, ${shows[0].Venue.State}`
-  //   }, function (centerResults, status) {
-  //     places.nearbySearch(request, function (markerResults, status) {
-  //       location: centerResults[0].geometry.location,
-  //       radius: '500',
-  //       types: ['store']
-  //     });
-  //   });
-  //
-  // }
   this.getShowsData = (currentUser, zipCode) => {
       //const jamBaseUrl =
       return $http({
@@ -32,13 +17,43 @@ export default function($http, musicService) {
           , method: 'PUT'
           , data: {lastShowsRequest, zipCode}
         })
-        console.log(showsData)
+        console.log(showsData);
         return showsData;
       });
   }
 
   this.getSampleShows = () => {
-    return musicService.getSamplePreviews();
+    const showsData = musicService.getSamplePreviews();
+    getVenuesNextShows(showsData);
+    console.log('getSampleShows', showsData);
+    return showsData;
+  }
+
+  function getVenuesNextShows(shows) {
+    const venues = [];
+    shows.data.Events.forEach(show => {
+      let venueExists = false;
+      for(let i = 0; i < venues.length; i++) {
+        if(venues[i].venueId === show.Venue.Id) {
+          venueExists = true;
+          break;
+        }
+      }
+      if(!venueExists) {
+        const venueData = {
+          showId: show.Id
+          , venueId: show.Venue.Id
+          , name: show.Venue.Name
+          , address: show.Venue.Address
+          , city: show.Venue.City
+          , state: show.Venue.State
+          , nextShow: show
+        }
+        venues.push(venueData);
+      }
+    })
+    shows.data.Venues = venues;
+    //console.log(shows);
   }
   //
   // getJamBaseData().then(function(results) {

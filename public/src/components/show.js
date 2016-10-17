@@ -11,31 +11,52 @@ export default function(mapService) {
       show: "=",
       index: "="
     },
-    controller($scope, mapService, musicTimerService) {
+    controller($scope, mapService, musicPlayerService, musicTimerService) {
 
       const vm = this;
       //vm.getPlaceData = mapService.getPlaceData;
-      vm.apply = $scope.$apply;
-      vm.eval = $scope.$eval;
-      //console.log(vm.show);
-      //let audio;
+
       let songCounter = 0;
       let artistCounter = 0;
       let currentSong;
 
-      //vm.getPlaceData = showsService.getPlaceData();
-      vm.playSong = (show, index) => {
+
+      vm.apply = $scope.$apply;
+      vm.eval = $scope.$eval;
+      vm.show = $scope.show;
+      vm.watch = $scope.$watch;
+      vm.index = $scope.index;
+      vm.playSong = playSong;
+      vm.stopSong = stopSong;
+      vm.isFeaturedShow;
+
+
+      if($scope.index === "Featured") {
+        vm.isFeaturedShow = true;
+        //playSong(vm.show, vm.index);
+        $scope.$watch('show.Artists[0].songPreviews', function(newValue, oldValue) {
+          playSong([{
+            Id: vm.show.Artists[0].Id
+            , Name: vm.show.Artists[0].Name
+            , artistArtworkUrl: vm.show.Artists[0].artistArtworkUrl
+            , songPreviews: newValue
+          }], vm.index)
+        });
+      }
+
+
+      function playSong(artists, index) {
         const artworkContainer = `.showImage${index}`
         const artwork = angular.element(document.querySelector(artworkContainer));
         artwork.addClass('active');
         if (vm.songRef && vm.songRef === currentSong.previewUrl) {
           vm.currentSongAudio.play();
         } else {
-          createSong(show, index);
+          createSong(artists, index);
         }
       };
 
-      vm.stopSong = (index) => {
+      function stopSong(index) {
         const artwork = angular.element(document.querySelector(`.showImage${index}`));
         artwork.removeClass('active');
         vm.currentSongAudio.pause();
@@ -48,11 +69,11 @@ export default function(mapService) {
         }
       };
 
-      function incrementSong(songPreviews, artistData) {
+      function incrementSong(songPreviews, artists) {
         //if it's the last song, set it to 0. If not, increment.
         if (songCounter === songPreviews.length - 1) {
           songCounter = 0;
-        } else if (artistCounter === artistData.length - 1) {
+        } else if (artistCounter === artists.length - 1) {
           artistCounter = 0;
           songCounter++;
         } else {
@@ -60,9 +81,9 @@ export default function(mapService) {
         }
       };
 
-      function createSong(show, index) {
-        let artistData = show.Artists;
-        let songPreviews = artistData[artistCounter].songPreviews;
+      function createSong(artists, index) {
+        //console.log(artistData);
+        let songPreviews = artists[artistCounter].songPreviews;
         checkPreviewUrl(songPreviews);
         currentSong = songPreviews[songCounter];
 
@@ -88,8 +109,8 @@ export default function(mapService) {
         //set up an event listener for when the audio ends
         $(vm.currentSongAudio).on("ended", function() {
           //if it's the last song, set it to 0. If not, increment.
-          incrementSong(songPreviews, artistData);
-          createSong(show, index);
+          incrementSong(songPreviews, artists);
+          createSong(artists, index);
         });
       };
     }
