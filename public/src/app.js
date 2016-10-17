@@ -16,8 +16,10 @@ import shows from "./layout/shows.html";
 //services
 import userService from "./services/userService.js"
 import musicService from "./services/musicService.js"
+import musicTimerService from "./services/musicTimerService.js"
 import showsService from "./services/showsService.js"
 import mapService from "./services/mapService.js"
+import videoMaskService from "./services/videoMaskService.js"
 
 //directives
 import show from "./components/show.js";
@@ -33,8 +35,10 @@ import heroVideo from "./components/heroVideo.js";
 angular.module('music', [uiRouter, angularMaterialize])
   .service('userService', userService)
   .service('musicService', musicService)
+  .service('musicTimerService', musicTimerService)
   .service('showsService', showsService)
   .service('mapService', mapService)
+  .service('videoMaskService', videoMaskService)
   .directive('show', show)
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");

@@ -62,8 +62,9 @@ export default function($http) {
               , artistArtworkUrl
               , songPreviews
             }
-            event.artistData.push(artistData);
+            //event.artistData.push(artistData);
             artist.songPreviews = songPreviews;
+            artist.artistArtworkUrl = artistArtworkUrl;
             $http.post('/api/artist', artistData);
             resolve();
           })
@@ -121,8 +122,9 @@ export default function($http) {
              , artistArtworkUrl
              , songPreviews
            }
-           event.artistData.push(artistData);
+           //event.artistData.push(artistData);
            artist.songPreviews = songPreviews;
+           artist.artistArtworkUrl = artistArtworkUrl;
            $http.post('/api/artist', artistData);
            resolve();
          })

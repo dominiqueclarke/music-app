@@ -4,7 +4,7 @@
   ng-mouseleave="vm.stopSong(index)"
 >
   <div class="venue-image show{{index}}"></div>
-  <img class="showImage{{index}} artwork" ng-src="{{show.artistData[0].artistArtworkUrl}}"/>
+  <img class="showImage{{index}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
   <p class="byline">{{vm.byline}}</p>
   <input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
   <div class="caption z-depth-1">{{show.Artists[0].Name}}

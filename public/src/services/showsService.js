@@ -38,7 +38,7 @@ export default function($http, musicService) {
   }
 
   this.getSampleShows = () => {
-    return musicService.getSamplePreviews()
+    return musicService.getSamplePreviews();
   }
   //
   // getJamBaseData().then(function(results) {
