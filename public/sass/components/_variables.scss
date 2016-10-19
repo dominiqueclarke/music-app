@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Contrail+One');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:700');
 
 /* ==========================================================================
    Materialize variables
@@ -42,7 +43,7 @@ $primary-color-dark: darken($primary-color, 15%) !default;
 $secondary-color: color("yellow", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: #FBD13D !default;
 
 
 /* 2. Badges
@@ -137,7 +138,7 @@ $dropdown-item-height: 50px !default;
 /* 9. Fonts
    ========================================================================== */
 $heading-font: "Contrail One";
-$body-font: "Times New Roman";
+$body-font: "Josefin Sans";
 
 /* 10. Forms
    ========================================================================== */

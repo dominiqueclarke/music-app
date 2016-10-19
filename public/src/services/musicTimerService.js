@@ -2,20 +2,19 @@ import $ from 'jquery';
 import knob from 'jquery-knob';
 
 export default function() {
+  let currentTime;
+  let knob;
+
   this.createTimer = (currentSongAudio, index) => {
-    console.log('this fired');
-    console.log(currentSongAudio);
-    console.log(index);
-    function updateValue(knob) {
-      currentSongAudio.ontimeupdate = () => {
-        knob.val(Math.floor(currentSongAudio.currentTime * 10000)).trigger('change');
-        //vm.currentSongTime = vm.currentSongAudio.currentTime
-      };
-    }
+    // console.log('knob', knob);
+    // console.log('knobIndex', index);
+    if(knob && index === "Featured") {
+      knob.val(0).trigger('change');
+      updateValue(knob, currentSongAudio);
+    } else {
     $.fn.timer = function(userdefinedoptions) {
-      var $this = $(this);
+      knob = $(this);
       let opt;
-      let count = 0;
 
 
       opt = $.extend({
@@ -24,12 +23,12 @@ export default function() {
         'width': 110,
         'height': 110,
         'position': 'absolute',
-        'fgColor': "yellow",
+        'fgColor': "#FBD13D",
         'bgColor': "#F5F5F5"
       }, userdefinedoptions);
 
 
-      $this.knob({
+      knob.knob({
         'min': 0,
         'max': opt.timer,
         'readOnly': true,
@@ -46,9 +45,22 @@ export default function() {
 
       //setInterval(function(){
       //++count;
-      updateValue($this)
+
+      updateValue(knob, currentSongAudio);
         //}, 100);
     };
     $(`.musicPlayer${index}`).timer(updateValue);
   }
+  }
+  function updateValue(knob, currentSongAudio) {
+    currentSongAudio.ontimeupdate = () => {
+      //console.log(currentSongAudio);
+      //console.log(index);
+      // console.log(currentSongAudio.currentTime);
+      //console.log(currentSongAudio.currentTime);
+      knob.val(Math.floor(currentSongAudio.currentTime * 10000)).trigger('change');
+      //console.log(knob.val());
+      //vm.currentSongTime = vm.currentSongAudio.currentTime
+    };
+  };
 }

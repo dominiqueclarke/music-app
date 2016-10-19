@@ -9,16 +9,18 @@ export default function($http, musicService) {
          , type: 'GET'
        })
       .then(function(shows) {
-        console.log('shows', shows);
-        const showsData = musicService.getMusicPreviews(shows);
-        const lastShowsRequest = new Date().getTime();
-        $http({
-          url: `/api/users/${currentUser._id}`
-          , method: 'PUT'
-          , data: {lastShowsRequest, zipCode}
-        })
-        console.log(showsData);
-        return showsData;
+        let showsData;
+        return musicService.getMusicPreviews(shows).then(results => {
+          showsData = results;
+          const lastShowsRequest = new Date().getTime();
+          $http({
+            url: `/api/users/${currentUser._id}`
+            , method: 'PUT'
+            , data: {lastShowsRequest, zipCode}
+          })
+          getVenuesNextShows(showsData);
+          return showsData;
+        });
       });
   }
 

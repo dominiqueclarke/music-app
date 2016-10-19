@@ -9,7 +9,6 @@ export default function($http) {
 
    this.getMusicPreviews = shows => {
     const promiseArray = [];
-    console.log(shows);
     shows.data.Events.forEach(event => {
       event.Artists.forEach(function(artist) {
         event.artistData = [];
@@ -17,7 +16,13 @@ export default function($http) {
         const nameQuery = artist.Name.split(" ").join("+");
         promiseArray.push(new Promise((resolve, reject) => {
           $http.jsonp(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&callback=JSON_CALLBACK`
-          ).then(iTunes => {
+          ).success(iTunes => {
+            console.log(iTunes);
+            if(!iTunes || iTunes.status !== 200) {
+              artist.songPreviews = null;
+              artist.artistArtworkUrl = null;
+              resolve();
+            }
             let artistArtworkUrl;
             const songPreviews = [];
               for(let i = 0; i < iTunes.data.results.length; i++) {
@@ -71,7 +76,9 @@ export default function($http) {
         }));
       });
     });
-    return shows;
+    return Promise.all(promiseArray).then(() => {
+      return shows;
+    })
   }
   this.getSamplePreviews = () => {
    const promiseArray = [];

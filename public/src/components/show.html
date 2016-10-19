@@ -1,15 +1,35 @@
 <div
-  class="show-container"
+  class="show-container z-depth-1"
   ng-init="vm.isFeaturedShow && show.Artists[0].songPreviews ? vm.playSong(show, index) : null"
-  ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index); vm.getPlaceData(show.Artists, index)"
-  ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index)"
+  ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index); vm.showOpeners(show)"
+  ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index); vm.hideOpeners()"
 >
   <!-- <div class="venue-image show{{index}}"></div> -->
   <img class="showImage{{index}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
   <p class="byline">{{vm.byline}}</p>
   <input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
-  <div class="caption z-depth-1">{{show.Artists[0].Name}}
-    <p>{{show.Date}}</p>
+  <span class="ticket-url" ng-show="show.TicketUrl">
+        <a ng-href="{{show.TicketUrl}}" target="_blank">Purchase Tickets</a>
+  </span>
+    <span class="ticket-url" ng-show="!show.TicketUrl">
+        <span>Tickets not yet available</span>
+    </span>
+    <span class="date">
+      <div class="week-day">{{vm.date.weekDay}}</div>
+      <div class="month">{{vm.date.month}}</div>
+      <div class="day">{{vm.date.day}}</div>
+      <div class="hour">{{vm.date.hour}}</div>
+      <div class="period">{{vm.date.period}}</div>
+      <!-- <div>{{vm.show.Date}}</div> -->
+    </span>
+  <div class="caption z-depth-1">
+    <span>{{show.Artists[0].Name}}</span>
+    <br/>
+    <span ng-if="opener">&amp; {{opener}}<br/></span>
+    <span ng-if="!opener && show.Artists.length > 2">&amp; {{show.Artists.length - 1}} other artists<br/></span>
+    <span ng-if="!opener && show.Artists.length === 2">&amp; {{show.Artists[1].Name}}<br/></span>
+    <span ng-if="show.Venue.Url">at <a ng-href="{{show.Venue.Url}}">{{show.Venue.Name}}</a></span>
+    <span ng-if="!show.Venue.Url">at {{show.Venue.Name}}</span>
+    <br/>
   </div>
-
 </div>

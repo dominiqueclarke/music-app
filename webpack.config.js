@@ -19,13 +19,15 @@ module.exports = {
           , loader: "html"
         }
         , {
-          test: /\.(png|jpg)$/
-          , loader: "url-loader?limit=8192"
+          test: /\.(png)$/
+          , loader: require.resolve("file-loader") 
         }
         , {
           test: /\.mp4$/
           , loader: 'url?limit=10000&mimetype=video/mp4'
         }
+        , { test: /\.jpg/, loader: "file-loader" }
+
       ]
     }
     , resolve: {

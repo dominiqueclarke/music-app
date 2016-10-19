@@ -1,14 +1,18 @@
-<div>This is the shows
 
-<p>User data: {{vm.currentUser}}</p>
+<div>
+<!-- <p>User data: {{vm.currentUser}}</p> -->
 <div id="map"></div>
-<div id="nextShow">
-  <span class="featured-show">
-    <show show="vm.featuredShow" index="vm.featuredIndex"></show>
-  </span>
-</div>
-<div class="shows-container">
-  <div class="box" ng-repeat="show in vm.shows">
-    <show show="show" index="$index"></show>
+<div class="container">
+  <div id="nextShow">
+    <span class="featured-show">
+      <show show="vm.featuredShow" index="vm.featuredIndex"></show>
+    </span>
+  </div>
+  <div class="shows-container">
+    <span class="box" ng-repeat="show in vm.shows">
+      <show show="show" index="$index"></show>
+      <span class="line1"></span>
+      <span class="line2"></span>
+    </span>
   </div>
 </div>
