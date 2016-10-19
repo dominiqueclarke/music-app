@@ -38,12 +38,12 @@ export default function(mapService) {
       vm.isFeaturedShow;
 
       if (vm.show) {
-        vm.date = dateToString(new Date(`${vm.show.Date}Z`));
+        vm.date = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
       }
 
       $scope.$watch('show', (newValue, oldValue) => {
         if (newValue) {
-          vm.date = dateToString(new Date(`${newValue.Date}Z`));
+          vm.date = dateToString(new Date(`${newValue.Date}Z`), vm.show.Date);
         }
       });
 
@@ -72,7 +72,6 @@ export default function(mapService) {
       }
 
       function showOpeners(show) {
-        console.log('this fired');
         //setting counter to one, because we don't want the first act, the headliner
         openerTimeout = setTimeout(() => {
           $scope.$apply(function() {
@@ -82,7 +81,6 @@ export default function(mapService) {
             } else {
               openersCounter++;
             }
-            console.log($scope.opener, openersCounter);
             showOpeners(show);
           });
         }, 2000);
@@ -174,8 +172,9 @@ export default function(mapService) {
         });
       };
 
-      function dateToString(date) {
-        //console.log(date.getTimezoneOffset() / 60);
+      function dateToString(date, dateString) {
+        const offset = date.getTimezoneOffset() / 60;
+        console.log(offset);
         // Use an array to format the month numbers
         var months = [
           "Jan",
@@ -204,19 +203,11 @@ export default function(mapService) {
 
         // Use an object to format the timezone identifiers
 
-        var month = months[date.getMonth()];
-        var day = date.getDate();
+        var month = months[parseInt(dateString.slice(5,7)) - 1];
+        var day = dateString.slice(8,10);
         var weekDay = days[date.getDay()];
-
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        if (minutes < 10) {
-          minutes = `0${minutes}`;
-        }
-        if (day < 10) {
-          day = `0${day}`
-        }
-
+        var hours = dateString.slice(11,13);
+        var minutes = dateString.slice(14,16);
         var time = (hours > 11 ? (hours - 11) : (hours + 1)) + ":" + minutes + (hours > 11 ? "PM" : "AM");
         let hour = (time.length > 6 ? time.slice(0, 5) : time.slice(0, 4));
         var period = time.slice(-2);

@@ -48,8 +48,6 @@ export default function($http) {
       //   // res is the geocoding result as parsed JSON
       // });
   function createMap(showPoints) {
-      console.log(showPoints);
-      console.log(showPoints[0]);
       const map = new mapboxgl.Map({
           container: 'map',
           style: config.mapBox.styles,
@@ -65,33 +63,14 @@ export default function($http) {
       map.addControl(new mapboxgl.NavigationControl());
 
       map.on('load', () => {
-
-          map.addSource('terrain-data', {
-              type: 'vector',
-              url: 'mapbox://mapbox.mapbox-terrain-v2'
-          });
           //should not have put on scope
           map.addSource('points', showPoints);
-          map.addLayer({
-              "id": "terrain-data",
-              "type": "line",
-              "source": "terrain-data",
-              "source-layer": "contour",
-              "layout": {
-                  "line-join": "round",
-                  "line-cap": "round"
-              },
-              "paint": {
-                  "line-color": "#1DE9B6",
-                  "line-width": 1
-              }
-          });
           map.addLayer({
               "id": "points",
               "type": "symbol",
               "source": "points",
               "layout": {
-                  "icon-image": "location-beacon-g",
+                  "icon-image": "venue-becon",
                   "text-field": "{title}",
                   "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
                   "text-offset": [0, 0.6],

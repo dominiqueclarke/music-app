@@ -4,6 +4,8 @@ export default function($http, userService, musicService, showsService, mapServi
 
    const vm = this;
    const getCurrentUser = userService.getCurrentUser;
+   vm.loaded = false;
+   mongodb://root:hunter2@ds053818.mlab.com:53818/heroku-brown-bag
 
    vm.featuredIndex = "Featured";
 
@@ -14,11 +16,22 @@ export default function($http, userService, musicService, showsService, mapServi
    getCurrentUser().then(currentUser => {
       vm.currentUser = currentUser;
       // getShows(vm.currentUser, sessionStorage.zipCode).then().then(function(shows) {
+      //   vm.loaded = true;
       //   vm.shows = shows.data.Events;
       //   vm.featuredShow = shows.data.Venues[0].nextShow;
       //   $scope.$broadcast('featuredShowAssigned', vm.featuredShow);
       //   const venues = vm.venues = shows.data.Venues;
       //   mapService.getMap(vm.venues).then(map => {
+      // function checkIfMapIsLoaded() {
+      //   setTimeout( () => {
+      //     if(map.loaded() === true) {
+      //       vm.loaded = true;
+      //     } else {
+      //       checkIfMapIsLoaded();
+      //     }
+      //   }, 3000);
+      // }
+      // //checkIfMapIsLoaded();
       //     map.on('click', (e) => {
       //         //reset selectedActivity so that all activities show when a new place is selected
       //         //delete $scope.selectedActivity;
@@ -68,6 +81,16 @@ export default function($http, userService, musicService, showsService, mapServi
    const venues = vm.venues = showsService.getSampleShows().data.Venues;
    vm.featuredShow = showsService.getSampleShows().data.Venues[0].nextShow;
    mapService.getMap(vm.venues).then(map => {
+     function checkIfMapIsLoaded() {
+       setTimeout( () => {
+         if(map.loaded() === true) {
+           vm.loaded = true;
+         } else {
+           checkIfMapIsLoaded();
+         }
+       }, 3000);
+     }
+     checkIfMapIsLoaded();
      map.on('click', (e) => {
          //reset selectedActivity so that all activities show when a new place is selected
          //delete $scope.selectedActivity;
@@ -77,7 +100,6 @@ export default function($http, userService, musicService, showsService, mapServi
              layers: ['points']
          });
          const venueName = features[0].properties.title;
-         console.log('these are the venues');
          $scope.$apply(function() {
              for (let venue in venues) {
                  if (venueName === venues[venue].name) {
@@ -107,10 +129,6 @@ export default function($http, userService, musicService, showsService, mapServi
            .setHTML(feature.properties.img)
            .addTo(map);
      });
-   });
-   $scope.$watch('map', function(newValue, oldValue) {
-     console.log('oldValue', oldValue);
-     console.log('newValue', newValue);
    });
 
    console.log('shows', vm.shows);

@@ -1,38 +1,6 @@
 #map {
   min-height:450px;
 }
-.loader {
-  width:100%;
-  height:300px;
-  background-color:pink;
-  .square {
-    display:inline;
-    float:left;
-    width:8.33%;
-    height: 25%;
-    border:1px solid blue;
-    .triangle {
-      width: 100%;
-      height: 100%;
-      background: #8bc426;
-     // Clip paths
-     -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%);
-     clip-path: polygon(0 0, 0 100%, 100% 100%);
-     .rotate90 {
-
-     }
-     .rotate180 {
-
-     }
-     .rotate270 {
-
-     }
-     .rotate360 {
-
-     }
-    }
-  }
-}
 .shows-container {
   margin: 10px auto;
   position:relative;
@@ -130,9 +98,15 @@
       max-width:80%;
     }
     .ticket-url {
+      padding:.5rem;
+      background-color: #FBD13D;
       position:absolute;
       bottom: 20px;
       left: 20px;
+      a {
+        color:black;
+        border-bottom:2px dashed white;
+      }
     }
   }
 
@@ -143,6 +117,16 @@
   #nextShow {
     position:relative;
     top:-150px;
+    &:after {
+      content:"";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      height:150%;
+      border-left: 2px solid black;
+    }
   }
 
   .caption {

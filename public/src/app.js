@@ -24,6 +24,7 @@ import videoMaskService from "./services/videoMaskService.js"
 
 //directives
 import show from "./components/show.js";
+import loader from "./components/loader.js"
 
 //Controlers
 import showsCtrl from "./layout/showsCtrl.js";
@@ -42,6 +43,7 @@ angular.module('music', [uiRouter, angularMaterialize])
   .service('mapService', mapService)
   .service('videoMaskService', videoMaskService)
   .directive('show', show)
+  .directive('loader', loader)
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
     $stateProvider

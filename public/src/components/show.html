@@ -8,18 +8,20 @@
   <img class="showImage{{index}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
   <p class="byline">{{vm.byline}}</p>
   <input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
-  <span class="ticket-url" ng-show="show.TicketUrl">
+  <span class="ticket-url z-depth-1" ng-show="show.TicketUrl">
         <a ng-href="{{show.TicketUrl}}" target="_blank">Purchase Tickets</a>
   </span>
     <span class="ticket-url" ng-show="!show.TicketUrl">
-        <span>Tickets not yet available</span>
+        <span>Contact venue for tickets</span>
     </span>
-    <span class="date">
+    <span class="date z-depth-1">
       <div class="week-day">{{vm.date.weekDay}}</div>
       <div class="month">{{vm.date.month}}</div>
       <div class="day">{{vm.date.day}}</div>
-      <div class="hour">{{vm.date.hour}}</div>
-      <div class="period">{{vm.date.period}}</div>
+      <div ng-if="vm.date.hour !== '001:0'">
+        <div class="hour">{{vm.date.hour}}</div>
+        <div class="period">{{vm.date.period}}</div>
+      </div>
       <!-- <div>{{vm.show.Date}}</div> -->
     </span>
   <div class="caption z-depth-1">

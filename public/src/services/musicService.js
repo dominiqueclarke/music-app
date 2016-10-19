@@ -15,9 +15,8 @@ export default function($http) {
         artist.Name = artist.Name.trim();
         const nameQuery = artist.Name.split(" ").join("+");
         promiseArray.push(new Promise((resolve, reject) => {
-          $http.jsonp(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&callback=JSON_CALLBACK`
+          $http.jsonp(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&limit=10&callback=JSON_CALLBACK`
           ).success(iTunes => {
-            console.log(iTunes);
             if(!iTunes || iTunes.status !== 200) {
               artist.songPreviews = null;
               artist.artistArtworkUrl = null;
@@ -25,8 +24,8 @@ export default function($http) {
             }
             let artistArtworkUrl;
             const songPreviews = [];
-              for(let i = 0; i < iTunes.data.results.length; i++) {
-                const song = iTunes.data.results[i];
+              for(let i = 0; i < iTunes.results.length; i++) {
+                const song = iTunes.results[i];
                 if(song.artistName === artist.Name) {
                   songPreviews.push({
                     songName: song.trackName
@@ -48,7 +47,7 @@ export default function($http) {
               now and just assign the artist song previews based on the first
               five results */
               if(songPreviews.length === 0 ) {
-                const shortenedResponse = iTunes.data.results.slice(0, 5);
+                const shortenedResponse = iTunes.results.slice(0, 5);
                 if(shortenedResponse[0]) {
                   artistArtworkUrl = shortenedResponse[0].artworkUrl100.replace("100x100", "400x400");
                 }

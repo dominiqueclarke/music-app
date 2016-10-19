@@ -27,7 +27,6 @@ export default function($http, musicService) {
   this.getSampleShows = () => {
     const showsData = musicService.getSamplePreviews();
     getVenuesNextShows(showsData);
-    console.log('getSampleShows', showsData);
     return showsData;
   }
 
