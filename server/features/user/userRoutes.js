@@ -11,7 +11,7 @@ const userCtrl = require('./userCtrl.js');
 const passport = require('passport');
 
 module.exports = app => {
-  app.get('/auth/facebook', 
+  app.get('/auth/facebook',
     passport.authenticate(
         'facebook',
         {authType: 'rerequest', scope: ['user_friends', 'user_likes', 'email', 'user_location']}
@@ -33,6 +33,11 @@ module.exports = app => {
   );
 
   app.put('/api/users/:id', userCtrl.updateUser);
+
+  app.put('/api/users/:id/addShow', userCtrl.pushShow);
+
+  app.put('/api/users/:id/removeShow', userCtrl.pullShow);
+
 
 	// //Auth 0 callback handler
 	// app.get(

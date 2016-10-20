@@ -6,14 +6,18 @@ export default function($http) {
   // this.getZipCode = () => {
   //   return zipCodeInput;
   // }
-  console.log(this.zipCode);
+//  console.log(this.zipCode);
+ const myThis = this;
+  myThis.currentUser = {};
   this.getCurrentUser = () => {
       return $http({
-      url: 'http://localhost:4000/me'
+      url: '/me'
       , type: 'GET'
     })
-    .then(function(currentUser) {
-      return currentUser.data;
+    .then(function(currentUserData) {
+      console.log(currentUserData);
+      myThis.currentUser = currentUserData.data;
+      return currentUserData.data;
     });
   }
 }

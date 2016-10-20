@@ -1,13 +1,52 @@
 import config from '../../../config.js';
 import googleMapsLoader from 'google-maps';
 
-export default function($http, musicService) {
+export default function($http, musicService, userService) {
+  this.saveShow = show => {
+    console.log('saving show');
+    const showData = {
+      Artists: show.Artists
+      , dateObj: show.dateObj
+      , jamBaseId: show.Id
+      , TicketUrl: show.TicketUrl
+      , Venue: show.Venue
+      , artistData: show.artistData
+    };
+    return $http.post('/api/shows', showData)
+    .then(show => {
+      if(show.status === 200) {
+        $http({
+          url: `/api/users/${userService.currentUser._id}/addShow`
+          , method: 'PUT'
+          , data: {showId: show.data._id}
+        })
+        return show;
+      } else {
+        return "unsaved";
+      }
+    });
+  }
+  this.pullShow = show => {
+    console.log('pulling show');
+    return $http({
+      url: `/api/users/${userService.currentUser._id}/removeShow`
+      , method: 'PUT'
+      , data: {_id: show.mongoId}
+    })
+    .then(user => {
+      if(user.status === 200) {
+        return user;
+      } else {
+        return "saved";
+      }
+    });
+  }
   this.getShowsData = (currentUser, zipCode) => {
       //const jamBaseUrl =
       return $http({
          url: `http://api.jambase.com/events?zipCode=${zipCode}&radius=25&page=0&${config.jamBase.apiKey}`
          , type: 'GET'
-       })
+      })
       .then(function(shows) {
         let showsData;
         return musicService.getMusicPreviews(shows).then(results => {

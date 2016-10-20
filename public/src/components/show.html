@@ -34,4 +34,5 @@
     <span ng-if="!show.Venue.Url">at {{show.Venue.Name}}</span>
     <br/>
   </div>
+  <span class="star{{index}} save-show" ng-class="vm.show.saved" ng-click="vm.saveShow(vm.show)"></span>
 </div>

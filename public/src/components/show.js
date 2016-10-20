@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import knob from 'jquery-knob';
 
-export default function(mapService) {
+export default function() {
   return {
     restrict: 'E',
     replace: true,
@@ -11,7 +11,7 @@ export default function(mapService) {
       show: "=",
       index: "="
     },
-    controller($scope, mapService, musicPlayerService, musicTimerService) {
+    controller($scope, mapService, musicPlayerService, musicTimerService, showsService) {
 
 
       const vm = this;
@@ -35,15 +35,16 @@ export default function(mapService) {
       vm.stopSong = stopSong;
       vm.showOpeners = showOpeners;
       vm.hideOpeners = hideOpeners;
+      vm.saveShow = saveShow;
       vm.isFeaturedShow;
 
       if (vm.show) {
-        vm.date = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
+        vm.date = vm.show.dateObj = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
       }
 
       $scope.$watch('show', (newValue, oldValue) => {
         if (newValue) {
-          vm.date = dateToString(new Date(`${newValue.Date}Z`), vm.show.Date);
+          vm.date = vm.show.dateObj = dateToString(new Date(`${newValue.Date}Z`), newValue.Date);
         }
       });
 
@@ -69,6 +70,20 @@ export default function(mapService) {
             //console.log(songData);
           playSong([songData], vm.index)
         });
+      }
+
+      function saveShow(show) {
+        if(vm.show.saved !== "saved") {
+          showsService.saveShow(show).then(show => {
+            vm.show.mongoId = show.data._id;
+            vm.show.saved = "saved";
+          });
+        } else {
+          showsService.pullShow(show).then(user => {
+            console.log('updated user', user);
+            vm.show.saved = "unsaved";
+          })
+        }
       }
 
       function showOpeners(show) {

@@ -86,7 +86,19 @@
           -ms-animation: rotating 2s linear infinite;
           animation: rotating 2s linear infinite;
         }
+    }
+    .save-show {
+      background-image:url('../assets/img/open-star.png');
+      height:30px;
+      width:30px;
+      background-size:cover;
+      position:absolute;
+      bottom:20px;
+      right:20px;
+      &.saved {
+        background-image:url('../assets/img/closed-star.png')
       }
+    }
   }
 
   .box, .featured-show {

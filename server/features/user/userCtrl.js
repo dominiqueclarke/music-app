@@ -10,13 +10,16 @@ module.exports = {
     if (!req.user) throw new Error('user null');
     User.findOne({
       fbID: req.user.id
-    }, (err, user) => {
+    })
+    .populate('savedShows')
+    .exec((err, user) => {
       // if (err) {return} res.redirect('/#/error');
       // if (user) return res.redirect('/#/user');
       if (err) {
         return res.status(500).json(err);
       }
       if (user) {
+        console.log(user);
         return res.status(200).json(user);
       }
       next();
@@ -44,16 +47,43 @@ module.exports = {
     });
   }
   , updateUser(req, res) {
-    console.log('lastShowRequest', req.body.lastShowsRequest);
     User.findByIdAndUpdate({
       _id: req.params.id
     }
     , {lastShowsRequest: req.body.lastShowsRequest}
     , function(err, user) {
-      console.log(err);
-      console.log(user);
       if(err) {
         console.log('cant find user');
+        return res.status(500).json(err);
+      }
+      if(user) {
+        return res.status(200).json(user);
+      }
+    });
+  }
+  , pushShow(req, res) {
+    User.findByIdAndUpdate({
+      _id: req.params.id
+    }
+    , {$addToSet: {savedShows: req.body.showId} }
+    , function(err, user) {
+      console.log(err);
+      console.log(user)
+      if(err) {
+        return res.status(500).json(err);
+      }
+      if(user) {
+        return res.status(200).json(user);
+      }
+    });
+  }
+  , pullShow(req, res) {
+    User.findByIdAndUpdate({
+      _id: req.params.id
+    }
+    , {$pull: {savedShows: req.body._id } }
+    , function(err, user) {
+      if(err) {
         return res.status(500).json(err);
       }
       if(user) {

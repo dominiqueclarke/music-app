@@ -8,7 +8,7 @@ const User = new mongoose.Schema({
   , fbID: {type:String}
   , artistsFollowing:[{type:mongoose.Schema.Types.ObjectId, ref: "Artists", unique:true}]
   , usersFollowing: {type:Array}
-  , showsFollowing: {type:Array}
+  , savedShows: [{type:mongoose.Schema.Types.ObjectId, ref: "Show", unique:true}]
   , lastShowsRequest: Date
 });
 
