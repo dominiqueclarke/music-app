@@ -83,59 +83,59 @@
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _shows = __webpack_require__(/*! ./layout/shows.html */ 17);
+	var _shows = __webpack_require__(/*! ./layout/shows.html */ 18);
 	
 	var _shows2 = _interopRequireDefault(_shows);
 	
-	var _savedShows = __webpack_require__(/*! ./layout/savedShows.html */ 18);
+	var _savedShows = __webpack_require__(/*! ./layout/savedShows.html */ 19);
 	
 	var _savedShows2 = _interopRequireDefault(_savedShows);
 	
-	var _userService = __webpack_require__(/*! ./services/userService.js */ 19);
+	var _userService = __webpack_require__(/*! ./services/userService.js */ 20);
 	
 	var _userService2 = _interopRequireDefault(_userService);
 	
-	var _musicService = __webpack_require__(/*! ./services/musicService.js */ 20);
+	var _musicService = __webpack_require__(/*! ./services/musicService.js */ 21);
 	
 	var _musicService2 = _interopRequireDefault(_musicService);
 	
-	var _musicPlayerService = __webpack_require__(/*! ./services/musicPlayerService.js */ 21);
+	var _musicPlayerService = __webpack_require__(/*! ./services/musicPlayerService.js */ 22);
 	
 	var _musicPlayerService2 = _interopRequireDefault(_musicPlayerService);
 	
-	var _musicTimerService = __webpack_require__(/*! ./services/musicTimerService.js */ 22);
+	var _musicTimerService = __webpack_require__(/*! ./services/musicTimerService.js */ 23);
 	
 	var _musicTimerService2 = _interopRequireDefault(_musicTimerService);
 	
-	var _showsService = __webpack_require__(/*! ./services/showsService.js */ 24);
+	var _showsService = __webpack_require__(/*! ./services/showsService.js */ 25);
 	
 	var _showsService2 = _interopRequireDefault(_showsService);
 	
-	var _mapService = __webpack_require__(/*! ./services/mapService.js */ 27);
+	var _mapService = __webpack_require__(/*! ./services/mapService.js */ 29);
 	
 	var _mapService2 = _interopRequireDefault(_mapService);
 	
-	var _videoMaskService = __webpack_require__(/*! ./services/videoMaskService.js */ 72);
+	var _videoMaskService = __webpack_require__(/*! ./services/videoMaskService.js */ 73);
 	
 	var _videoMaskService2 = _interopRequireDefault(_videoMaskService);
 	
-	var _show = __webpack_require__(/*! ./components/show.js */ 73);
+	var _show = __webpack_require__(/*! ./components/show.js */ 74);
 	
 	var _show2 = _interopRequireDefault(_show);
 	
-	var _loader = __webpack_require__(/*! ./components/loader.js */ 74);
+	var _loader = __webpack_require__(/*! ./components/loader.js */ 75);
 	
 	var _loader2 = _interopRequireDefault(_loader);
 	
-	var _showsCtrl = __webpack_require__(/*! ./layout/showsCtrl.js */ 75);
+	var _showsCtrl = __webpack_require__(/*! ./layout/showsCtrl.js */ 76);
 	
 	var _showsCtrl2 = _interopRequireDefault(_showsCtrl);
 	
-	var _loginCtrl = __webpack_require__(/*! ./layout/loginCtrl.js */ 76);
+	var _loginCtrl = __webpack_require__(/*! ./layout/loginCtrl.js */ 77);
 	
 	var _loginCtrl2 = _interopRequireDefault(_loginCtrl);
 	
-	var _heroVideo = __webpack_require__(/*! ./components/heroVideo.js */ 77);
+	var _heroVideo = __webpack_require__(/*! ./components/heroVideo.js */ 78);
 	
 	var _heroVideo2 = _interopRequireDefault(_heroVideo);
 	
@@ -38916,19 +38916,28 @@
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div>\n  <div class=\"logo\">\n    <div class=\"container\">\n      <div class=\"logo-image-container\">\n        <img src=\"" + __webpack_require__(/*! ../../assets/img/logo.png */ 78) + "\" />\n        <h2>Lalela</h2>\n      </div>\n    </div>\n  </div>\n      <div id=\"homepage-hero-module\">\n      <!-- <div> -->\n          <canvas id=\"c\"></canvas>\n          <div class=\"video-container\">\n              <div class=\"filter\"></div>\n              <video id=\"v\" autoplay loop class=\"fillWidth\">\n                  <source src=\"./assets/video/Cheer-Up.mp4\" type=\"video/mp4\" />Your browser does not support the video tag. I suggest you upgrade your browser.\n                  <source src=\"./assets/video/Cheer-Up.webm\" type=\"video/webm\" />Your browser does not support the video tag. I suggest you upgrade your browser.\n              </video>\n              <div class=\"poster hidden\">\n                  <!-- <img src=\"PATH_TO_JPEG\" alt=\"\"> -->\n              </div>\n          </div>\n          <div class=\"tagline\">\n            <div class=\"tagline-wrapper\">\n              <div class=\"tagline1 z-depth-2\"><h2>HEARING</h2></div>\n              <div class=\"tagline2 z-depth-2\"><h2>is Believing</h2></div>\n            </div>\n            <h4 class=\"sub-heading\">Discover local shows by previewing the music</h4>\n            <input type=\"text\" ng-model=\"zipCodeInput\" placeholder=\"Input your Zip Code to get started\"></input>\n            <a class=\"btn\" ng-class=\"zipCodeInput.length === 5 ? 'visible': ''\" ng-click=\"vm.saveZipCode(zipCodeInput)\" href=\"/auth/facebook\">Login with Facebook</a>          </div>\n      </div>\n      <footer class=\"page-footer\">\n         <div class=\"container\">\n           <div class=\"row\">\n             <div class=\"col l6 s12\">\n               <h5>HikeScore</h5>\n               <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>\n\n\n             </div>\n           </div>\n         </div>\n         <div class=\"footer-copyright\">\n           <div class=\"container\">\n           Made by <a class=\"purple-text\" href=\"http://dominiqueclarke.github.io/portfolio\">Dominique Clarke</a>\n           </div>\n         </div>\n       </footer>\n</div>\n";
+	module.exports = "<div>\n  <div class=\"logo\">\n    <div class=\"container\">\n      <div class=\"logo-image-container\">\n        <img src=\"" + __webpack_require__(/*! ../../assets/img/logo.png */ 17) + "\" />\n        <h2>Lalela</h2>\n      </div>\n    </div>\n  </div>\n      <div id=\"homepage-hero-module\">\n      <!-- <div> -->\n          <canvas id=\"c\"></canvas>\n          <div class=\"video-container\">\n              <div class=\"filter\"></div>\n              <video id=\"v\" autoplay loop class=\"fillWidth\">\n                  <source src=\"./assets/video/Cheer-Up.mp4\" type=\"video/mp4\" />Your browser does not support the video tag. I suggest you upgrade your browser.\n                  <source src=\"./assets/video/Cheer-Up.webm\" type=\"video/webm\" />Your browser does not support the video tag. I suggest you upgrade your browser.\n              </video>\n              <div class=\"poster hidden\">\n                  <!-- <img src=\"PATH_TO_JPEG\" alt=\"\"> -->\n              </div>\n          </div>\n          <div class=\"tagline\">\n            <div class=\"tagline-wrapper\">\n              <div class=\"tagline1 z-depth-2\"><h2>HEARING</h2></div>\n              <div class=\"tagline2 z-depth-2\"><h2>is Believing</h2></div>\n            </div>\n            <h4 class=\"sub-heading\">Discover local shows by previewing the music</h4>\n            <input type=\"text\" ng-model=\"zipCodeInput\" placeholder=\"Input your Zip Code to get started\"></input>\n            <a class=\"btn\" ng-class=\"zipCodeInput.length === 5 ? 'visible': ''\" ng-click=\"vm.saveZipCode(zipCodeInput)\" href=\"/auth/facebook\">Login with Facebook</a>          </div>\n      </div>\n      <footer class=\"page-footer\">\n         <div class=\"container\">\n           <div class=\"row\">\n             <div class=\"col l6 s12\">\n               <h5>HikeScore</h5>\n               <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>\n\n\n             </div>\n           </div>\n         </div>\n         <div class=\"footer-copyright\">\n           <div class=\"container\">\n           Made by <a class=\"purple-text\" href=\"http://dominiqueclarke.github.io/portfolio\">Dominique Clarke</a>\n           </div>\n         </div>\n       </footer>\n</div>\n";
 
 /***/ },
 /* 17 */
+/*!************************************!*\
+  !*** ./public/assets/img/logo.png ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "c6b41be85be4572046b1543a778facea.png";
+
+/***/ },
+/* 18 */
 /*!**************************************!*\
   !*** ./public/src/layout/shows.html ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div ng-if=\"!vm.loaded\">\n  <loader></loader>\n</div>\n<div class=\"logo\">\n  <div class=\"container\">\n    <div class=\"logo-image-container\"><img src=\"" + __webpack_require__(/*! ../../assets/img/logo.png */ 78) + "\" /></div>\n  </div>\n</div>\n<!-- <p>User data: {{vm.currentUser}}</p> -->\n<div id=\"map\"></div>\n<div ng-show=\"vm.loaded\" class=\"ng-hide\">\n  <div class=\"container shows-view\">\n    <div id=\"nextShow\">\n      <span class=\"featured-show\">\n        <show show=\"vm.featuredShow\" index=\"vm.featuredIndex\" current-date=\"vm.currentDate\"></show>\n      </span>\n    </div>\n    <div id=\"controls\">\n      <div ng-click=\"vm.getUpdatedSavedShows(); showSavedShows = !showSavedShows; pressed ? pressed = '' : pressed = 'pressed'\" ng-class=\"pressed\" class=\"btn\">Saved Shows</div>\n    </div>\n    <div ng-if=\"!showSavedShows\" class=\"shows-container\">\n      <span class=\"box\" ng-repeat=\"show in vm.shows\">\n        <show show=\"show\" index=\"$index\" current-date=\"vm.currentDate\"></show>\n        <span class=\"line1\"></span>\n        <span class=\"line2\"></span>\n      </span>\n    </div>\n    <div ng-if=\"showSavedShows\" class=\"saved-shows-container\">\n      <span ng-if=\"show.epochTime >= vm.currentDate\" class=\"box\" ng-repeat=\"show in vm.savedShows\">\n        <show show=\"show\" index=\"$index\" type=\"saved\" current-date=\"vm.currentDate\"></show>\n        <span class=\"line1\"></span>\n        <span class=\"line2\"></span>\n      </span>\n    </div>\n  </div>\n  <footer class=\"page-footer\">\n     <div class=\"container\">\n       <div class=\"row\">\n         <div class=\"col l6 s12\">\n           <h5>HikeScore</h5>\n           <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>\n\n\n         </div>\n       </div>\n     </div>\n     <div class=\"footer-copyright\">\n       <div class=\"container\">\n       Made by <a class=\"purple-text\" href=\"http://dominiqueclarke.github.io/portfolio\">Dominique Clarke</a>\n       </div>\n     </div>\n   </footer>\n</div>\n";
+	module.exports = "<div ng-if=\"!vm.loaded\">\n  <loader></loader>\n</div>\n<div class=\"logo\">\n  <div class=\"container\">\n    <div class=\"logo-image-container\"><img src=\"" + __webpack_require__(/*! ../../assets/img/logo.png */ 17) + "\" /></div>\n  </div>\n</div>\n<!-- <p>User data: {{vm.currentUser}}</p> -->\n<div id=\"map\"></div>\n<div ng-show=\"vm.loaded\" class=\"ng-hide\">\n  <div class=\"container shows-view\">\n    <div id=\"nextShow\">\n      <span class=\"featured-show\">\n        <show show=\"vm.featuredShow\" index=\"vm.featuredIndex\" current-date=\"vm.currentDate\"></show>\n      </span>\n    </div>\n    <div id=\"controls\">\n      <div ng-click=\"vm.getUpdatedSavedShows(); showSavedShows = !showSavedShows; pressed ? pressed = '' : pressed = 'pressed'\" ng-class=\"pressed\" class=\"btn\">Saved Shows</div>\n    </div>\n    <div ng-if=\"!showSavedShows\" class=\"shows-container\">\n      <span class=\"box\" ng-repeat=\"show in vm.shows\">\n        <show show=\"show\" index=\"$index\" current-date=\"vm.currentDate\"></show>\n        <span class=\"line1\"></span>\n        <span class=\"line2\"></span>\n      </span>\n    </div>\n    <div ng-if=\"showSavedShows\" class=\"saved-shows-container\">\n      <span ng-if=\"show.epochTime >= vm.currentDate\" class=\"box\" ng-repeat=\"show in vm.savedShows\">\n        <show show=\"show\" index=\"$index\" type=\"saved\" current-date=\"vm.currentDate\"></show>\n        <span class=\"line1\"></span>\n        <span class=\"line2\"></span>\n      </span>\n    </div>\n  </div>\n  <footer class=\"page-footer\">\n     <div class=\"container\">\n       <div class=\"row\">\n         <div class=\"col l6 s12\">\n           <h5>HikeScore</h5>\n           <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>\n\n\n         </div>\n       </div>\n     </div>\n     <div class=\"footer-copyright\">\n       <div class=\"container\">\n       Made by <a class=\"purple-text\" href=\"http://dominiqueclarke.github.io/portfolio\">Dominique Clarke</a>\n       </div>\n     </div>\n   </footer>\n</div>\n";
 
 /***/ },
-/* 18 */
+/* 19 */
 /*!*******************************************!*\
   !*** ./public/src/layout/savedShows.html ***!
   \*******************************************/
@@ -38937,7 +38946,7 @@
 	module.exports = "<h1>Haii derr frand, dis is the savedShows</h1>\n";
 
 /***/ },
-/* 19 */
+/* 20 */
 /*!********************************************!*\
   !*** ./public/src/services/userService.js ***!
   \********************************************/
@@ -38973,7 +38982,7 @@
 	};
 
 /***/ },
-/* 20 */
+/* 21 */
 /*!*********************************************!*\
   !*** ./public/src/services/musicService.js ***!
   \*********************************************/
@@ -39126,7 +39135,7 @@
 	};
 
 /***/ },
-/* 21 */
+/* 22 */
 /*!***************************************************!*\
   !*** ./public/src/services/musicPlayerService.js ***!
   \***************************************************/
@@ -39237,7 +39246,7 @@
 	};
 
 /***/ },
-/* 22 */
+/* 23 */
 /*!**************************************************!*\
   !*** ./public/src/services/musicTimerService.js ***!
   \**************************************************/
@@ -39315,14 +39324,14 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _jqueryKnob = __webpack_require__(/*! jquery-knob */ 23);
+	var _jqueryKnob = __webpack_require__(/*! jquery-knob */ 24);
 	
 	var _jqueryKnob2 = _interopRequireDefault(_jqueryKnob);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 23 */
+/* 24 */
 /*!***********************************************!*\
   !*** ./~/jquery-knob/dist/jquery.knob.min.js ***!
   \***********************************************/
@@ -39332,13 +39341,13 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /*!*********************************************!*\
   !*** ./public/src/services/showsService.js ***!
   \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -39385,7 +39394,7 @@
 	  this.getShowsData = function (currentUser, zipCode) {
 	    //const jamBaseUrl =
 	    return $http({
-	      url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + _config2.default.jamBase.apiKey,
+	      url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + (process.env.JAMBASE_KEY || _config2.default.jamBase.apiKey),
 	      type: 'GET'
 	    }).then(function (shows) {
 	      var showsData = void 0;
@@ -39443,18 +39452,208 @@
 	  // });
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 25);
+	var _config = __webpack_require__(/*! ../../../config.js */ 27);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 26);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 25 */
+/* 26 */
+/*!******************************!*\
+  !*** ./~/process/browser.js ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+	var process = module.exports = {};
+	
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+	
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+	
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+	
+	
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+	
+	
+	
+	}
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+	
+	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+	
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = runTimeout(cleanUpNextTick);
+	    draining = true;
+	
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    runClearTimeout(timeout);
+	}
+	
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        runTimeout(drainQueue);
+	    }
+	};
+	
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+	
+	function noop() {}
+	
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+	
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+	
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 27 */
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
@@ -39472,7 +39671,7 @@
 	    cbUrl: 'http://localhost:4000/auth/facebook/callback'
 	  },
 	  jamBase: {
-	    apiKey: 'api_key=pq4b6y4vxr2wgpdadb98kg2y=json'
+	    apiKey: 'api_key=mg7dkv3nzbyb79cdu9gcbesb=json'
 	  },
 	  googleMaps: {
 	    apiKey: 'AIzaSyDo5EmN1YB3Ini4FKRgefwl2kY4OOu_MU4'
@@ -39484,7 +39683,7 @@
 	};
 
 /***/ },
-/* 26 */
+/* 28 */
 /*!*************************************!*\
   !*** ./~/google-maps/lib/Google.js ***!
   \*************************************/
@@ -39712,13 +39911,13 @@
 
 
 /***/ },
-/* 27 */
+/* 29 */
 /*!*******************************************!*\
   !*** ./public/src/services/mapService.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -39727,7 +39926,7 @@
 	exports.default = function ($http) {
 	
 	    this.getMap = function (venues) {
-	        mapboxgl.accessToken = _config2.default.mapBox.apiKey;
+	        mapboxgl.accessToken = process.env.MAPBOX_KEY || _config2.default.mapBox.apiKey;
 	        //const client = new MapboxClient(config.mapBox.apiKey);
 	        var showPoints = {
 	            type: "geojson",
@@ -39741,7 +39940,7 @@
 	            var query = (0, _urlencode2.default)(venue.address + ', ' + venue.city + ', ' + venue.state);
 	            promiseArray.push(new Promise(function (resolve, reject) {
 	                $http({
-	                    url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + query + '.json?access_token=' + _config2.default.mapBox.apiKey,
+	                    url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + query + '.json?access_token=' + (process.env.MAPBOX_KEY || _config2.default.mapBox.apiKey),
 	                    type: 'GET'
 	                }).then(function (pointRes) {
 	                    var showPoint = pointRes.data.features[0];
@@ -39767,7 +39966,7 @@
 	    function createMap(showPoints) {
 	        var map = new mapboxgl.Map({
 	            container: 'map',
-	            style: _config2.default.mapBox.styles,
+	            style: process.env.MAPBOX_STYLES || _config2.default.mapBox.styles,
 	            center: showPoints.data.features[0].geometry.coordinates,
 	            zoom: 12
 	        });
@@ -39828,11 +40027,11 @@
 	    }
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 25);
+	var _config = __webpack_require__(/*! ../../../config.js */ 27);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 26);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 	
@@ -39840,14 +40039,15 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _urlencode = __webpack_require__(/*! urlencode */ 28);
+	var _urlencode = __webpack_require__(/*! urlencode */ 30);
 	
 	var _urlencode2 = _interopRequireDefault(_urlencode);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 28 */
+/* 30 */
 /*!**************************************!*\
   !*** ./~/urlencode/lib/urlencode.js ***!
   \**************************************/
@@ -39868,7 +40068,7 @@
 	 * Module dependencies.
 	 */
 	
-	var iconv = __webpack_require__(/*! iconv-lite */ 33);
+	var iconv = __webpack_require__(/*! iconv-lite */ 35);
 	
 	function isUTF8(charset) {
 	  if (!charset) {
@@ -40081,10 +40281,10 @@
 	module.exports.parse = parse;
 	module.exports.stringify = stringify;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 29 */
+/* 31 */
 /*!***************************!*\
   !*** ./~/buffer/index.js ***!
   \***************************/
@@ -40100,9 +40300,9 @@
 	
 	'use strict'
 	
-	var base64 = __webpack_require__(/*! base64-js */ 30)
-	var ieee754 = __webpack_require__(/*! ieee754 */ 31)
-	var isArray = __webpack_require__(/*! isarray */ 32)
+	var base64 = __webpack_require__(/*! base64-js */ 32)
+	var ieee754 = __webpack_require__(/*! ieee754 */ 33)
+	var isArray = __webpack_require__(/*! isarray */ 34)
 	
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -41880,10 +42080,10 @@
 	  return val !== val // eslint-disable-line no-self-compare
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 30 */
+/* 32 */
 /*!******************************!*\
   !*** ./~/base64-js/index.js ***!
   \******************************/
@@ -42006,7 +42206,7 @@
 
 
 /***/ },
-/* 31 */
+/* 33 */
 /*!****************************!*\
   !*** ./~/ieee754/index.js ***!
   \****************************/
@@ -42099,7 +42299,7 @@
 
 
 /***/ },
-/* 32 */
+/* 34 */
 /*!****************************!*\
   !*** ./~/isarray/index.js ***!
   \****************************/
@@ -42113,7 +42313,7 @@
 
 
 /***/ },
-/* 33 */
+/* 35 */
 /*!***********************************!*\
   !*** ./~/iconv-lite/lib/index.js ***!
   \***********************************/
@@ -42121,7 +42321,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, process) {"use strict"
 	
-	var bomHandling = __webpack_require__(/*! ./bom-handling */ 35),
+	var bomHandling = __webpack_require__(/*! ./bom-handling */ 36),
 	    iconv = module.exports;
 	
 	// All codecs and aliases are kept here, keyed by encoding name/alias.
@@ -42179,7 +42379,7 @@
 	iconv._codecDataCache = {};
 	iconv.getCodec = function getCodec(encoding) {
 	    if (!iconv.encodings)
-	        iconv.encodings = __webpack_require__(/*! ../encodings */ 36); // Lazy load all encoding definitions.
+	        iconv.encodings = __webpack_require__(/*! ../encodings */ 37); // Lazy load all encoding definitions.
 	    
 	    // Canonicalize encoding name: strip all non-alphanumeric chars and appended year.
 	    var enc = (''+encoding).toLowerCase().replace(/[^0-9a-z]|:\d{4}$/g, "");
@@ -42253,207 +42453,18 @@
 	    // Load streaming support in Node v0.10+
 	    var nodeVerArr = nodeVer.split(".").map(Number);
 	    if (nodeVerArr[0] > 0 || nodeVerArr[1] >= 10) {
-	        __webpack_require__(/*! ./streams */ 54)(iconv);
+	        __webpack_require__(/*! ./streams */ 55)(iconv);
 	    }
 	
 	    // Load Node primitive extensions.
-	    __webpack_require__(/*! ./extend-node */ 71)(iconv);
+	    __webpack_require__(/*! ./extend-node */ 72)(iconv);
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer, __webpack_require__(/*! ./~/process/browser.js */ 34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 34 */
-/*!******************************!*\
-  !*** ./~/process/browser.js ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-	var process = module.exports = {};
-	
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
-	
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-	
-	function defaultSetTimout() {
-	    throw new Error('setTimeout has not been defined');
-	}
-	function defaultClearTimeout () {
-	    throw new Error('clearTimeout has not been defined');
-	}
-	(function () {
-	    try {
-	        if (typeof setTimeout === 'function') {
-	            cachedSetTimeout = setTimeout;
-	        } else {
-	            cachedSetTimeout = defaultSetTimout;
-	        }
-	    } catch (e) {
-	        cachedSetTimeout = defaultSetTimout;
-	    }
-	    try {
-	        if (typeof clearTimeout === 'function') {
-	            cachedClearTimeout = clearTimeout;
-	        } else {
-	            cachedClearTimeout = defaultClearTimeout;
-	        }
-	    } catch (e) {
-	        cachedClearTimeout = defaultClearTimeout;
-	    }
-	} ())
-	function runTimeout(fun) {
-	    if (cachedSetTimeout === setTimeout) {
-	        //normal enviroments in sane situations
-	        return setTimeout(fun, 0);
-	    }
-	    // if setTimeout wasn't available but was latter defined
-	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-	        cachedSetTimeout = setTimeout;
-	        return setTimeout(fun, 0);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedSetTimeout(fun, 0);
-	    } catch(e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-	            return cachedSetTimeout.call(null, fun, 0);
-	        } catch(e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-	            return cachedSetTimeout.call(this, fun, 0);
-	        }
-	    }
-	
-	
-	}
-	function runClearTimeout(marker) {
-	    if (cachedClearTimeout === clearTimeout) {
-	        //normal enviroments in sane situations
-	        return clearTimeout(marker);
-	    }
-	    // if clearTimeout wasn't available but was latter defined
-	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-	        cachedClearTimeout = clearTimeout;
-	        return clearTimeout(marker);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedClearTimeout(marker);
-	    } catch (e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-	            return cachedClearTimeout.call(null, marker);
-	        } catch (e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-	            return cachedClearTimeout.call(this, marker);
-	        }
-	    }
-	
-	
-	
-	}
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-	
-	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-	
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = runTimeout(cleanUpNextTick);
-	    draining = true;
-	
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    runClearTimeout(timeout);
-	}
-	
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        runTimeout(drainQueue);
-	    }
-	};
-	
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-	
-	function noop() {}
-	
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-	
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-	
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 35 */
+/* 36 */
 /*!******************************************!*\
   !*** ./~/iconv-lite/lib/bom-handling.js ***!
   \******************************************/
@@ -42514,7 +42525,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/encodings/index.js ***!
   \*****************************************/
@@ -42525,14 +42536,14 @@
 	// Update this array if you add/rename/remove files in this directory.
 	// We support Browserify by skipping automatic module discovery and requiring modules directly.
 	var modules = [
-	    __webpack_require__(/*! ./internal */ 37),
-	    __webpack_require__(/*! ./utf16 */ 39),
-	    __webpack_require__(/*! ./utf7 */ 40),
-	    __webpack_require__(/*! ./sbcs-codec */ 41),
-	    __webpack_require__(/*! ./sbcs-data */ 42),
-	    __webpack_require__(/*! ./sbcs-data-generated */ 43),
-	    __webpack_require__(/*! ./dbcs-codec */ 44),
-	    __webpack_require__(/*! ./dbcs-data */ 45),
+	    __webpack_require__(/*! ./internal */ 38),
+	    __webpack_require__(/*! ./utf16 */ 40),
+	    __webpack_require__(/*! ./utf7 */ 41),
+	    __webpack_require__(/*! ./sbcs-codec */ 42),
+	    __webpack_require__(/*! ./sbcs-data */ 43),
+	    __webpack_require__(/*! ./sbcs-data-generated */ 44),
+	    __webpack_require__(/*! ./dbcs-codec */ 45),
+	    __webpack_require__(/*! ./dbcs-data */ 46),
 	];
 	
 	// Put all encoding/alias/codec definitions to single object and export it. 
@@ -42545,7 +42556,7 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /*!********************************************!*\
   !*** ./~/iconv-lite/encodings/internal.js ***!
   \********************************************/
@@ -42598,7 +42609,7 @@
 	//------------------------------------------------------------------------------
 	
 	// We use node.js internal decoder. Its signature is the same as ours.
-	var StringDecoder = __webpack_require__(/*! string_decoder */ 38).StringDecoder;
+	var StringDecoder = __webpack_require__(/*! string_decoder */ 39).StringDecoder;
 	
 	if (!StringDecoder.prototype.end) // Node v0.8 doesn't have this method.
 	    StringDecoder.prototype.end = function() {};
@@ -42739,10 +42750,10 @@
 	    return res;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 38 */
+/* 39 */
 /*!***********************************!*\
   !*** ./~/string_decoder/index.js ***!
   \***********************************/
@@ -42769,7 +42780,7 @@
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 	
-	var Buffer = __webpack_require__(/*! buffer */ 29).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
 	
 	var isBufferEncoding = Buffer.isEncoding
 	  || function(encoding) {
@@ -42972,7 +42983,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/encodings/utf16.js ***!
   \*****************************************/
@@ -43153,10 +43164,10 @@
 	
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 40 */
+/* 41 */
 /*!****************************************!*\
   !*** ./~/iconv-lite/encodings/utf7.js ***!
   \****************************************/
@@ -43452,10 +43463,10 @@
 	
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 41 */
+/* 42 */
 /*!**********************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-codec.js ***!
   \**********************************************/
@@ -43534,10 +43545,10 @@
 	SBCSDecoder.prototype.end = function() {
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 42 */
+/* 43 */
 /*!*********************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-data.js ***!
   \*********************************************/
@@ -43715,7 +43726,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /*!*******************************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-data-generated.js ***!
   \*******************************************************/
@@ -44174,7 +44185,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 45 */
 /*!**********************************************!*\
   !*** ./~/iconv-lite/encodings/dbcs-codec.js ***!
   \**********************************************/
@@ -44735,10 +44746,10 @@
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 45 */
+/* 46 */
 /*!*********************************************!*\
   !*** ./~/iconv-lite/encodings/dbcs-data.js ***!
   \*********************************************/
@@ -44787,7 +44798,7 @@
 	
 	    'shiftjis': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/shiftjis.json */ 46) },
+	        table: function() { return __webpack_require__(/*! ./tables/shiftjis.json */ 47) },
 	        encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
 	        encodeSkipVals: [{from: 0xED40, to: 0xF940}],
 	    },
@@ -44802,7 +44813,7 @@
 	
 	    'eucjp': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/eucjp.json */ 47) },
+	        table: function() { return __webpack_require__(/*! ./tables/eucjp.json */ 48) },
 	        encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
 	    },
 	
@@ -44828,20 +44839,20 @@
 	    '936': 'cp936',
 	    'cp936': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49) },
 	    },
 	
 	    // GBK (~22000 chars) is an extension of CP936 that added user-mapped chars and some other.
 	    'gbk': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 49)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 50)) },
 	    },
 	    'xgbk': 'gbk',
 	
 	    // GB18030 is an algorithmic extension of GBK.
 	    'gb18030': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 49)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 50)) },
 	        gb18030: function() { return __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tables/gb18030-ranges.json\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) },
 	    },
 	
@@ -44858,7 +44869,7 @@
 	    '949': 'cp949',
 	    'cp949': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp949.json */ 51) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp949.json */ 52) },
 	    },
 	
 	    'cseuckr': 'cp949',
@@ -44898,14 +44909,14 @@
 	    '950': 'cp950',
 	    'cp950': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 52) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 53) },
 	    },
 	
 	    // Big5 has many variations and is an extension of cp950. We use Encoding Standard's as a consensus.
 	    'big5': 'big5hkscs',
 	    'big5hkscs': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 52).concat(__webpack_require__(/*! ./tables/big5-added.json */ 53)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 53).concat(__webpack_require__(/*! ./tables/big5-added.json */ 54)) },
 	        encodeSkipVals: [0xa2cc],
 	    },
 	
@@ -44917,7 +44928,7 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /*!*****************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/shiftjis.json ***!
   \*****************************************************/
@@ -45051,7 +45062,7 @@
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/eucjp.json ***!
   \**************************************************/
@@ -45242,7 +45253,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp936.json ***!
   \**************************************************/
@@ -45515,7 +45526,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /*!******************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/gbk-added.json ***!
   \******************************************************/
@@ -45579,8 +45590,8 @@
 
 
 /***/ },
-/* 50 */,
-/* 51 */
+/* 51 */,
+/* 52 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp949.json ***!
   \**************************************************/
@@ -45862,7 +45873,7 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp950.json ***!
   \**************************************************/
@@ -46048,7 +46059,7 @@
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /*!*******************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/big5-added.json ***!
   \*******************************************************/
@@ -46179,7 +46190,7 @@
 
 
 /***/ },
-/* 54 */
+/* 55 */
 /*!*************************************!*\
   !*** ./~/iconv-lite/lib/streams.js ***!
   \*************************************/
@@ -46187,7 +46198,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {"use strict"
 	
-	var Transform = __webpack_require__(/*! stream */ 55).Transform;
+	var Transform = __webpack_require__(/*! stream */ 56).Transform;
 	
 	
 	// == Exports ==================================================================
@@ -46306,10 +46317,10 @@
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 55 */
+/* 56 */
 /*!**************************************!*\
   !*** ./~/stream-browserify/index.js ***!
   \**************************************/
@@ -46338,15 +46349,15 @@
 	
 	module.exports = Stream;
 	
-	var EE = __webpack_require__(/*! events */ 56).EventEmitter;
-	var inherits = __webpack_require__(/*! inherits */ 57);
+	var EE = __webpack_require__(/*! events */ 57).EventEmitter;
+	var inherits = __webpack_require__(/*! inherits */ 58);
 	
 	inherits(Stream, EE);
-	Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 58);
-	Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 67);
-	Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 68);
-	Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 69);
-	Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 70);
+	Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 59);
+	Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 68);
+	Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 69);
+	Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 70);
+	Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 71);
 	
 	// Backwards-compat with node 0.4.x
 	Stream.Stream = Stream;
@@ -46445,7 +46456,7 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /*!****************************!*\
   !*** ./~/events/events.js ***!
   \****************************/
@@ -46756,7 +46767,7 @@
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /*!****************************************!*\
   !*** ./~/inherits/inherits_browser.js ***!
   \****************************************/
@@ -46788,27 +46799,27 @@
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /*!***********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/readable.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ 59);
-	exports.Stream = __webpack_require__(/*! stream */ 55);
+	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ 60);
+	exports.Stream = __webpack_require__(/*! stream */ 56);
 	exports.Readable = exports;
-	exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 64);
-	exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ 63);
-	exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ 65);
-	exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 66);
+	exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 65);
+	exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ 64);
+	exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ 66);
+	exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 67);
 	if (!process.browser && process.env.READABLE_STREAM === 'disable') {
-	  module.exports = __webpack_require__(/*! stream */ 55);
+	  module.exports = __webpack_require__(/*! stream */ 56);
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 59 */
+/* 60 */
 /*!***********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_readable.js ***!
   \***********************************************************************/
@@ -46838,17 +46849,17 @@
 	module.exports = Readable;
 	
 	/*<replacement>*/
-	var isArray = __webpack_require__(/*! isarray */ 60);
+	var isArray = __webpack_require__(/*! isarray */ 61);
 	/*</replacement>*/
 	
 	
 	/*<replacement>*/
-	var Buffer = __webpack_require__(/*! buffer */ 29).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
 	/*</replacement>*/
 	
 	Readable.ReadableState = ReadableState;
 	
-	var EE = __webpack_require__(/*! events */ 56).EventEmitter;
+	var EE = __webpack_require__(/*! events */ 57).EventEmitter;
 	
 	/*<replacement>*/
 	if (!EE.listenerCount) EE.listenerCount = function(emitter, type) {
@@ -46856,18 +46867,18 @@
 	};
 	/*</replacement>*/
 	
-	var Stream = __webpack_require__(/*! stream */ 55);
+	var Stream = __webpack_require__(/*! stream */ 56);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 61);
-	util.inherits = __webpack_require__(/*! inherits */ 57);
+	var util = __webpack_require__(/*! core-util-is */ 62);
+	util.inherits = __webpack_require__(/*! inherits */ 58);
 	/*</replacement>*/
 	
 	var StringDecoder;
 	
 	
 	/*<replacement>*/
-	var debug = __webpack_require__(/*! util */ 62);
+	var debug = __webpack_require__(/*! util */ 63);
 	if (debug && debug.debuglog) {
 	  debug = debug.debuglog('stream');
 	} else {
@@ -46879,7 +46890,7 @@
 	util.inherits(Readable, Stream);
 	
 	function ReadableState(options, stream) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
 	
 	  options = options || {};
 	
@@ -46940,14 +46951,14 @@
 	  this.encoding = null;
 	  if (options.encoding) {
 	    if (!StringDecoder)
-	      StringDecoder = __webpack_require__(/*! string_decoder/ */ 38).StringDecoder;
+	      StringDecoder = __webpack_require__(/*! string_decoder/ */ 39).StringDecoder;
 	    this.decoder = new StringDecoder(options.encoding);
 	    this.encoding = options.encoding;
 	  }
 	}
 	
 	function Readable(options) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
 	
 	  if (!(this instanceof Readable))
 	    return new Readable(options);
@@ -47050,7 +47061,7 @@
 	// backwards compatibility.
 	Readable.prototype.setEncoding = function(enc) {
 	  if (!StringDecoder)
-	    StringDecoder = __webpack_require__(/*! string_decoder/ */ 38).StringDecoder;
+	    StringDecoder = __webpack_require__(/*! string_decoder/ */ 39).StringDecoder;
 	  this._readableState.decoder = new StringDecoder(enc);
 	  this._readableState.encoding = enc;
 	  return this;
@@ -47766,10 +47777,10 @@
 	  return -1;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 60 */
+/* 61 */
 /*!************************************************!*\
   !*** ./~/stream-browserify/~/isarray/index.js ***!
   \************************************************/
@@ -47781,7 +47792,7 @@
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /*!************************************!*\
   !*** ./~/core-util-is/lib/util.js ***!
   \************************************/
@@ -47895,10 +47906,10 @@
 	  return Object.prototype.toString.call(o);
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 62 */
+/* 63 */
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -47907,7 +47918,7 @@
 	/* (ignored) */
 
 /***/ },
-/* 63 */
+/* 64 */
 /*!*********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_duplex.js ***!
   \*********************************************************************/
@@ -47951,12 +47962,12 @@
 	
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 61);
-	util.inherits = __webpack_require__(/*! inherits */ 57);
+	var util = __webpack_require__(/*! core-util-is */ 62);
+	util.inherits = __webpack_require__(/*! inherits */ 58);
 	/*</replacement>*/
 	
-	var Readable = __webpack_require__(/*! ./_stream_readable */ 59);
-	var Writable = __webpack_require__(/*! ./_stream_writable */ 64);
+	var Readable = __webpack_require__(/*! ./_stream_readable */ 60);
+	var Writable = __webpack_require__(/*! ./_stream_writable */ 65);
 	
 	util.inherits(Duplex, Readable);
 	
@@ -48003,10 +48014,10 @@
 	  }
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 64 */
+/* 65 */
 /*!***********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_writable.js ***!
   \***********************************************************************/
@@ -48040,18 +48051,18 @@
 	module.exports = Writable;
 	
 	/*<replacement>*/
-	var Buffer = __webpack_require__(/*! buffer */ 29).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
 	/*</replacement>*/
 	
 	Writable.WritableState = WritableState;
 	
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 61);
-	util.inherits = __webpack_require__(/*! inherits */ 57);
+	var util = __webpack_require__(/*! core-util-is */ 62);
+	util.inherits = __webpack_require__(/*! inherits */ 58);
 	/*</replacement>*/
 	
-	var Stream = __webpack_require__(/*! stream */ 55);
+	var Stream = __webpack_require__(/*! stream */ 56);
 	
 	util.inherits(Writable, Stream);
 	
@@ -48062,7 +48073,7 @@
 	}
 	
 	function WritableState(options, stream) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
 	
 	  options = options || {};
 	
@@ -48150,7 +48161,7 @@
 	}
 	
 	function Writable(options) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
 	
 	  // Writable ctor is applied to Duplexes, though they're not
 	  // instanceof Writable, they're instanceof Readable.
@@ -48490,10 +48501,10 @@
 	  state.ended = true;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 34)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 65 */
+/* 66 */
 /*!************************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_transform.js ***!
   \************************************************************************/
@@ -48565,11 +48576,11 @@
 	
 	module.exports = Transform;
 	
-	var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
+	var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 61);
-	util.inherits = __webpack_require__(/*! inherits */ 57);
+	var util = __webpack_require__(/*! core-util-is */ 62);
+	util.inherits = __webpack_require__(/*! inherits */ 58);
 	/*</replacement>*/
 	
 	util.inherits(Transform, Duplex);
@@ -48711,7 +48722,7 @@
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /*!**************************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_passthrough.js ***!
   \**************************************************************************/
@@ -48744,11 +48755,11 @@
 	
 	module.exports = PassThrough;
 	
-	var Transform = __webpack_require__(/*! ./_stream_transform */ 65);
+	var Transform = __webpack_require__(/*! ./_stream_transform */ 66);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 61);
-	util.inherits = __webpack_require__(/*! inherits */ 57);
+	var util = __webpack_require__(/*! core-util-is */ 62);
+	util.inherits = __webpack_require__(/*! inherits */ 58);
 	/*</replacement>*/
 	
 	util.inherits(PassThrough, Transform);
@@ -48766,47 +48777,47 @@
 
 
 /***/ },
-/* 67 */
+/* 68 */
 /*!***********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/writable.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 64)
+	module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 65)
 
 
 /***/ },
-/* 68 */
+/* 69 */
 /*!*********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/duplex.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ 63)
+	module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ 64)
 
 
 /***/ },
-/* 69 */
+/* 70 */
 /*!************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/transform.js ***!
   \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_transform.js */ 65)
+	module.exports = __webpack_require__(/*! ./lib/_stream_transform.js */ 66)
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /*!**************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/passthrough.js ***!
   \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 66)
+	module.exports = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 67)
 
 
 /***/ },
-/* 71 */
+/* 72 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/lib/extend-node.js ***!
   \*****************************************/
@@ -48843,7 +48854,7 @@
 	        }
 	
 	        // -- SlowBuffer -----------------------------------------------------------
-	        var SlowBuffer = __webpack_require__(/*! buffer */ 29).SlowBuffer;
+	        var SlowBuffer = __webpack_require__(/*! buffer */ 31).SlowBuffer;
 	
 	        original.SlowBufferToString = SlowBuffer.prototype.toString;
 	        SlowBuffer.prototype.toString = function(encoding, start, end) {
@@ -48983,7 +48994,7 @@
 	
 	        // -- Readable -------------------------------------------------------------
 	        if (iconv.supportsStreams) {
-	            var Readable = __webpack_require__(/*! stream */ 55).Readable;
+	            var Readable = __webpack_require__(/*! stream */ 56).Readable;
 	
 	            original.ReadableSetEncoding = Readable.prototype.setEncoding;
 	            Readable.prototype.setEncoding = function setEncoding(enc, options) {
@@ -49006,7 +49017,7 @@
 	
 	        delete Buffer.isNativeEncoding;
 	
-	        var SlowBuffer = __webpack_require__(/*! buffer */ 29).SlowBuffer;
+	        var SlowBuffer = __webpack_require__(/*! buffer */ 31).SlowBuffer;
 	
 	        SlowBuffer.prototype.toString = original.SlowBufferToString;
 	        SlowBuffer.prototype.write = original.SlowBufferWrite;
@@ -49017,7 +49028,7 @@
 	        Buffer.prototype.write = original.BufferWrite;
 	
 	        if (iconv.supportsStreams) {
-	            var Readable = __webpack_require__(/*! stream */ 55).Readable;
+	            var Readable = __webpack_require__(/*! stream */ 56).Readable;
 	
 	            Readable.prototype.setEncoding = original.ReadableSetEncoding;
 	            delete Readable.prototype.collect;
@@ -49027,10 +49038,10 @@
 	    }
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 29).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
 
 /***/ },
-/* 72 */
+/* 73 */
 /*!*************************************************!*\
   !*** ./public/src/services/videoMaskService.js ***!
   \*************************************************/
@@ -49210,7 +49221,7 @@
 	};
 
 /***/ },
-/* 73 */
+/* 74 */
 /*!***************************************!*\
   !*** ./public/src/components/show.js ***!
   \***************************************/
@@ -49464,14 +49475,14 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _jqueryKnob = __webpack_require__(/*! jquery-knob */ 23);
+	var _jqueryKnob = __webpack_require__(/*! jquery-knob */ 24);
 	
 	var _jqueryKnob2 = _interopRequireDefault(_jqueryKnob);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 74 */
+/* 75 */
 /*!*****************************************!*\
   !*** ./public/src/components/loader.js ***!
   \*****************************************/
@@ -49511,7 +49522,7 @@
 	};
 
 /***/ },
-/* 75 */
+/* 76 */
 /*!****************************************!*\
   !*** ./public/src/layout/showsCtrl.js ***!
   \****************************************/
@@ -49712,18 +49723,18 @@
 	  console.log('shows', vm.shows);
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 25);
+	var _config = __webpack_require__(/*! ../../../config.js */ 27);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 26);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 76 */
+/* 77 */
 /*!****************************************!*\
   !*** ./public/src/layout/loginCtrl.js ***!
   \****************************************/
@@ -49745,7 +49756,7 @@
 	};
 
 /***/ },
-/* 77 */
+/* 78 */
 /*!********************************************!*\
   !*** ./public/src/components/heroVideo.js ***!
   \********************************************/
@@ -49822,15 +49833,6 @@
 	        (0, _jquery2.default)('.homepage-hero-module .video-container video').addClass('fadeIn animated');
 	    });
 	}
-
-/***/ },
-/* 78 */
-/*!************************************!*\
-  !*** ./public/assets/img/logo.png ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "c6b41be85be4572046b1543a778facea.png";
 
 /***/ }
 /******/ ]);

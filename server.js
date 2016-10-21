@@ -6,20 +6,21 @@ const userCtrl = require('./server/features/user/userCtrl');
 const session = require("express-session");
 const config = require("./config.js");
 const masterRoutes = require("./server/masterRoutes");
+const cors = require("cors");
 
 const request = require("request");
 const rp = require("request-promise");
 
 const FB = require("fb")
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 const app = express();
 
 const mongoose = require("mongoose");
 const User = require("./server/features/user/User");
 const Artist = require("./server/features/artist/Artist")
-const mongooseUri = 'mongodb://localhost:27017/testuser';
+const mongooseUri = process.env.MONGOURI || 'mongodb://localhost:27017/testuser';
 const strategy = require("./server/features/auth/authCtrl");
 
 mongoose.Promise = global.Promise;
@@ -27,10 +28,11 @@ mongoose.connect(mongooseUri);
 
 mongoose.connection.once("open", () => console.log(`Connected to MongoDB at ${mongooseUri}`));
 
+app.use(cors());
 app.use(json());
 app.use(express.static(`${__dirname}/public`));
 
-app.use(session({secret: config.mySecrets.secret}));
+app.use(session({secret: process.env.APP_SECRET || config.mySecrets.secret}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(strategy);

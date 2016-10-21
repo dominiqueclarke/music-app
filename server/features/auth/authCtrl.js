@@ -3,9 +3,9 @@ const config = require ('../../../config.js');
 
 const strategy = new FBStrategy(
 	{
-    clientID: config.facebook.clientID,
-    clientSecret: config.facebook.secret,
-    callbackURL: config.facebook.cbUrl,
+    clientID: process.env.FB_CLIENT_ID || config.facebook.clientID,
+    clientSecret: process.env.FB_SECRET || config.facebook.secret,
+    callbackURL: process.env.FB_CB || config.facebook.cbUrl,
     profileFields: ['id', 'emails', 'displayName', 'name', 'picture.type(large)', 'music', 'friends', 'location']
 	},
 	( accessToken, refreshToken, extraParams, profile, done ) => {

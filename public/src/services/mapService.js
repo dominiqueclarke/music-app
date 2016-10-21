@@ -9,7 +9,7 @@ import urlencode from 'urlencode'
 export default function($http) {
 
   this.getMap = (venues) => {
-    mapboxgl.accessToken = config.mapBox.apiKey;
+    mapboxgl.accessToken = process.env.MAPBOX_KEY || config.mapBox.apiKey;
     //const client = new MapboxClient(config.mapBox.apiKey);
     const showPoints = {
       type: "geojson"
@@ -23,7 +23,7 @@ export default function($http) {
       const query = urlencode(`${venue.address}, ${venue.city}, ${venue.state}`);
       promiseArray.push(new Promise((resolve, reject) => {
           $http({
-            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${config.mapBox.apiKey}`
+            url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${process.env.MAPBOX_KEY || config.mapBox.apiKey}`
             , type: 'GET'
           }).then(pointRes => {
             const showPoint = pointRes.data.features[0]
@@ -50,7 +50,7 @@ export default function($http) {
   function createMap(showPoints) {
       const map = new mapboxgl.Map({
           container: 'map',
-          style: config.mapBox.styles,
+          style: process.env.MAPBOX_STYLES || config.mapBox.styles,
           center: showPoints.data.features[0].geometry.coordinates,
           zoom: 12
       });

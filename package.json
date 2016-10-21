@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "karma start",
-    "start": " concurrently 'webpack -w -d' 'nodemon server'"
+    "dev": "concurrently 'webpack -w -d' 'nodemon server'",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "^6.6.0"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +18,7 @@
     "angular-materialize": "^0.2.1",
     "angular-ui-router": "^0.3.1",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "fb": "^1.1.1",
