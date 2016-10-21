@@ -5,7 +5,7 @@ const rp = require("request-promise");
 const mongoose = require("mongoose");
 
 module.exports = {
-  userExists(req, res, next) {
+  getUserIfExists(req, res, next) {
     console.log('exist check');
     if (!req.user) throw new Error('user null');
     User.findOne({
@@ -19,7 +19,6 @@ module.exports = {
         return res.status(500).json(err);
       }
       if (user) {
-        console.log(user);
         return res.status(200).json(user);
       }
       next();
@@ -68,7 +67,7 @@ module.exports = {
     , {$addToSet: {savedShows: req.body.showId} }
     , function(err, user) {
       console.log(err);
-      console.log(user)
+      console.log(user);
       if(err) {
         return res.status(500).json(err);
       }

@@ -12,6 +12,7 @@ body {
   // min-height: 100vh;
   // flex-direction: column;
   background-image:url('../assets/img/old_wall.png');
+  font-family:$body-font;
 }
 
 main {
@@ -349,9 +350,10 @@ ul.staggered-list li {
 
 // Footer
 footer.page-footer {
-  margin-top: 20px;
+  margin-top: 0px;
   padding-top: 20px;
   background-color: $footer-bg-color;
+  color:black;
 
   .footer-copyright {
     overflow: hidden;

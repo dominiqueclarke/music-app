@@ -26,7 +26,7 @@ module.exports = app => {
   );
 
   app.get('/me',
-    userCtrl.userExists
+    userCtrl.getUserIfExists
     , userCtrl.getUserFBMusicLikes
     , userCtrl.saveFBMusicLikes
     , userCtrl.createUser

@@ -1,13 +1,13 @@
 <div
   class="show-container z-depth-1"
-  ng-init="vm.isFeaturedShow && show.Artists[0].songPreviews ? vm.playSong(show, index) : null"
-  ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index); vm.showOpeners(show)"
-  ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index); vm.hideOpeners()"
+  ng-init="vm.isFeaturedShow && show.Artists[0].songPreviews ? vm.playSong(show, index + type) : null"
+  ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index + type); vm.showOpeners(show)"
+  ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index + type); vm.hideOpeners()"
 >
   <!-- <div class="venue-image show{{index}}"></div> -->
-  <img class="showImage{{index}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
+  <img class="showImage{{index}}{{type}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
   <p class="byline">{{vm.byline}}</p>
-  <input type="text" class="musicPlayer{{index}}" ng-value="{{vm.currentSongTime}}">
+  <input type="text" class="musicPlayer{{index}}{{type}}" ng-value="{{vm.currentSongTime}}">
   <span class="ticket-url z-depth-1" ng-show="show.TicketUrl">
         <a ng-href="{{show.TicketUrl}}" target="_blank">Purchase Tickets</a>
   </span>
@@ -15,12 +15,12 @@
         <span>Contact venue for tickets</span>
     </span>
     <span class="date z-depth-1">
-      <div class="week-day">{{vm.date.weekDay}}</div>
-      <div class="month">{{vm.date.month}}</div>
-      <div class="day">{{vm.date.day}}</div>
+      <div class="week-day">{{vm.show.dateObj.weekDay}}</div>
+      <div class="month">{{vm.show.dateObj.month}}</div>
+      <div class="day">{{vm.show.dateObj.day}}</div>
       <div ng-if="vm.date.hour !== '001:0'">
-        <div class="hour">{{vm.date.hour}}</div>
-        <div class="period">{{vm.date.period}}</div>
+        <div class="hour">{{vm.show.dateObj.hour}}</div>
+        <div class="period">{{vm.show.dateObj.period}}</div>
       </div>
       <!-- <div>{{vm.show.Date}}</div> -->
     </span>

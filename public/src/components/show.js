@@ -8,14 +8,17 @@ export default function() {
     templateUrl: './src/components/show.html',
     controllerAs: 'vm',
     scope: {
-      show: "=",
-      index: "="
-    },
-    controller($scope, mapService, musicPlayerService, musicTimerService, showsService) {
+      show: "="
+      , index: "="
+      , type: "@"
+      , currentDate: "="
+    }
+    , controller($scope, mapService, musicPlayerService, musicTimerService, showsService, userService) {
 
 
       const vm = this;
       //vm.getPlaceData = mapService.getPlaceData;
+
 
       let songCounter = 0;
       let artistCounter = 0;
@@ -27,10 +30,12 @@ export default function() {
 
       vm.apply = $scope.$apply;
       vm.eval = $scope.$eval;
+      vm.currentDate = $scope.currentDate;
       const show = vm.show = $scope.show;
       let songRef;
       vm.watch = $scope.$watch;
       vm.index = $scope.index;
+      vm.type = $scope.type;
       vm.playSong = playSong;
       vm.stopSong = stopSong;
       vm.showOpeners = showOpeners;
@@ -38,7 +43,8 @@ export default function() {
       vm.saveShow = saveShow;
       vm.isFeaturedShow;
 
-      if (vm.show) {
+
+      if (vm.show && !vm.show.dateObj) {
         vm.date = vm.show.dateObj = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
       }
 
@@ -48,8 +54,11 @@ export default function() {
         }
       });
 
+      if(vm.type === "saved") {
+        vm.show.saved = "saved";
+      }
 
-      if ($scope.index === "Featured") {
+      if (vm.index === "Featured") {
         vm.isFeaturedShow = true;
         $scope.$on('mapClick', function(event, artists) {
           musicPlayerService.pause(currentSongAudio);
@@ -61,6 +70,8 @@ export default function() {
         $scope.$on('featuredShowAssigned', function(event, featuredShow) {
           // console.log('featuredShow arrived from broadcast', featuredShow);
           // console.log(featuredShow.Artists[0]);
+          vm.show = featuredShow;
+          vm.show.dateObj = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
           const songData = {
               Id: featuredShow.Artists[0].Id,
               Name: featuredShow.Artists[0].Name,
@@ -68,20 +79,24 @@ export default function() {
               songPreviews: featuredShow.Artists[0].songPreviews
             }
             //console.log(songData);
-          playSong([songData], vm.index)
+          playSong([songData], "Featured");
         });
       }
 
       function saveShow(show) {
         if(vm.show.saved !== "saved") {
-          showsService.saveShow(show).then(show => {
-            vm.show.mongoId = show.data._id;
+          showsService.saveShow(show).then(returnedShow => {
+            vm.show._id = returnedShow.data._id;
             vm.show.saved = "saved";
+            $scope.$emit('newShowSaved', returnedShow.data);
+            //vm.savedShows.push(show);
           });
         } else {
-          showsService.pullShow(show).then(user => {
-            console.log('updated user', user);
-            vm.show.saved = "unsaved";
+          console.log('pulling show...');
+          showsService.pullShow(show).then(() => {
+
+              //$scope.$emit('showUnsaved', user.savedShows);
+              vm.show.saved = "unsaved";
           })
         }
       }
@@ -188,8 +203,7 @@ export default function() {
       };
 
       function dateToString(date, dateString) {
-        const offset = date.getTimezoneOffset() / 60;
-        console.log(offset);
+        //const offset = date.getTimezoneOffset() / 60;
         // Use an array to format the month numbers
         var months = [
           "Jan",
@@ -223,7 +237,10 @@ export default function() {
         var weekDay = days[date.getDay()];
         var hours = dateString.slice(11,13);
         var minutes = dateString.slice(14,16);
-        var time = (hours > 11 ? (hours - 11) : (hours + 1)) + ":" + minutes + (hours > 11 ? "PM" : "AM");
+        var time = (hours > 11 ? (hours - 11) : (hours)) + ":" + minutes + (hours > 11 ? "PM" : "AM");
+        if(time === "00:00") {
+          time = "12:00";
+        }
         let hour = (time.length > 6 ? time.slice(0, 5) : time.slice(0, 4));
         var period = time.slice(-2);
 

@@ -1,22 +1,53 @@
 <div ng-if="!vm.loaded">
   <loader></loader>
 </div>
-<div>
+<div class="logo">
+  <div class="container">
+    <div class="logo-image-container"><img src="../../assets/img/logo.png" /></div>
+  </div>
+</div>
 <!-- <p>User data: {{vm.currentUser}}</p> -->
 <div id="map"></div>
 <div ng-show="vm.loaded" class="ng-hide">
-  <div class="container">
+  <div class="container shows-view">
     <div id="nextShow">
       <span class="featured-show">
-        <show show="vm.featuredShow" index="vm.featuredIndex"></show>
+        <show show="vm.featuredShow" index="vm.featuredIndex" current-date="vm.currentDate"></show>
       </span>
     </div>
-    <div class="shows-container">
+    <div id="controls">
+      <div ng-click="vm.getUpdatedSavedShows(); showSavedShows = !showSavedShows; pressed ? pressed = '' : pressed = 'pressed'" ng-class="pressed" class="btn">Saved Shows</div>
+    </div>
+    <div ng-if="!showSavedShows" class="shows-container">
       <span class="box" ng-repeat="show in vm.shows">
-        <show show="show" index="$index"></show>
+        <show show="show" index="$index" current-date="vm.currentDate"></show>
+        <span class="line1"></span>
+        <span class="line2"></span>
+      </span>
+    </div>
+    <div ng-if="showSavedShows" class="saved-shows-container">
+      <span ng-if="show.epochTime >= vm.currentDate" class="box" ng-repeat="show in vm.savedShows">
+        <show show="show" index="$index" type="saved" current-date="vm.currentDate"></show>
         <span class="line1"></span>
         <span class="line2"></span>
       </span>
     </div>
   </div>
+  <footer class="page-footer">
+     <div class="container">
+       <div class="row">
+         <div class="col l6 s12">
+           <h5>HikeScore</h5>
+           <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>
+
+
+         </div>
+       </div>
+     </div>
+     <div class="footer-copyright">
+       <div class="container">
+       Made by <a class="purple-text" href="http://dominiqueclarke.github.io/portfolio">Dominique Clarke</a>
+       </div>
+     </div>
+   </footer>
 </div>

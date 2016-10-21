@@ -1,8 +1,12 @@
 <div>
-  <!-- <h3>This is the login</h3>
-  {{zipCodeInput}}
-  <a ng-click="vm.saveZipCode(zipCodeInput)" href="/auth/facebook">Login with Facebook</a>
-  <button >Submit</button> -->
+  <div class="logo">
+    <div class="container">
+      <div class="logo-image-container">
+        <img src="../../assets/img/logo.png" />
+        <h2>Lalela</h2>
+      </div>
+    </div>
+  </div>
       <div id="homepage-hero-module">
       <!-- <div> -->
           <canvas id="c"></canvas>
@@ -17,11 +21,29 @@
               </div>
           </div>
           <div class="tagline">
-            <div class="tagline1 z-depth-2"><h2>HEARING</h2></div>
-            <div class="tagline2 z-depth-2"><h2>is Believing</h2></div>
-            <div class="sub-heading"></div>
-            <input type="text" ng-model="zipCodeInput"></input>
-  <a class="btn" ng-click="vm.saveZipCode(zipCodeInput)" href="/auth/facebook">Login with Facebook</a>          </div>
+            <div class="tagline-wrapper">
+              <div class="tagline1 z-depth-2"><h2>HEARING</h2></div>
+              <div class="tagline2 z-depth-2"><h2>is Believing</h2></div>
+            </div>
+            <h4 class="sub-heading">Discover local shows by previewing the music</h4>
+            <input type="text" ng-model="zipCodeInput" placeholder="Input your Zip Code to get started"></input>
+            <a class="btn" ng-class="zipCodeInput.length === 5 ? 'visible': ''" ng-click="vm.saveZipCode(zipCodeInput)" href="/auth/facebook">Login with Facebook</a>          </div>
       </div>
+      <footer class="page-footer">
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5>HikeScore</h5>
+               <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>
 
+
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright">
+           <div class="container">
+           Made by <a class="purple-text" href="http://dominiqueclarke.github.io/portfolio">Dominique Clarke</a>
+           </div>
+         </div>
+       </footer>
 </div>

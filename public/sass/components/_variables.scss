@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Contrail+One');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 
 /* ==========================================================================
    Materialize variables
@@ -40,7 +42,7 @@ $primary-color: color("yellow", "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("yellow", "lighten-1") !default;
+$secondary-color: #FBD13D !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: #FBD13D !default;
@@ -137,8 +139,8 @@ $dropdown-item-height: 50px !default;
 
 /* 9. Fonts
    ========================================================================== */
-$heading-font: "Contrail One";
-$body-font: "Josefin Sans";
+$heading-font: "Josefin Sans";
+$body-font: "Open Sans";
 
 /* 10. Forms
    ========================================================================== */
@@ -287,7 +289,7 @@ $h6-fontsize: 1rem !default;
 /* 21. Footer
    ========================================================================== */
 
-$footer-bg-color: $primary-color !default;
+$footer-bg-color: #FBD13D !default;
 
 
 /* 22. Flow Text

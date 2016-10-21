@@ -15,7 +15,7 @@ export default function($http) {
         artist.Name = artist.Name.trim();
         const nameQuery = artist.Name.split(" ").join("+");
         promiseArray.push(new Promise((resolve, reject) => {
-          $http.jsonp(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&limit=10&callback=JSON_CALLBACK`
+          $http.jsonp(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&limit=10&callback=JSON_CALLBACK`,
           ).success(iTunes => {
             if(!iTunes || iTunes.status !== 200) {
               artist.songPreviews = null;

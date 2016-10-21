@@ -3,10 +3,11 @@ import googleMapsLoader from 'google-maps';
 
 export default function($http, musicService, userService) {
   this.saveShow = show => {
-    console.log('saving show');
     const showData = {
       Artists: show.Artists
+      , Date: show.Date
       , dateObj: show.dateObj
+      , epochTime: show.epochTime
       , jamBaseId: show.Id
       , TicketUrl: show.TicketUrl
       , Venue: show.Venue
@@ -19,19 +20,18 @@ export default function($http, musicService, userService) {
           url: `/api/users/${userService.currentUser._id}/addShow`
           , method: 'PUT'
           , data: {showId: show.data._id}
-        })
+        });
         return show;
       } else {
-        return "unsaved";
+        return "unsaved";  //this is literally the stupidest thing
       }
     });
   }
   this.pullShow = show => {
-    console.log('pulling show');
     return $http({
       url: `/api/users/${userService.currentUser._id}/removeShow`
       , method: 'PUT'
-      , data: {_id: show.mongoId}
+      , data: {_id: show._id}
     })
     .then(user => {
       if(user.status === 200) {
@@ -73,6 +73,7 @@ export default function($http, musicService, userService) {
     const venues = [];
     shows.data.Events.forEach(show => {
       let venueExists = false;
+      show.epochTime = new Date(show.Date).getTime();
       for(let i = 0; i < venues.length; i++) {
         if(venues[i].venueId === show.Venue.Id) {
           venueExists = true;
