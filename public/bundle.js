@@ -111,31 +111,31 @@
 	
 	var _showsService2 = _interopRequireDefault(_showsService);
 	
-	var _mapService = __webpack_require__(/*! ./services/mapService.js */ 29);
+	var _mapService = __webpack_require__(/*! ./services/mapService.js */ 28);
 	
 	var _mapService2 = _interopRequireDefault(_mapService);
 	
-	var _videoMaskService = __webpack_require__(/*! ./services/videoMaskService.js */ 73);
+	var _videoMaskService = __webpack_require__(/*! ./services/videoMaskService.js */ 72);
 	
 	var _videoMaskService2 = _interopRequireDefault(_videoMaskService);
 	
-	var _show = __webpack_require__(/*! ./components/show.js */ 74);
+	var _show = __webpack_require__(/*! ./components/show.js */ 73);
 	
 	var _show2 = _interopRequireDefault(_show);
 	
-	var _loader = __webpack_require__(/*! ./components/loader.js */ 75);
+	var _loader = __webpack_require__(/*! ./components/loader.js */ 74);
 	
 	var _loader2 = _interopRequireDefault(_loader);
 	
-	var _showsCtrl = __webpack_require__(/*! ./layout/showsCtrl.js */ 76);
+	var _showsCtrl = __webpack_require__(/*! ./layout/showsCtrl.js */ 75);
 	
 	var _showsCtrl2 = _interopRequireDefault(_showsCtrl);
 	
-	var _loginCtrl = __webpack_require__(/*! ./layout/loginCtrl.js */ 77);
+	var _loginCtrl = __webpack_require__(/*! ./layout/loginCtrl.js */ 76);
 	
 	var _loginCtrl2 = _interopRequireDefault(_loginCtrl);
 	
-	var _heroVideo = __webpack_require__(/*! ./components/heroVideo.js */ 78);
+	var _heroVideo = __webpack_require__(/*! ./components/heroVideo.js */ 77);
 	
 	var _heroVideo2 = _interopRequireDefault(_heroVideo);
 	
@@ -39394,7 +39394,7 @@
 	  this.getShowsData = function (currentUser, zipCode) {
 	    //const jamBaseUrl =
 	    return $http({
-	      url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + (process.env.JAMBASE_KEY || _config2.default.jamBase.apiKey),
+	      url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + (process.env.JAMBASE_KEY || config.jamBase.apiKey),
 	      type: 'GET'
 	    }).then(function (shows) {
 	      var showsData = void 0;
@@ -39452,11 +39452,7 @@
 	  // });
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 27);
-	
-	var _config2 = _interopRequireDefault(_config);
-	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 27);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
@@ -39654,36 +39650,6 @@
 
 /***/ },
 /* 27 */
-/*!*******************!*\
-  !*** ./config.js ***!
-  \*******************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = {
-	  mySecrets: {
-	    secret: '805klJLKFlj57H687569FKGH7fjgla8KF8l910djgkjhf'
-	  },
-	  facebook: {
-	    clientID: '103840430082878',
-	    secret: 'f08494d27f21b394b96303da6916ece6',
-	    cbUrl: 'http://localhost:4000/auth/facebook/callback'
-	  },
-	  jamBase: {
-	    apiKey: 'api_key=mg7dkv3nzbyb79cdu9gcbesb=json'
-	  },
-	  googleMaps: {
-	    apiKey: 'AIzaSyDo5EmN1YB3Ini4FKRgefwl2kY4OOu_MU4'
-	  },
-	  mapBox: {
-	    apiKey: 'pk.eyJ1IjoiZGVlY2xhcmtlIiwiYSI6ImNpbGJlZjFobjB1aXl0eWx4ajJ2emNsNHcifQ.2mpHkUWA9o2RgI2q7w1UHA',
-	    styles: 'mapbox://styles/deeclarke/ciucpivod00462jmoqy29jigb'
-	  }
-	};
-
-/***/ },
-/* 28 */
 /*!*************************************!*\
   !*** ./~/google-maps/lib/Google.js ***!
   \*************************************/
@@ -39911,7 +39877,7 @@
 
 
 /***/ },
-/* 29 */
+/* 28 */
 /*!*******************************************!*\
   !*** ./public/src/services/mapService.js ***!
   \*******************************************/
@@ -39926,7 +39892,7 @@
 	exports.default = function ($http) {
 	
 	    this.getMap = function (venues) {
-	        mapboxgl.accessToken = process.env.MAPBOX_KEY || _config2.default.mapBox.apiKey;
+	        mapboxgl.accessToken = process.env.MAPBOX_KEY || config.mapBox.apiKey;
 	        //const client = new MapboxClient(config.mapBox.apiKey);
 	        var showPoints = {
 	            type: "geojson",
@@ -39940,7 +39906,7 @@
 	            var query = (0, _urlencode2.default)(venue.address + ', ' + venue.city + ', ' + venue.state);
 	            promiseArray.push(new Promise(function (resolve, reject) {
 	                $http({
-	                    url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + query + '.json?access_token=' + (process.env.MAPBOX_KEY || _config2.default.mapBox.apiKey),
+	                    url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + query + '.json?access_token=' + (process.env.MAPBOX_KEY || config.mapBox.apiKey),
 	                    type: 'GET'
 	                }).then(function (pointRes) {
 	                    var showPoint = pointRes.data.features[0];
@@ -39966,7 +39932,7 @@
 	    function createMap(showPoints) {
 	        var map = new mapboxgl.Map({
 	            container: 'map',
-	            style: process.env.MAPBOX_STYLES || _config2.default.mapBox.styles,
+	            style: process.env.MAPBOX_STYLES || config.mapBox.styles,
 	            center: showPoints.data.features[0].geometry.coordinates,
 	            zoom: 12
 	        });
@@ -40027,11 +39993,7 @@
 	    }
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 27);
-	
-	var _config2 = _interopRequireDefault(_config);
-	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 27);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 	
@@ -40039,7 +40001,7 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _urlencode = __webpack_require__(/*! urlencode */ 30);
+	var _urlencode = __webpack_require__(/*! urlencode */ 29);
 	
 	var _urlencode2 = _interopRequireDefault(_urlencode);
 
@@ -40047,7 +40009,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 30 */
+/* 29 */
 /*!**************************************!*\
   !*** ./~/urlencode/lib/urlencode.js ***!
   \**************************************/
@@ -40068,7 +40030,7 @@
 	 * Module dependencies.
 	 */
 	
-	var iconv = __webpack_require__(/*! iconv-lite */ 35);
+	var iconv = __webpack_require__(/*! iconv-lite */ 34);
 	
 	function isUTF8(charset) {
 	  if (!charset) {
@@ -40281,10 +40243,10 @@
 	module.exports.parse = parse;
 	module.exports.stringify = stringify;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 31 */
+/* 30 */
 /*!***************************!*\
   !*** ./~/buffer/index.js ***!
   \***************************/
@@ -40300,9 +40262,9 @@
 	
 	'use strict'
 	
-	var base64 = __webpack_require__(/*! base64-js */ 32)
-	var ieee754 = __webpack_require__(/*! ieee754 */ 33)
-	var isArray = __webpack_require__(/*! isarray */ 34)
+	var base64 = __webpack_require__(/*! base64-js */ 31)
+	var ieee754 = __webpack_require__(/*! ieee754 */ 32)
+	var isArray = __webpack_require__(/*! isarray */ 33)
 	
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -42080,10 +42042,10 @@
 	  return val !== val // eslint-disable-line no-self-compare
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 32 */
+/* 31 */
 /*!******************************!*\
   !*** ./~/base64-js/index.js ***!
   \******************************/
@@ -42206,7 +42168,7 @@
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /*!****************************!*\
   !*** ./~/ieee754/index.js ***!
   \****************************/
@@ -42299,7 +42261,7 @@
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /*!****************************!*\
   !*** ./~/isarray/index.js ***!
   \****************************/
@@ -42313,7 +42275,7 @@
 
 
 /***/ },
-/* 35 */
+/* 34 */
 /*!***********************************!*\
   !*** ./~/iconv-lite/lib/index.js ***!
   \***********************************/
@@ -42321,7 +42283,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, process) {"use strict"
 	
-	var bomHandling = __webpack_require__(/*! ./bom-handling */ 36),
+	var bomHandling = __webpack_require__(/*! ./bom-handling */ 35),
 	    iconv = module.exports;
 	
 	// All codecs and aliases are kept here, keyed by encoding name/alias.
@@ -42379,7 +42341,7 @@
 	iconv._codecDataCache = {};
 	iconv.getCodec = function getCodec(encoding) {
 	    if (!iconv.encodings)
-	        iconv.encodings = __webpack_require__(/*! ../encodings */ 37); // Lazy load all encoding definitions.
+	        iconv.encodings = __webpack_require__(/*! ../encodings */ 36); // Lazy load all encoding definitions.
 	    
 	    // Canonicalize encoding name: strip all non-alphanumeric chars and appended year.
 	    var enc = (''+encoding).toLowerCase().replace(/[^0-9a-z]|:\d{4}$/g, "");
@@ -42453,18 +42415,18 @@
 	    // Load streaming support in Node v0.10+
 	    var nodeVerArr = nodeVer.split(".").map(Number);
 	    if (nodeVerArr[0] > 0 || nodeVerArr[1] >= 10) {
-	        __webpack_require__(/*! ./streams */ 55)(iconv);
+	        __webpack_require__(/*! ./streams */ 54)(iconv);
 	    }
 	
 	    // Load Node primitive extensions.
-	    __webpack_require__(/*! ./extend-node */ 72)(iconv);
+	    __webpack_require__(/*! ./extend-node */ 71)(iconv);
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer, __webpack_require__(/*! ./~/process/browser.js */ 26)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 36 */
+/* 35 */
 /*!******************************************!*\
   !*** ./~/iconv-lite/lib/bom-handling.js ***!
   \******************************************/
@@ -42525,7 +42487,7 @@
 
 
 /***/ },
-/* 37 */
+/* 36 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/encodings/index.js ***!
   \*****************************************/
@@ -42536,14 +42498,14 @@
 	// Update this array if you add/rename/remove files in this directory.
 	// We support Browserify by skipping automatic module discovery and requiring modules directly.
 	var modules = [
-	    __webpack_require__(/*! ./internal */ 38),
-	    __webpack_require__(/*! ./utf16 */ 40),
-	    __webpack_require__(/*! ./utf7 */ 41),
-	    __webpack_require__(/*! ./sbcs-codec */ 42),
-	    __webpack_require__(/*! ./sbcs-data */ 43),
-	    __webpack_require__(/*! ./sbcs-data-generated */ 44),
-	    __webpack_require__(/*! ./dbcs-codec */ 45),
-	    __webpack_require__(/*! ./dbcs-data */ 46),
+	    __webpack_require__(/*! ./internal */ 37),
+	    __webpack_require__(/*! ./utf16 */ 39),
+	    __webpack_require__(/*! ./utf7 */ 40),
+	    __webpack_require__(/*! ./sbcs-codec */ 41),
+	    __webpack_require__(/*! ./sbcs-data */ 42),
+	    __webpack_require__(/*! ./sbcs-data-generated */ 43),
+	    __webpack_require__(/*! ./dbcs-codec */ 44),
+	    __webpack_require__(/*! ./dbcs-data */ 45),
 	];
 	
 	// Put all encoding/alias/codec definitions to single object and export it. 
@@ -42556,7 +42518,7 @@
 
 
 /***/ },
-/* 38 */
+/* 37 */
 /*!********************************************!*\
   !*** ./~/iconv-lite/encodings/internal.js ***!
   \********************************************/
@@ -42609,7 +42571,7 @@
 	//------------------------------------------------------------------------------
 	
 	// We use node.js internal decoder. Its signature is the same as ours.
-	var StringDecoder = __webpack_require__(/*! string_decoder */ 39).StringDecoder;
+	var StringDecoder = __webpack_require__(/*! string_decoder */ 38).StringDecoder;
 	
 	if (!StringDecoder.prototype.end) // Node v0.8 doesn't have this method.
 	    StringDecoder.prototype.end = function() {};
@@ -42750,10 +42712,10 @@
 	    return res;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 39 */
+/* 38 */
 /*!***********************************!*\
   !*** ./~/string_decoder/index.js ***!
   \***********************************/
@@ -42780,7 +42742,7 @@
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 	
-	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 30).Buffer;
 	
 	var isBufferEncoding = Buffer.isEncoding
 	  || function(encoding) {
@@ -42983,7 +42945,7 @@
 
 
 /***/ },
-/* 40 */
+/* 39 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/encodings/utf16.js ***!
   \*****************************************/
@@ -43164,10 +43126,10 @@
 	
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 41 */
+/* 40 */
 /*!****************************************!*\
   !*** ./~/iconv-lite/encodings/utf7.js ***!
   \****************************************/
@@ -43463,10 +43425,10 @@
 	
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 42 */
+/* 41 */
 /*!**********************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-codec.js ***!
   \**********************************************/
@@ -43545,10 +43507,10 @@
 	SBCSDecoder.prototype.end = function() {
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 43 */
+/* 42 */
 /*!*********************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-data.js ***!
   \*********************************************/
@@ -43726,7 +43688,7 @@
 
 
 /***/ },
-/* 44 */
+/* 43 */
 /*!*******************************************************!*\
   !*** ./~/iconv-lite/encodings/sbcs-data-generated.js ***!
   \*******************************************************/
@@ -44185,7 +44147,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 44 */
 /*!**********************************************!*\
   !*** ./~/iconv-lite/encodings/dbcs-codec.js ***!
   \**********************************************/
@@ -44746,10 +44708,10 @@
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 46 */
+/* 45 */
 /*!*********************************************!*\
   !*** ./~/iconv-lite/encodings/dbcs-data.js ***!
   \*********************************************/
@@ -44798,7 +44760,7 @@
 	
 	    'shiftjis': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/shiftjis.json */ 47) },
+	        table: function() { return __webpack_require__(/*! ./tables/shiftjis.json */ 46) },
 	        encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
 	        encodeSkipVals: [{from: 0xED40, to: 0xF940}],
 	    },
@@ -44813,7 +44775,7 @@
 	
 	    'eucjp': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/eucjp.json */ 48) },
+	        table: function() { return __webpack_require__(/*! ./tables/eucjp.json */ 47) },
 	        encodeAdd: {'\u00a5': 0x5C, '\u203E': 0x7E},
 	    },
 	
@@ -44839,20 +44801,20 @@
 	    '936': 'cp936',
 	    'cp936': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48) },
 	    },
 	
 	    // GBK (~22000 chars) is an extension of CP936 that added user-mapped chars and some other.
 	    'gbk': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 50)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 49)) },
 	    },
 	    'xgbk': 'gbk',
 	
 	    // GB18030 is an algorithmic extension of GBK.
 	    'gb18030': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 49).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 50)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp936.json */ 48).concat(__webpack_require__(/*! ./tables/gbk-added.json */ 49)) },
 	        gb18030: function() { return __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tables/gb18030-ranges.json\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) },
 	    },
 	
@@ -44869,7 +44831,7 @@
 	    '949': 'cp949',
 	    'cp949': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp949.json */ 52) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp949.json */ 51) },
 	    },
 	
 	    'cseuckr': 'cp949',
@@ -44909,14 +44871,14 @@
 	    '950': 'cp950',
 	    'cp950': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 53) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 52) },
 	    },
 	
 	    // Big5 has many variations and is an extension of cp950. We use Encoding Standard's as a consensus.
 	    'big5': 'big5hkscs',
 	    'big5hkscs': {
 	        type: '_dbcs',
-	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 53).concat(__webpack_require__(/*! ./tables/big5-added.json */ 54)) },
+	        table: function() { return __webpack_require__(/*! ./tables/cp950.json */ 52).concat(__webpack_require__(/*! ./tables/big5-added.json */ 53)) },
 	        encodeSkipVals: [0xa2cc],
 	    },
 	
@@ -44928,7 +44890,7 @@
 
 
 /***/ },
-/* 47 */
+/* 46 */
 /*!*****************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/shiftjis.json ***!
   \*****************************************************/
@@ -45062,7 +45024,7 @@
 
 
 /***/ },
-/* 48 */
+/* 47 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/eucjp.json ***!
   \**************************************************/
@@ -45253,7 +45215,7 @@
 
 
 /***/ },
-/* 49 */
+/* 48 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp936.json ***!
   \**************************************************/
@@ -45526,7 +45488,7 @@
 
 
 /***/ },
-/* 50 */
+/* 49 */
 /*!******************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/gbk-added.json ***!
   \******************************************************/
@@ -45590,8 +45552,8 @@
 
 
 /***/ },
-/* 51 */,
-/* 52 */
+/* 50 */,
+/* 51 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp949.json ***!
   \**************************************************/
@@ -45873,7 +45835,7 @@
 
 
 /***/ },
-/* 53 */
+/* 52 */
 /*!**************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/cp950.json ***!
   \**************************************************/
@@ -46059,7 +46021,7 @@
 
 
 /***/ },
-/* 54 */
+/* 53 */
 /*!*******************************************************!*\
   !*** ./~/iconv-lite/encodings/tables/big5-added.json ***!
   \*******************************************************/
@@ -46190,7 +46152,7 @@
 
 
 /***/ },
-/* 55 */
+/* 54 */
 /*!*************************************!*\
   !*** ./~/iconv-lite/lib/streams.js ***!
   \*************************************/
@@ -46198,7 +46160,7 @@
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {"use strict"
 	
-	var Transform = __webpack_require__(/*! stream */ 56).Transform;
+	var Transform = __webpack_require__(/*! stream */ 55).Transform;
 	
 	
 	// == Exports ==================================================================
@@ -46317,10 +46279,10 @@
 	}
 	
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 56 */
+/* 55 */
 /*!**************************************!*\
   !*** ./~/stream-browserify/index.js ***!
   \**************************************/
@@ -46349,15 +46311,15 @@
 	
 	module.exports = Stream;
 	
-	var EE = __webpack_require__(/*! events */ 57).EventEmitter;
-	var inherits = __webpack_require__(/*! inherits */ 58);
+	var EE = __webpack_require__(/*! events */ 56).EventEmitter;
+	var inherits = __webpack_require__(/*! inherits */ 57);
 	
 	inherits(Stream, EE);
-	Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 59);
-	Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 68);
-	Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 69);
-	Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 70);
-	Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 71);
+	Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 58);
+	Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 67);
+	Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 68);
+	Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 69);
+	Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 70);
 	
 	// Backwards-compat with node 0.4.x
 	Stream.Stream = Stream;
@@ -46456,7 +46418,7 @@
 
 
 /***/ },
-/* 57 */
+/* 56 */
 /*!****************************!*\
   !*** ./~/events/events.js ***!
   \****************************/
@@ -46767,7 +46729,7 @@
 
 
 /***/ },
-/* 58 */
+/* 57 */
 /*!****************************************!*\
   !*** ./~/inherits/inherits_browser.js ***!
   \****************************************/
@@ -46799,27 +46761,27 @@
 
 
 /***/ },
-/* 59 */
+/* 58 */
 /*!***********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/readable.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ 60);
-	exports.Stream = __webpack_require__(/*! stream */ 56);
+	/* WEBPACK VAR INJECTION */(function(process) {exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ 59);
+	exports.Stream = __webpack_require__(/*! stream */ 55);
 	exports.Readable = exports;
-	exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 65);
-	exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ 64);
-	exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ 66);
-	exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 67);
+	exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 64);
+	exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ 63);
+	exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ 65);
+	exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 66);
 	if (!process.browser && process.env.READABLE_STREAM === 'disable') {
-	  module.exports = __webpack_require__(/*! stream */ 56);
+	  module.exports = __webpack_require__(/*! stream */ 55);
 	}
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 60 */
+/* 59 */
 /*!***********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_readable.js ***!
   \***********************************************************************/
@@ -46849,17 +46811,17 @@
 	module.exports = Readable;
 	
 	/*<replacement>*/
-	var isArray = __webpack_require__(/*! isarray */ 61);
+	var isArray = __webpack_require__(/*! isarray */ 60);
 	/*</replacement>*/
 	
 	
 	/*<replacement>*/
-	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 30).Buffer;
 	/*</replacement>*/
 	
 	Readable.ReadableState = ReadableState;
 	
-	var EE = __webpack_require__(/*! events */ 57).EventEmitter;
+	var EE = __webpack_require__(/*! events */ 56).EventEmitter;
 	
 	/*<replacement>*/
 	if (!EE.listenerCount) EE.listenerCount = function(emitter, type) {
@@ -46867,18 +46829,18 @@
 	};
 	/*</replacement>*/
 	
-	var Stream = __webpack_require__(/*! stream */ 56);
+	var Stream = __webpack_require__(/*! stream */ 55);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 62);
-	util.inherits = __webpack_require__(/*! inherits */ 58);
+	var util = __webpack_require__(/*! core-util-is */ 61);
+	util.inherits = __webpack_require__(/*! inherits */ 57);
 	/*</replacement>*/
 	
 	var StringDecoder;
 	
 	
 	/*<replacement>*/
-	var debug = __webpack_require__(/*! util */ 63);
+	var debug = __webpack_require__(/*! util */ 62);
 	if (debug && debug.debuglog) {
 	  debug = debug.debuglog('stream');
 	} else {
@@ -46890,7 +46852,7 @@
 	util.inherits(Readable, Stream);
 	
 	function ReadableState(options, stream) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
 	
 	  options = options || {};
 	
@@ -46951,14 +46913,14 @@
 	  this.encoding = null;
 	  if (options.encoding) {
 	    if (!StringDecoder)
-	      StringDecoder = __webpack_require__(/*! string_decoder/ */ 39).StringDecoder;
+	      StringDecoder = __webpack_require__(/*! string_decoder/ */ 38).StringDecoder;
 	    this.decoder = new StringDecoder(options.encoding);
 	    this.encoding = options.encoding;
 	  }
 	}
 	
 	function Readable(options) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
 	
 	  if (!(this instanceof Readable))
 	    return new Readable(options);
@@ -47061,7 +47023,7 @@
 	// backwards compatibility.
 	Readable.prototype.setEncoding = function(enc) {
 	  if (!StringDecoder)
-	    StringDecoder = __webpack_require__(/*! string_decoder/ */ 39).StringDecoder;
+	    StringDecoder = __webpack_require__(/*! string_decoder/ */ 38).StringDecoder;
 	  this._readableState.decoder = new StringDecoder(enc);
 	  this._readableState.encoding = enc;
 	  return this;
@@ -47780,7 +47742,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 61 */
+/* 60 */
 /*!************************************************!*\
   !*** ./~/stream-browserify/~/isarray/index.js ***!
   \************************************************/
@@ -47792,7 +47754,7 @@
 
 
 /***/ },
-/* 62 */
+/* 61 */
 /*!************************************!*\
   !*** ./~/core-util-is/lib/util.js ***!
   \************************************/
@@ -47906,10 +47868,10 @@
 	  return Object.prototype.toString.call(o);
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 63 */
+/* 62 */
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -47918,7 +47880,7 @@
 	/* (ignored) */
 
 /***/ },
-/* 64 */
+/* 63 */
 /*!*********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_duplex.js ***!
   \*********************************************************************/
@@ -47962,12 +47924,12 @@
 	
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 62);
-	util.inherits = __webpack_require__(/*! inherits */ 58);
+	var util = __webpack_require__(/*! core-util-is */ 61);
+	util.inherits = __webpack_require__(/*! inherits */ 57);
 	/*</replacement>*/
 	
-	var Readable = __webpack_require__(/*! ./_stream_readable */ 60);
-	var Writable = __webpack_require__(/*! ./_stream_writable */ 65);
+	var Readable = __webpack_require__(/*! ./_stream_readable */ 59);
+	var Writable = __webpack_require__(/*! ./_stream_writable */ 64);
 	
 	util.inherits(Duplex, Readable);
 	
@@ -48017,7 +47979,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 65 */
+/* 64 */
 /*!***********************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_writable.js ***!
   \***********************************************************************/
@@ -48051,18 +48013,18 @@
 	module.exports = Writable;
 	
 	/*<replacement>*/
-	var Buffer = __webpack_require__(/*! buffer */ 31).Buffer;
+	var Buffer = __webpack_require__(/*! buffer */ 30).Buffer;
 	/*</replacement>*/
 	
 	Writable.WritableState = WritableState;
 	
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 62);
-	util.inherits = __webpack_require__(/*! inherits */ 58);
+	var util = __webpack_require__(/*! core-util-is */ 61);
+	util.inherits = __webpack_require__(/*! inherits */ 57);
 	/*</replacement>*/
 	
-	var Stream = __webpack_require__(/*! stream */ 56);
+	var Stream = __webpack_require__(/*! stream */ 55);
 	
 	util.inherits(Writable, Stream);
 	
@@ -48073,7 +48035,7 @@
 	}
 	
 	function WritableState(options, stream) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
 	
 	  options = options || {};
 	
@@ -48161,7 +48123,7 @@
 	}
 	
 	function Writable(options) {
-	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
+	  var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
 	
 	  // Writable ctor is applied to Duplexes, though they're not
 	  // instanceof Writable, they're instanceof Readable.
@@ -48504,7 +48466,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 26)))
 
 /***/ },
-/* 66 */
+/* 65 */
 /*!************************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_transform.js ***!
   \************************************************************************/
@@ -48576,11 +48538,11 @@
 	
 	module.exports = Transform;
 	
-	var Duplex = __webpack_require__(/*! ./_stream_duplex */ 64);
+	var Duplex = __webpack_require__(/*! ./_stream_duplex */ 63);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 62);
-	util.inherits = __webpack_require__(/*! inherits */ 58);
+	var util = __webpack_require__(/*! core-util-is */ 61);
+	util.inherits = __webpack_require__(/*! inherits */ 57);
 	/*</replacement>*/
 	
 	util.inherits(Transform, Duplex);
@@ -48722,7 +48684,7 @@
 
 
 /***/ },
-/* 67 */
+/* 66 */
 /*!**************************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/lib/_stream_passthrough.js ***!
   \**************************************************************************/
@@ -48755,11 +48717,11 @@
 	
 	module.exports = PassThrough;
 	
-	var Transform = __webpack_require__(/*! ./_stream_transform */ 66);
+	var Transform = __webpack_require__(/*! ./_stream_transform */ 65);
 	
 	/*<replacement>*/
-	var util = __webpack_require__(/*! core-util-is */ 62);
-	util.inherits = __webpack_require__(/*! inherits */ 58);
+	var util = __webpack_require__(/*! core-util-is */ 61);
+	util.inherits = __webpack_require__(/*! inherits */ 57);
 	/*</replacement>*/
 	
 	util.inherits(PassThrough, Transform);
@@ -48777,47 +48739,47 @@
 
 
 /***/ },
-/* 68 */
+/* 67 */
 /*!***********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/writable.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 65)
+	module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 64)
 
 
 /***/ },
-/* 69 */
+/* 68 */
 /*!*********************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/duplex.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ 64)
+	module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ 63)
 
 
 /***/ },
-/* 70 */
+/* 69 */
 /*!************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/transform.js ***!
   \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_transform.js */ 66)
+	module.exports = __webpack_require__(/*! ./lib/_stream_transform.js */ 65)
 
 
 /***/ },
-/* 71 */
+/* 70 */
 /*!**************************************************************!*\
   !*** ./~/stream-browserify/~/readable-stream/passthrough.js ***!
   \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 67)
+	module.exports = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 66)
 
 
 /***/ },
-/* 72 */
+/* 71 */
 /*!*****************************************!*\
   !*** ./~/iconv-lite/lib/extend-node.js ***!
   \*****************************************/
@@ -48854,7 +48816,7 @@
 	        }
 	
 	        // -- SlowBuffer -----------------------------------------------------------
-	        var SlowBuffer = __webpack_require__(/*! buffer */ 31).SlowBuffer;
+	        var SlowBuffer = __webpack_require__(/*! buffer */ 30).SlowBuffer;
 	
 	        original.SlowBufferToString = SlowBuffer.prototype.toString;
 	        SlowBuffer.prototype.toString = function(encoding, start, end) {
@@ -48994,7 +48956,7 @@
 	
 	        // -- Readable -------------------------------------------------------------
 	        if (iconv.supportsStreams) {
-	            var Readable = __webpack_require__(/*! stream */ 56).Readable;
+	            var Readable = __webpack_require__(/*! stream */ 55).Readable;
 	
 	            original.ReadableSetEncoding = Readable.prototype.setEncoding;
 	            Readable.prototype.setEncoding = function setEncoding(enc, options) {
@@ -49017,7 +48979,7 @@
 	
 	        delete Buffer.isNativeEncoding;
 	
-	        var SlowBuffer = __webpack_require__(/*! buffer */ 31).SlowBuffer;
+	        var SlowBuffer = __webpack_require__(/*! buffer */ 30).SlowBuffer;
 	
 	        SlowBuffer.prototype.toString = original.SlowBufferToString;
 	        SlowBuffer.prototype.write = original.SlowBufferWrite;
@@ -49028,7 +48990,7 @@
 	        Buffer.prototype.write = original.BufferWrite;
 	
 	        if (iconv.supportsStreams) {
-	            var Readable = __webpack_require__(/*! stream */ 56).Readable;
+	            var Readable = __webpack_require__(/*! stream */ 55).Readable;
 	
 	            Readable.prototype.setEncoding = original.ReadableSetEncoding;
 	            delete Readable.prototype.collect;
@@ -49038,10 +49000,10 @@
 	    }
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 31).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 30).Buffer))
 
 /***/ },
-/* 73 */
+/* 72 */
 /*!*************************************************!*\
   !*** ./public/src/services/videoMaskService.js ***!
   \*************************************************/
@@ -49221,7 +49183,7 @@
 	};
 
 /***/ },
-/* 74 */
+/* 73 */
 /*!***************************************!*\
   !*** ./public/src/components/show.js ***!
   \***************************************/
@@ -49482,7 +49444,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 75 */
+/* 74 */
 /*!*****************************************!*\
   !*** ./public/src/components/loader.js ***!
   \*****************************************/
@@ -49522,7 +49484,7 @@
 	};
 
 /***/ },
-/* 76 */
+/* 75 */
 /*!****************************************!*\
   !*** ./public/src/layout/showsCtrl.js ***!
   \****************************************/
@@ -49723,18 +49685,14 @@
 	  console.log('shows', vm.shows);
 	};
 	
-	var _config = __webpack_require__(/*! ../../../config.js */ 27);
-	
-	var _config2 = _interopRequireDefault(_config);
-	
-	var _googleMaps = __webpack_require__(/*! google-maps */ 28);
+	var _googleMaps = __webpack_require__(/*! google-maps */ 27);
 	
 	var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 77 */
+/* 76 */
 /*!****************************************!*\
   !*** ./public/src/layout/loginCtrl.js ***!
   \****************************************/
@@ -49756,7 +49714,7 @@
 	};
 
 /***/ },
-/* 78 */
+/* 77 */
 /*!********************************************!*\
   !*** ./public/src/components/heroVideo.js ***!
   \********************************************/
