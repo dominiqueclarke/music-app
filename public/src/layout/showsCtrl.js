@@ -1,4 +1,4 @@
-import config from "../../../config.js";
+//import config from "../../../config.js";
 import googleMapsLoader from 'google-maps';
 export default function($http, userService, musicService, showsService, mapService, $scope) {
 

@@ -1,4 +1,4 @@
-import config from "../../../config.js";
+//import config from "../../../config.js";
 import googleMapsLoader from 'google-maps';
 import $ from 'jquery';
 //import MapboxClient from 'mapbox';
