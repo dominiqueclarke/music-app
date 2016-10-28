@@ -1,5 +1,6 @@
 const {Strategy: FBStrategy} = require('passport-facebook');
 //const config = require ('../../../config.js');
+let config;
 
 const strategy = new FBStrategy(
 	{

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "dev": "concurrently 'webpack -w -d' 'nodemon server'",
-    "start": "concurrently 'webpack -w -d' 'nodemon server'"
+    "start": "node server.js"
   },
   "engines": {
     "node": "6.6.0"
