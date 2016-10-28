@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "karma start",
     "dev": "concurrently 'webpack -w -d' 'nodemon server'",
     "start": "node server.js"
   },
