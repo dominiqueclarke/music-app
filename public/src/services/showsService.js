@@ -43,7 +43,7 @@ export default function($http, musicService, userService) {
   this.getShowsData = (currentUser, zipCode) => {
       return new Promise((resolve, reject) => {
         $http({
-         url: `http://api.jambase.com/events?zipCode=${zipCode}&radius=25&page=0&${process.env.JAMBASE_KEY || config.jamBase.apiKey}`
+         url: `http://api.jambase.com/events?zipCode=${zipCode}&radius=25&page=0&` + (process.env.JAMBASE_KEY || config.jamBase.apiKey)
          , type: 'GET'
       })
       .then(function(shows) {
