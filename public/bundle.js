@@ -39312,7 +39312,7 @@
 	  this.getShowsData = function (currentUser, zipCode) {
 	    return new Promise(function (resolve, reject) {
 	      $http({
-	        url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + (process.env.JAMBASE_KEY || config.jamBase.apiKey),
+	        url: 'http://api.jambase.com/events?zipCode=' + zipCode + '&radius=25&page=0&' + process.env.JAMBASE_KEY,
 	        type: 'GET'
 	      }).then(function (shows) {
 	        musicService.getMusicPreviews(shows).then(function (results) {
