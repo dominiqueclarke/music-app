@@ -42,7 +42,7 @@ export default function($http, userService, musicService, showsService, mapServi
       vm.savedShows = currentUser.savedShows;
       vm.savedShows = sortSavedShows(vm.savedShows);
 
-      getShows(vm.currentUser, sessionStorage.zipCode).then(function(shows) {
+      getShows(vm.currentUser, sessionStorage.zipCode, process.env.JAMBASE_KEY).then(function(shows) {
         vm.loaded = true;
         vm.shows = shows.data.Events;
         vm.currentDate = new Date(vm.shows[0].Date).getTime();

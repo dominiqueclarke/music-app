@@ -40,10 +40,10 @@ export default function($http, musicService, userService) {
       }
     });
   }
-  this.getShowsData = (currentUser, zipCode) => {
+  this.getShowsData = (currentUser, zipCode, key) => {
       return new Promise((resolve, reject) => {
         $http({
-         url: `http://api.jambase.com/events?zipCode=${zipCode}&radius=25&page=0&` + process.env.JAMBASE_KEY
+         url: `http://api.jambase.com/events?zipCode=${zipCode}&radius=25&page=0&${key}`
          , type: 'GET'
       })
       .then(function(shows) {
