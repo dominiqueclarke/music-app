@@ -5,7 +5,7 @@ const {Strategy: FBStrategy} = require("passport-facebook");
 const userCtrl = require('./server/features/user/userCtrl');
 const session = require("express-session");
 
-  // const config = require("./config.js");
+  const config = require("./config.js");
 const masterRoutes = require("./server/masterRoutes");
 const cors = require("cors");
 

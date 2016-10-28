@@ -2,18 +2,20 @@ import $ from "jquery";
 
 export default $( document ).ready(function() {
 
-    scaleVideoContainer();
-
-    initBannerVideoSize('.video-container .poster img');
-    initBannerVideoSize('.video-container .filter');
-    initBannerVideoSize('.video-container video');
-
-    $(window).on('resize', function() {
-        scaleVideoContainer();
-        scaleBannerVideoSize('.video-container .poster img');
-        scaleBannerVideoSize('.video-container .filter');
-        scaleBannerVideoSize('.video-container video');
-    });
+    // console.log('hero video function fired');
+    //
+    // scaleVideoContainer();
+    //
+    // initBannerVideoSize('.video-container .poster img');
+    // initBannerVideoSize('.video-container .filter');
+    // initBannerVideoSize('.video-container video');
+    //
+    // $(window).on('resize', function() {
+    //     scaleVideoContainer();
+    //     scaleBannerVideoSize('.video-container .poster img');
+    //     scaleBannerVideoSize('.video-container .filter');
+    //     scaleBannerVideoSize('.video-container video');
+    // });
 
 });
 

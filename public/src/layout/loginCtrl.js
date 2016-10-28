@@ -5,5 +5,4 @@ export default function(userService, videoMaskService) {
     sessionStorage.setItem('zipCode', zip.toString());
   };
   videoMaskService.createVideoMask();
-
 }

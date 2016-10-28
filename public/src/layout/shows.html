@@ -6,7 +6,6 @@
     <div class="logo-image-container"><img src="../../assets/img/logo.png" /></div>
   </div>
 </div>
-<!-- <p>User data: {{vm.currentUser}}</p> -->
 <div id="map"></div>
 <div ng-show="vm.loaded" class="ng-hide">
   <div class="container shows-view">
@@ -26,7 +25,7 @@
       </span>
     </div>
     <div ng-if="showSavedShows" class="saved-shows-container">
-      <span ng-if="show.epochTime >= vm.currentDate" class="box" ng-repeat="show in vm.savedShows">
+      <span class="box" ng-repeat="show in vm.savedShows">
         <show show="show" index="$index" type="saved" current-date="vm.currentDate"></show>
         <span class="line1"></span>
         <span class="line2"></span>
@@ -37,8 +36,8 @@
      <div class="container">
        <div class="row">
          <div class="col l6 s12">
-           <h5>HikeScore</h5>
-           <p>Hike Score helps you discover outdoor activities in any area. Use HikeScore to determine how outdoor-friendly your neighborhood is.</p>
+           <h5>Lalela</h5>
+           <p>Lalela helps you find shows in your area by letting you listen to previews of the music</p>
 
 
          </div>

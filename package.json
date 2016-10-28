@@ -6,10 +6,10 @@
   "scripts": {
     "test": "karma start",
     "dev": "concurrently 'webpack -w -d' 'nodemon server'",
-    "start": "node server.js"
+    "start": "concurrently 'webpack -w -d' 'nodemon server'"
   },
   "engines": {
-    "node": "^6.6.0"
+    "node": "6.6.0"
   },
   "author": "",
   "license": "ISC",

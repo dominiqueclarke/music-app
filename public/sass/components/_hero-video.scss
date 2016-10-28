@@ -51,6 +51,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index:2;
+      @media screen and (max-width: 800px) {
+        margin-top:75px;
+      }
       .tagline1, .tagline2 {
         margin:0 auto;
         background-color:#FBD13D;
@@ -60,6 +63,10 @@
         position:relative;
         font-size:5rem;
         text-align:center;
+        @media screen and (max-width: 800px) {
+          width:250px;
+          font-size:3rem;
+        }
         h2 {
           line-height:80px;
           margin:0;
@@ -148,8 +155,11 @@
 .video-container video {
     position: absolute;
     z-index: 0;
-    bottom: 0;
+    top: 0;
 }
 .video-container video.fillWidth {
-    width: 100%;
+  @media screen and (min-width: 1080px) {
+    width:100%;
+    bottom:0;
+  }
 }

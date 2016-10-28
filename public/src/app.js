@@ -32,7 +32,7 @@ import showsCtrl from "./layout/showsCtrl.js";
 import loginCtrl from "./layout/loginCtrl.js";
 
 //components
-import heroVideo from "./components/heroVideo.js";
+import "./components/heroVideo.js";
 //import desaturation from "./components/desaturation";
 
 angular.module('music', [uiRouter, angularMaterialize])

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import knob from 'jquery-knob';
+import moment from "moment";
 
 export default function() {
   return {
@@ -15,25 +16,19 @@ export default function() {
     }
     , controller($scope, mapService, musicPlayerService, musicTimerService, showsService, userService) {
 
-
       const vm = this;
-      //vm.getPlaceData = mapService.getPlaceData;
-
 
       let songCounter = 0;
       let artistCounter = 0;
       let openersCounter = 1;
       let openerTimeout;
       let currentSong;
+      let songRef;
       let currentSongAudio;
 
-
       vm.apply = $scope.$apply;
-      vm.eval = $scope.$eval;
       vm.currentDate = $scope.currentDate;
-      const show = vm.show = $scope.show;
-      let songRef;
-      vm.watch = $scope.$watch;
+      vm.show = $scope.show;
       vm.index = $scope.index;
       vm.type = $scope.type;
       vm.playSong = playSong;
@@ -43,44 +38,46 @@ export default function() {
       vm.saveShow = saveShow;
       vm.isFeaturedShow;
 
+      /******  Featured Show    ******/
 
-      if (vm.show && !vm.show.dateObj) {
-        vm.date = vm.show.dateObj = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
-      }
-
-      $scope.$watch('show', (newValue, oldValue) => {
-        if (newValue) {
-          vm.date = vm.show.dateObj = dateToString(new Date(`${newValue.Date}Z`), newValue.Date);
-        }
-      });
-
-      if(vm.type === "saved") {
-        vm.show.saved = "saved";
-      }
-
-      if (vm.index === "Featured") {
+      if(vm.index === "Featured") {
         vm.isFeaturedShow = true;
-        $scope.$on('mapClick', function(event, artists) {
-          musicPlayerService.pause(currentSongAudio);
-          createSong(artists, "Featured");
-          //console.log('this is the event data that was broadcasted', artists); // 'Some data'
-        });
 
-        //playSong(vm.show, vm.index);
-        $scope.$on('featuredShowAssigned', function(event, featuredShow) {
-          // console.log('featuredShow arrived from broadcast', featuredShow);
-          // console.log(featuredShow.Artists[0]);
+        /* waits for featuredShow to be assigned showsCtrl, then passes the
+        show data and plays the songs */
+        $scope.$on('featuredShowAssigned', (event, featuredShow) => {
           vm.show = featuredShow;
-          vm.show.dateObj = dateToString(new Date(`${vm.show.Date}`), vm.show.Date);
+          //vm.show.dateObj = dateToObj(vm.show.Date);
           const songData = {
               Id: featuredShow.Artists[0].Id,
               Name: featuredShow.Artists[0].Name,
               artistArtworkUrl: featuredShow.Artists[0].artistArtworkUrl,
               songPreviews: featuredShow.Artists[0].songPreviews
             }
-            //console.log(songData);
+          /*featuredShow shows is looking for an array of Artists, so we pass in
+          the songData for one Artist as an Array */
           playSong([songData], "Featured");
         });
+
+        //listens for map click event, pauses current song and starts playing new song.
+        $scope.$on('mapClick', function(event, artists) {
+          musicPlayerService.pause(currentSongAudio);
+          //takes the artists for the music, plus the index, which is "Featured";
+          createSong(artists, "Featured");
+        });
+
+        $scope.$on('newFeaturedShow', (event, featuredShow) => {
+          if(vm.isFeaturedShow) {
+            vm.show = featuredShow;
+          }
+        })
+      }
+
+      /****** Saved Shows ******/
+
+      if(vm.type === "saved") {
+        //assigns a class of saved for all saved shows, so that the star is filled
+        vm.show.saved = "saved";
       }
 
       function saveShow(show) {
@@ -92,26 +89,28 @@ export default function() {
             //vm.savedShows.push(show);
           });
         } else {
-          console.log('pulling show...');
           showsService.pullShow(show).then(() => {
-
               //$scope.$emit('showUnsaved', user.savedShows);
               vm.show.saved = "unsaved";
           })
         }
       }
 
+      /****** Show/Hide Openers *****/
+
       function showOpeners(show) {
         //setting counter to one, because we don't want the first act, the headliner
         openerTimeout = setTimeout(() => {
           $scope.$apply(function() {
-            $scope.opener = show.Artists[openersCounter].Name;
-            if(openersCounter === show.Artists.length - 1) {
-              openersCounter = 1;
-            } else {
-              openersCounter++;
+            if(show.Artists.length > 1) {
+              $scope.opener = show.Artists[openersCounter].Name;
+              if(openersCounter === show.Artists.length - 1) {
+                openersCounter = 1;
+              } else {
+                openersCounter++;
+              }
+              showOpeners(show);
             }
-            showOpeners(show);
           });
         }, 2000);
       };
@@ -121,8 +120,10 @@ export default function() {
         $scope.opener = undefined;
       }
 
+      /****** Music Player *****/
+
       function playSong(artists, index) {
-        const artworkContainer = `.showImage${index}`
+        const artworkContainer = `.showImage${index}`;
         const artwork = angular.element(document.querySelector(artworkContainer));
         artwork.addClass('active');
         if (songRef && songRef === currentSong.previewUrl) {
@@ -134,8 +135,51 @@ export default function() {
           if (musicPlayerService.featuredSong) {
             musicPlayerService.featuredSong.pause();
           }
-          createSong(artists, index);
+          $scope.$apply(createSong(artists, index));
         }
+      };
+
+
+      function createSong(artists, index) {
+        const songPreviews = artists[artistCounter].songPreviews;
+        checkPreviewUrl(songPreviews);
+        currentSong = songPreviews[songCounter];
+        songRef = currentSong.previewUrl;
+
+        let songName = currentSong.songName;
+        let artistName = currentSong.artistName;
+        let audio = new Audio(currentSong.previewUrl);
+
+        if (index === "Featured") {
+          currentSongAudio = audio;
+          musicPlayerService.featuredSong = audio;
+        } else {
+          currentSongAudio = audio;
+        }
+
+        vm.byline = `${songName} by ${artistName}`;
+        vm.albumArt = currentSong.songArtworkUrl;
+        //change the artwork to the current song artwork
+        $(`img.showImage${index}.artwork`).attr('src', currentSong.songArtworkUrl);
+        vm.apply(); //make sure all changes to vm get applied, including byline and albumArt
+
+        //create JQuery knob
+        musicTimerService.createTimer(currentSongAudio, index);
+
+
+
+        //change the artwork to the current song artwork
+        $(`img.showImage${index}.artwork`).attr('src', currentSong.songArtworkUrl);
+
+        //play the audio
+        musicPlayerService.play(currentSongAudio, index);
+
+        //set up an event listener for when the audio ends
+        $(currentSongAudio).on("ended", function() {
+          //if it's the last song, set it to 0. If not, increment.
+          incrementSong(songPreviews, artists);
+          createSong(artists, index);
+        });
       };
 
       function stopSong(index) {
@@ -144,6 +188,7 @@ export default function() {
         musicPlayerService.pause(currentSongAudio, index);
       };
 
+      //if a particular song does not have a previewUrl, go to the next song
       function checkPreviewUrl(songPreviews) {
         if (!songPreviews[songCounter].previewUrl) {
           songCounter++;
@@ -161,103 +206,6 @@ export default function() {
         } else {
           artistCounter++;
         }
-      };
-
-      function createSong(artists, index) {
-        //console.log(artistData);
-        //console.log(artists);
-        let songPreviews = artists[artistCounter].songPreviews;
-        checkPreviewUrl(songPreviews);
-        currentSong = songPreviews[songCounter];
-
-        let songName = currentSong.songName;
-        let artistName = currentSong.artistName;
-        let audio = new Audio(currentSong.previewUrl);
-
-        vm.byline = `${songName} by ${artistName}`;
-        if (index === "Featured") {
-          currentSongAudio = audio;
-          musicPlayerService.featuredSong = audio;
-        } else {
-          currentSongAudio = audio;
-        }
-        songRef = currentSong.previewUrl;
-        vm.albumArt = currentSong.songArtworkUrl;
-        vm.apply(); //make sure all changes to vm get applied, including byline and albumArt
-
-        //create JQuery knob
-        musicTimerService.createTimer(currentSongAudio, index);
-
-        //change the artwork to the current song artwork
-        $(`img.showImage${index}.artwork`).attr('src', currentSong.songArtworkUrl);
-
-        //play the audio
-        musicPlayerService.play(currentSongAudio, index);
-
-        //set up an event listener for when the audio ends
-        $(currentSongAudio).on("ended", function() {
-          //if it's the last song, set it to 0. If not, increment.
-          incrementSong(songPreviews, artists);
-          createSong(artists, index);
-        });
-      };
-
-      function dateToString(date, dateString) {
-        //const offset = date.getTimezoneOffset() / 60;
-        // Use an array to format the month numbers
-        var months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-
-        var days = [
-          "Sun",
-          "Mon",
-          "Tue",
-          "Wed",
-          "Thu",
-          "Fri",
-          "Sat"
-        ];
-
-        // Use an object to format the timezone identifiers
-
-        var month = months[parseInt(dateString.slice(5,7)) - 1];
-        var day = dateString.slice(8,10);
-        var weekDay = days[date.getDay()];
-        var hours = dateString.slice(11,13);
-        var minutes = dateString.slice(14,16);
-        var time = (hours > 11 ? (hours - 11) : (hours)) + ":" + minutes + (hours > 11 ? "PM" : "AM");
-        if(time === "00:00") {
-          time = "12:00";
-        }
-        let hour = (time.length > 6 ? time.slice(0, 5) : time.slice(0, 4));
-        var period = time.slice(-2);
-
-        // Returns formatted date as string (e.g. January 28, 2011 - 7:30PM EST)
-        // vm.Date = {
-        //   month
-        //
-        // }
-        return {
-          weekDay,
-          month,
-          day,
-          time,
-          hour,
-          period,
-        }
-        //return weekDay + " " + month + " " + day + ", " + year + " - " + time;
       };
     }
   };
