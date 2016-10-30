@@ -1,12 +1,4 @@
 export default function($http) {
-  // this.saveZipCode = zipCodeInput => {
-  //   return zipCodeInput;
-  // }
-  //
-  // this.getZipCode = () => {
-  //   return zipCodeInput;
-  // }
-//  console.log(this.zipCode);
  const myThis = this;
   myThis.currentUser = {};
   this.getCurrentUser = () => {
@@ -15,7 +7,6 @@ export default function($http) {
       , type: 'GET'
     })
     .then(function(currentUserData) {
-      console.log(currentUserData);
       myThis.currentUser = currentUserData.data;
       return currentUserData.data;
     });

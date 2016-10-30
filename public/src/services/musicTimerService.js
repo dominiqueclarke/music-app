@@ -13,7 +13,6 @@ export default function() {
       updateValue(knob, currentSongAudio);
     } else {
     $.fn.timer = function(userdefinedoptions) {
-      console.log($(this));
       knob = $(this);
       let opt;
 

@@ -25,7 +25,6 @@ module.exports = {
     });
   }
   , createUser(req, res) {
-    console.log('user created');
     const user = req.user;
     const userData = {
       email: user._json.email,

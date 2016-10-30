@@ -12,7 +12,6 @@ import angularMaterialize from 'angular-materialize';
 //templates
 import login from "./layout/login.html";
 import shows from "./layout/shows.html";
-import savedShows from "./layout/savedShows.html";
 
 //services
 import userService from "./services/userService.js"
@@ -60,13 +59,6 @@ angular.module('music', [uiRouter, angularMaterialize])
         , template: shows
         , controller: showsCtrl
         , controllerAs: 'vm'
-        //, params: {zip: null, places: null, activities: null, geoData: null, rating: null}
-      })
-      .state('savedShows', {
-        url: "/saved-shows"
-        , template: savedShows
-        // , controller: savedShowsCtrl
-        // , controllerAs: 'vm'
         //, params: {zip: null, places: null, activities: null, geoData: null, rating: null}
       })
   })
