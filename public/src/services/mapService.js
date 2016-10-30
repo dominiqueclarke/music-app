@@ -7,8 +7,7 @@ export default function($http) {
   const mapBoxKey = 'pk.eyJ1IjoiZGVlY2xhcmtlIiwiYSI6ImNpbGJlZjFobjB1aXl0eWx4ajJ2emNsNHcifQ.2mpHkUWA9o2RgI2q7w1UHA';
 
   this.getMap = (venues) => {
-    mapboxgl.accessToken = process.env.MAPBOX_KEY || config.mapBox.apiKey;
-    //const client = new MapboxClient(config.mapBox.apiKey);
+    mapboxgl.accessToken = mapBoxKey;
     const showPoints = {
       type: "geojson"
       , data: {
@@ -27,10 +26,6 @@ export default function($http) {
             const showPoint = pointRes.data.features[0]
                 showPoint.properties.title = venue.name;
                 showPoints.data.features.push(showPoint);
-                // if(index === shows.length - 1) {
-                //   console.log(showPoints);
-                //   //createMap(showPoints);
-                // }
             resolve(showPoint);
           })
         }
