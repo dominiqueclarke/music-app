@@ -1,4 +1,3 @@
-//import config from "../../../config.js";
 import googleMapsLoader from 'google-maps';
 export default function($http, userService, musicService, showsService, mapService, $scope) {
 
@@ -77,9 +76,7 @@ export default function($http, userService, musicService, showsService, mapServi
               $scope.$apply(function() {
                   for (let venue in venues) {
                       if (venueName === venues[venue].name) {
-                          console.log(venues[venue]);
                           vm.featuredShow = venues[venue].nextShow;
-                          console.log(vm.featuredShow.saved);
                           $scope.$broadcast('newFeaturedShow', vm.featuredShow);
                           $scope.$broadcast('mapClick', vm.featuredShow.Artists);
                           break;
@@ -170,5 +167,4 @@ export default function($http, userService, musicService, showsService, mapServi
   //    });
   //  });
 
-   console.log('shows', vm.shows);
 }

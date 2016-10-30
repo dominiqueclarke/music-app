@@ -26,7 +26,6 @@ export default function() {
       let songRef;
       let currentSongAudio;
 
-      vm.apply = $scope.$apply;
       vm.currentDate = $scope.currentDate;
       vm.show = $scope.show;
       vm.index = $scope.index;
@@ -63,7 +62,7 @@ export default function() {
         $scope.$on('mapClick', function(event, artists) {
           musicPlayerService.pause(currentSongAudio);
           //takes the artists for the music, plus the index, which is "Featured";
-          createSong(artists, "Featured");
+          $scope.$apply(createSong(artists, "Featured"));
         });
 
         $scope.$on('newFeaturedShow', (event, featuredShow) => {
@@ -161,7 +160,7 @@ export default function() {
         vm.albumArt = currentSong.songArtworkUrl;
         //change the artwork to the current song artwork
         $(`img.showImage${index}.artwork`).attr('src', currentSong.songArtworkUrl);
-        vm.apply(); //make sure all changes to vm get applied, including byline and albumArt
+        //make sure all changes to vm get applied, including byline and albumArt
 
         //create JQuery knob
         musicTimerService.createTimer(currentSongAudio, index);
@@ -178,7 +177,7 @@ export default function() {
         $(currentSongAudio).on("ended", function() {
           //if it's the last song, set it to 0. If not, increment.
           incrementSong(songPreviews, artists);
-          createSong(artists, index);
+          $scope.$apply(createSong(artists, index));
         });
       };
 

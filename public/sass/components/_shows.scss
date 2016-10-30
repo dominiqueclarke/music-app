@@ -1,5 +1,6 @@
 #map {
   min-height:450px;
+  background-image: url('../assets/img/struckaxiom.png');
 }
 .container.shows-view {
   position:relative;
@@ -139,6 +140,7 @@
     position:relative;
     display:inline-flex;
     align-items:center;
+    text-align:center;
     .byline {
       position:absolute;
       max-width:80%;
@@ -176,11 +178,7 @@
       }
     }
   }
-
-  #nextShow {
-    width:350px;
-    position:relative;
-    top:-175px;
+  .center-line {
     &:after {
       content:"";
       position: absolute;
@@ -191,6 +189,12 @@
       height:150%;
       border-left: 2px solid black;
     }
+  }
+
+  #featured-show-container {
+    width:350px;
+    position:relative;
+    top:-175px;
   }
 
   .caption {
