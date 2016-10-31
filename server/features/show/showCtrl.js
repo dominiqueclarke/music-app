@@ -1,8 +1,11 @@
+let config;
+if ( process.env.NODE_ENV !== "production" ) {
+  config = require( "../../../config" );
+}
 const Show = require('./Show');
 const mongoose = require("mongoose");
 const request = require("request");
 const rp = require("request-promise");
-const config = require("../../../config");
 const axios = require('axios');
 
 module.exports = {
