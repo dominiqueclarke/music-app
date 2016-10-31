@@ -9,26 +9,44 @@
   position:absolute;
   top:50px;
   right:-5px;
+  width:350px;
+  height:60px;
+  background-image: url('../assets/img/old_wall.png');
   .btn {
-    width:350px;
-    height:60px;
+    height:100%;
+    width:100%;
     line-height:60px;
     font-size:1.5rem;
-    background-color:transparent;
     border:2px solid #FBD13D;
+    background-color:transparent;
     border-radius:0px;
     color:black;
     font-family:'Josefin Sans';
     transition: all .5s ease;
     &.pressed {
+      background-image:none;
       background-color:#FBD13D;
       transition: all 1s ease;
+    }
+  }
+  @media screen and (max-width:850px) {
+    position:fixed;
+    bottom:50px;
+    top:auto;
+    right:10px;
+    height:60px;
+    width:auto;
+    z-index:4;
+    .btn {
+      padding:0 1rem;
+      font-size:1rem;
+      line-height:auto;
     }
   }
 }
 .shows-container, .saved-shows-container {
   display:table;
-  margin: 10px auto;
+  width:100%;
   position:relative;
   top:-125px;
   text-align:center;
@@ -52,8 +70,9 @@
     position:relative;
     background-image:url('../assets/img/struckaxiom.png');
     @media screen and (max-width: 450px) {
-      width:80%;
+      width:85%;
       height:300px;
+      margin:0 auto;
     }
     // .venue-image {
     //   width:100%;
@@ -195,6 +214,9 @@
     width:350px;
     position:relative;
     top:-175px;
+    @media screen and (max-width:600px) {
+      margin:0 auto;
+    }
   }
 
   .caption {
@@ -222,8 +244,8 @@
   }
 
   .featured-show {
-    width:350px;
-    height:350px;
+    width:100%;
+    height:100%;
 
     .byline {
       bottom:60px;
@@ -247,6 +269,9 @@
       top:60px;
       left:-40px;
       z-index:2;
+      @media screen and (max-width: 450px) {
+        left:-35px;
+      }
     }
     .line1 {
       content:"";
@@ -300,6 +325,9 @@
       bottom:60px;
       right:-40px;
       z-index:2;
+      @media screen and (max-width: 450px) {
+        right:-35px;
+      }
     }
     .line1 {
       content:"";
