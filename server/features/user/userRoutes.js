@@ -14,7 +14,7 @@ module.exports = app => {
   app.get('/auth/facebook',
     passport.authenticate(
         'facebook',
-        {authType: 'rerequest', scope: ['user_friends', 'user_likes', 'email', 'user_location']}
+        {authType: 'rerequest', scope: ['email']}
     )
   );
 
@@ -27,8 +27,6 @@ module.exports = app => {
 
   app.get('/me',
     userCtrl.getUserIfExists
-    , userCtrl.getUserFBMusicLikes
-    , userCtrl.saveFBMusicLikes
     , userCtrl.createUser
   );
 
