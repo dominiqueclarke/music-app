@@ -24,8 +24,8 @@ export default function($http) {
             , type: 'GET'
           }).then(pointRes => {
             const showPoint = pointRes.data.features[0]
-                showPoint.properties.title = venue.name;
-                showPoints.data.features.push(showPoint);
+            showPoint.properties.title = venue.name;
+            showPoints.data.features.push(showPoint);
             resolve(showPoint);
           })
         }
@@ -47,7 +47,6 @@ export default function($http) {
       map.addControl(new mapboxgl.NavigationControl());
 
       map.on('load', () => {
-          //should not have put on scope
           map.addSource('points', showPoints);
           map.addLayer({
               "id": "points",
