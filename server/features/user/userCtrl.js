@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 
 module.exports = {
   getUserIfExists(req, res, next) {
-    console.log('exist check');
     if (!req.user) throw new Error('user null');
     User.findOne({
       fbID: req.user.id

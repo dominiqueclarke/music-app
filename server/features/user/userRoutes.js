@@ -35,24 +35,4 @@ module.exports = app => {
   app.put('/api/users/:id/addShow', userCtrl.pushShow);
 
   app.put('/api/users/:id/removeShow', userCtrl.pullShow);
-
-
-	// //Auth 0 callback handler
-	// app.get(
-	// 	'/auth/facebook/callback',
-	// 	passport.authenticate('facebook', { failureRedirect: '/' })
-	// 	, userCtrl.userExists
-	// 	//userCtrl.createUser
-	// );
-	// app.get( '/api/user', middleware, userCtrl.getAuthUser );
-  //
-	// // GET REQUEST
-	// app.get( '/api/users', middleware, userCtrl.getUsers );
-	// app.get( '/api/users/:id', middleware, userCtrl.getThisUser );
-  //
-	// // PUT REQUEST
-	// app.put( '/api/users/:id', middleware, userCtrl.editUser );
-  //
-	// // DELETE REQUEST
-	// app.delete( '/api/users/:id', middleware, userCtrl.deleteUser );
 }

@@ -12,19 +12,7 @@ module.exports = {
   getShows(req, res) {
       axios.get(`http://api.jambase.com/events?zipCode=${req.params.zip}&radius=25&page=0&${process.env.JAMBASE_KEY || config.jamBase.apiKey}`)
       .then(function(shows) {
-        //resolve(showsData);
         return res.status(200).json(shows.data);
-        // musicService.getMusicPreviews(shows).then(results => {
-        // let showsData = results;
-        // const lastShowsRequest = new Date().getTime();
-        // $http({
-        //   url: `/api/users/${currentUser._id}`
-        //   , method: 'PUT'
-        //   , data: {lastShowsRequest, zipCode}
-        // })
-        // formatShows(showsData);
-        //resolve(showsData);
-      // });
     });
   }
   , showExists(req, res, next) {
@@ -70,5 +58,5 @@ function getShowsData(zipCode) {
         //resolve(showsData);
       // });
     });
-  // });
+    
 }
