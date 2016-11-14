@@ -39358,17 +39358,15 @@
 	        url: '/api/shows/' + zipCode,
 	        type: 'GET'
 	      }).then(function (shows) {
-	        musicService.getMusicPreviews(shows).then(function (results) {
-	          var showsData = results;
-	          var lastShowsRequest = new Date().getTime();
-	          $http({
-	            url: '/api/users/' + currentUser._id,
-	            method: 'PUT',
-	            data: { lastShowsRequest: lastShowsRequest, zipCode: zipCode }
-	          });
-	          formatShows(showsData);
-	          resolve(showsData);
+	        var showsData = shows;
+	        var lastShowsRequest = new Date().getTime();
+	        $http({
+	          url: '/api/users/' + currentUser._id,
+	          method: 'PUT',
+	          data: { lastShowsRequest: lastShowsRequest, zipCode: zipCode }
 	        });
+	        formatShows(showsData);
+	        resolve(showsData);
 	      });
 	    });
 	  };
@@ -39409,7 +39407,9 @@
 	  }
 	
 	  function dateToObj(dateString) {
+	    console.log('dateString', dateString);
 	    var date = (0, _moment2.default)(dateString).toDate();
+	    console.log('date', date);
 	    // Use an array to format the month numbers
 	    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	
@@ -39422,13 +39422,25 @@
 	    var weekDay = days[date.getDay()];
 	    var hour = date.getHours();
 	    var minutes = date.getMinutes();
+	
 	    if (minutes < 10) {
 	      minutes = '0' + minutes;
 	    }
+	
 	    var time = (hour > 11 ? hour - 11 : hour + 1) + ":" + minutes + (hour > 11 ? "PM" : "AM");
 	    var period = time.slice(-2);
 	    var time = time.slice(0, time.length - 2);
+	    var timeObj = {
 	
+	      weekDay: weekDay,
+	      month: month,
+	      day: day,
+	      time: time,
+	      hour: hour,
+	      period: period
+	
+	    };
+	    console.log(timeObj);
 	    return {
 	      weekDay: weekDay,
 	      month: month,
@@ -63475,10 +63487,6 @@
 	    var video = document.getElementById('v');
 	    var videoCanvas = document.getElementById('c');
 	    var videoCanvasContext = videoCanvas.getContext('2d');
-	    // const buttonCanvas = document.getElementById('hero-button');
-	    // const buttonCanvasContext = buttonCanvas.getContext('2d');
-	    // const buttonClipCanvas = document.createElement('canvas');
-	    // const buttonClipCanvasContext = buttonCanvas.getContext('2d');
 	    var lineCanvas = document.createElement('canvas');
 	    var lineCanvasContext = lineCanvas.getContext('2d');
 	    var pointLifetime = 1000;
@@ -63487,9 +63495,6 @@
 	    v.addEventListener('play', function () {
 	      start();
 	    }, false);
-	
-	    console.log('video', video);
-	    console.log('imageCanvas', videoCanvas);
 	
 	    if (video.complete) {
 	      start();
@@ -63505,11 +63510,7 @@
 	      window.addEventListener('resize', resizeCanvases);
 	      console.log(videoCanvas);
 	      var videoContainer = document.getElementById('homepage-hero-module');
-	      //const buttonContainer = document.getElementById('button-container');
 	      videoContainer.appendChild(videoCanvas);
-	      //buttonContainer.appendChild(buttonCanvas);
-	      //drawButtonCanvas();
-	      //drawButtonClipCanvas();
 	      resizeCanvases();
 	      tick();
 	    }
@@ -63621,17 +63622,6 @@
 	      videoCanvasContext.globalCompositeOperation = 'destination-in';
 	      videoCanvasContext.drawImage(lineCanvas, 0, 0);
 	    }
-	
-	    // function drawButtonCanvas() {
-	    //   const width = Math.floor(v.clientWidth);
-	    //   const height = Math.floor(v.clientHeight);
-	    //
-	    //   buttonCanvasContext.clearRect(0, 0, 50, 50);
-	    //   buttonCanvasContext.globalCompositeOperation = 'source-over';
-	    //   buttonCanvasContext.drawImage(video, 0, 0, width, height);
-	    //   buttonCanvasContext.globalCompositeOperation = 'destination-in';
-	    //   buttonCanvasContext.drawImage(buttonCanvas, 0, 0);
-	    // }
 	  };
 	};
 
@@ -63768,19 +63758,22 @@
 	      /****** Music Player *****/
 	
 	      function playSong(artists, index) {
-	        var artworkContainer = '.showImage' + index;
-	        var artwork = angular.element(document.querySelector(artworkContainer));
-	        artwork.addClass('active');
-	        if (songRef && songRef === currentSong.previewUrl) {
-	          if (musicPlayerService.featuredSong) {
-	            musicPlayerService.featuredSong.pause();
+	        if (artists[artistCounter].songPreviews.length) {
+	
+	          var artworkContainer = '.showImage' + index;
+	          var artwork = angular.element(document.querySelector(artworkContainer));
+	          artwork.addClass('active');
+	          if (songRef && songRef === currentSong.previewUrl) {
+	            if (musicPlayerService.featuredSong) {
+	              musicPlayerService.featuredSong.pause();
+	            }
+	            musicPlayerService.play(currentSongAudio, index);
+	          } else {
+	            if (musicPlayerService.featuredSong) {
+	              musicPlayerService.featuredSong.pause();
+	            }
+	            $scope.$apply(createSong(artists, index));
 	          }
-	          musicPlayerService.play(currentSongAudio, index);
-	        } else {
-	          if (musicPlayerService.featuredSong) {
-	            musicPlayerService.featuredSong.pause();
-	          }
-	          $scope.$apply(createSong(artists, index));
 	        }
 	      };
 	
@@ -64339,7 +64332,6 @@
 	
 	exports.default = function (userService, videoMaskService) {
 	  var vm = this;
-	  console.log('this is the login controller');
 	  vm.saveZipCode = function (zip) {
 	    sessionStorage.setItem('zipCode', zip.toString());
 	  };

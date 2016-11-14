@@ -5,10 +5,6 @@ export default function() {
         const video = document.getElementById('v');
         const videoCanvas = document.getElementById('c');
         const videoCanvasContext = videoCanvas.getContext('2d');
-        // const buttonCanvas = document.getElementById('hero-button');
-        // const buttonCanvasContext = buttonCanvas.getContext('2d');
-        // const buttonClipCanvas = document.createElement('canvas');
-        // const buttonClipCanvasContext = buttonCanvas.getContext('2d');
         const lineCanvas = document.createElement('canvas');
         const lineCanvasContext = lineCanvas.getContext('2d');
         const pointLifetime = 1000;
@@ -17,9 +13,6 @@ export default function() {
         v.addEventListener('play', function(){
           start();
         },false);
-
-        console.log('video', video);
-        console.log('imageCanvas', videoCanvas);
 
         if (video.complete) {
           start();
@@ -35,11 +28,7 @@ export default function() {
           window.addEventListener('resize', resizeCanvases);
           console.log(videoCanvas);
           const videoContainer = document.getElementById('homepage-hero-module');
-          //const buttonContainer = document.getElementById('button-container');
           videoContainer.appendChild(videoCanvas);
-          //buttonContainer.appendChild(buttonCanvas);
-          //drawButtonCanvas();
-          //drawButtonClipCanvas();
           resizeCanvases();
           tick();
         }
@@ -151,16 +140,5 @@ export default function() {
           videoCanvasContext.globalCompositeOperation = 'destination-in';
           videoCanvasContext.drawImage(lineCanvas, 0, 0);
         }
-
-        // function drawButtonCanvas() {
-        //   const width = Math.floor(v.clientWidth);
-        //   const height = Math.floor(v.clientHeight);
-        //
-        //   buttonCanvasContext.clearRect(0, 0, 50, 50);
-        //   buttonCanvasContext.globalCompositeOperation = 'source-over';
-        //   buttonCanvasContext.drawImage(video, 0, 0, width, height);
-        //   buttonCanvasContext.globalCompositeOperation = 'destination-in';
-        //   buttonCanvasContext.drawImage(buttonCanvas, 0, 0);
-        // }
-      }
+    }
 }
