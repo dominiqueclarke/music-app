@@ -50,8 +50,8 @@ export default function() {
          */
         function resizeCanvases() {
           const videoContainer = angular.element(document.querySelector('#homepage-hero-module'));
-          videoCanvas.width = lineCanvas.width = videoContainer[0].scrollWidth;
-          videoCanvas.height = lineCanvas.height = videoContainer[0].scrollHeight;
+          videoCanvas.width = lineCanvas.width = videoContainer[0].offsetWidth;
+          videoCanvas.height = lineCanvas.height = videoContainer[0].offsetHeight;
         }
 
         /**
