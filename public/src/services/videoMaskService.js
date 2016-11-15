@@ -26,10 +26,9 @@ export default function() {
         function start() {
           document.addEventListener('mousemove', onMouseMove);
           window.addEventListener('resize', resizeCanvases);
-          console.log(videoCanvas);
           const videoContainer = document.getElementById('homepage-hero-module');
           videoContainer.appendChild(videoCanvas);
-          resizeCanvases();
+          resizeCanvases(videoContainer);
           tick();
         }
 
@@ -50,8 +49,9 @@ export default function() {
          * Resizes both canvases to fill the window.
          */
         function resizeCanvases() {
-          videoCanvas.width = lineCanvas.width = window.innerWidth;
-          videoCanvas.height = lineCanvas.height = window.innerHeight;
+          const videoContainer = angular.element(document.querySelector('#homepage-hero-module'));
+          videoCanvas.width = lineCanvas.width = videoContainer[0].scrollWidth;
+          videoCanvas.height = lineCanvas.height = videoContainer[0].scrollHeight;
         }
 
         /**

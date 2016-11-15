@@ -13,7 +13,6 @@ module.exports = {
         axios.get(`http://api.jambase.com/events?zipCode=${req.params.zip}&radius=25&page=0&${process.env.JAMBASE_KEY || config.jamBase.apiKey}`)
         .then(shows => {
             getMusicPreviews(shows.data).then(results => {
-                console.log(results);
                 return res.status(200).json(results);
             })
         })
@@ -23,7 +22,6 @@ module.exports = {
     }
   , showExists(req, res, next) {
     Show.findOne({jamBaseId: req.body.jamBaseId}, (err, show) => {
-      console.log('exist fired');
       if(err) {
         return res.status(500).json(err);
       }
@@ -34,7 +32,6 @@ module.exports = {
     });
   }
   , postNewShow(req, res) {
-    console.log('post fired');
     new Show(req.body).save((err, show) => {
       if (err) {
         return res.status(500).json(err);
@@ -54,7 +51,7 @@ function getMusicPreviews(shows) {
             promiseArray.push(new Promise((resolve, reject) => {
             axios.get(`https://itunes.apple.com/search?term=${nameQuery}&entity=musicTrack&limit=10`)
                 .catch(err => {
-                   console.log("here's an error", err);
+                   console.log(err);
                    resolve({});
                 })
             .then(response => {

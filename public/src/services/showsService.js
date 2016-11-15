@@ -94,68 +94,17 @@ export default function($http, musicService, userService) {
   }
 
   function dateToObj(dateString) {
-    console.log('dateString', dateString);
-    const date = moment(dateString).toDate();
-    console.log('date', date)
-    // Use an array to format the month numbers
-    var months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    var days = [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
-    ];
-
-    // Use an object to format the timezone identifiers
-
-    var month = months[date.getMonth()];
-    var day = date.getDate();
-    var weekDay = days[date.getDay()];
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
-
-    if(minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-
-    var time = (hour > 11 ? (hour - 11) : (hour + 1)) + ":" + minutes + (hour > 11 ? "PM" : "AM");
-    var period = time.slice(-2);
-    var time = time.slice(0, time.length - 2);
-    const timeObj = {
-
-          weekDay,
-          month,
-          day,
-          time,
-          hour,
-          period
-
-    }
-    console.log(timeObj);
+    const weekDay = moment(dateString).format('ddd');
+    const day = moment(dateString).format('DD');
+    const time = moment(dateString).format('hh:mm');
+    const period = moment(dateString).format('A');
+    const month = moment(dateString).format('MMM');
     return {
       weekDay,
       month,
       day,
-      time,
-      hour,
-      period
+      period,
+      time
     }
   };
 }
