@@ -38,15 +38,14 @@ export default function($http, musicService, userService) {
       }
     });
   }
-  this.getShowsData = (currentUser, zipCode) => {
+  this.getShowsData = (currentUser, zipCode, key) => {
       return new Promise((resolve, reject) => {
         $http({
          url: `/api/shows/${zipCode}`
          , type: 'GET'
       })
-      .then(function(shows) {
-          musicService.getMusicPreviews(shows).then(results => {
-          let showsData = results;
+      .then((shows) => {
+          let showsData = shows;
           const lastShowsRequest = new Date().getTime();
           $http({
             url: `/api/users/${currentUser._id}`
@@ -55,7 +54,6 @@ export default function($http, musicService, userService) {
           })
           formatShows(showsData);
           resolve(showsData);
-        });
       })
     });
   }
@@ -96,54 +94,17 @@ export default function($http, musicService, userService) {
   }
 
   function dateToObj(dateString) {
-    const date = moment(dateString).toDate();
-    // Use an array to format the month numbers
-    var months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    var days = [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
-    ];
-
-    // Use an object to format the timezone identifiers
-
-    var month = months[date.getMonth()];
-    var day = date.getDate();
-    var weekDay = days[date.getDay()];
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
-    if(minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-    var time = (hour > 11 ? (hour - 11) : (hour + 1)) + ":" + minutes + (hour > 11 ? "PM" : "AM");
-    var period = time.slice(-2);
-    var time = time.slice(0, time.length - 2);
-
+    const weekDay = moment(dateString).format('ddd');
+    const day = moment(dateString).format('DD');
+    const time = moment(dateString).format('hh:mm');
+    const period = moment(dateString).format('A');
+    const month = moment(dateString).format('MMM');
     return {
       weekDay,
       month,
       day,
-      time,
-      hour,
       period,
+      time
     }
   };
 }

@@ -122,24 +122,27 @@ export default function() {
       /****** Music Player *****/
 
       function playSong(artists, index) {
-        const artworkContainer = `.showImage${index}`;
-        const artwork = angular.element(document.querySelector(artworkContainer));
-        artwork.addClass('active');
-        if (songRef && songRef === currentSong.previewUrl) {
-          if (musicPlayerService.featuredSong) {
-            musicPlayerService.featuredSong.pause();
-          }
-          musicPlayerService.play(currentSongAudio, index);
-        } else {
-          if (musicPlayerService.featuredSong) {
-            musicPlayerService.featuredSong.pause();
-          }
-          $scope.$apply(createSong(artists, index));
+        if(artists[artistCounter].songPreviews.length) {
+
+            const artworkContainer = `.showImage${index}`;
+            const artwork = angular.element(document.querySelector(artworkContainer));
+            artwork.addClass('active');
+            if (songRef && songRef === currentSong.previewUrl) {
+              if (musicPlayerService.featuredSong) {
+                musicPlayerService.featuredSong.pause();
+              }
+              musicPlayerService.play(currentSongAudio, index);
+            } else {
+              if (musicPlayerService.featuredSong) {
+                musicPlayerService.featuredSong.pause();
+              }
+              $scope.$apply(createSong(artists, index));
+            }
         }
       };
 
 
-      function createSong(artists, index) {
+    function createSong(artists, index) {
         const songPreviews = artists[artistCounter].songPreviews;
         checkPreviewUrl(songPreviews);
         currentSong = songPreviews[songCounter];
@@ -179,21 +182,21 @@ export default function() {
           incrementSong(songPreviews, artists);
           $scope.$apply(createSong(artists, index));
         });
-      };
+    };
 
-      function stopSong(index) {
-        const artwork = angular.element(document.querySelector(`.showImage${index}`));
-        artwork.removeClass('active');
-        musicPlayerService.pause(currentSongAudio, index);
-      };
+        function stopSong(index) {
+            const artwork = angular.element(document.querySelector(`.showImage${index}`));
+            artwork.removeClass('active');
+            musicPlayerService.pause(currentSongAudio, index);
+        };
 
       //if a particular song does not have a previewUrl, go to the next song
-      function checkPreviewUrl(songPreviews) {
-        if (!songPreviews[songCounter].previewUrl) {
-          songCounter++;
-          checkPreviewUrl(songPreviews);
-        }
-      };
+        function checkPreviewUrl(songPreviews) {
+            if (!songPreviews[songCounter].previewUrl) {
+                songCounter++;
+                checkPreviewUrl(songPreviews);
+            }
+        };
 
       function incrementSong(songPreviews, artists) {
         //if it's the last song, set it to 0. If not, increment.

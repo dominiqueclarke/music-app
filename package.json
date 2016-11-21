@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "karma start",
     "dev": "concurrently 'webpack -w -d' 'nodemon server'",
-    "start": "concurrently 'webpack -w -d' 'nodemon server'"
+    "start": "node server.js"
   },
   "engines": {
     "node": "6.6.0"
@@ -23,9 +22,11 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "fb": "^1.1.1",
+    "fetch-jsonp": "^1.0.2",
     "google-maps": "^3.2.1",
     "jquery": "^3.1.1",
     "jquery-knob": "^1.2.11",
+    "jsonp-es6": "^1.0.0",
     "mapbox": "^1.0.0-beta3",
     "mapbox-gl": "^0.26.0",
     "materialize": "^1.0.0",
