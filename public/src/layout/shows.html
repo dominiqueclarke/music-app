@@ -1,53 +1,51 @@
 <div ng-if="!vm.loaded">
-  <loader></loader>
+    <loader></loader>
 </div>
 <div class="logo">
-  <div class="container">
-    <div class="logo-image-container"><img src="../../assets/img/logo.png" /></div>
-  </div>
+    <div class="container">
+        <div class="logo-image-container"><img src="../../assets/img/logo.png" /></div>
+    </div>
 </div>
 <div id="map"></div>
 <div ng-show="vm.loaded" class="ng-hide">
-  <div class="center-line"></div>
-  <div class="container shows-view">
-    <div id="featured-show-container">
-      <span class="featured-show">
-        <show show="vm.featuredShow" index="vm.featuredIndex" current-date="vm.currentDate"></show>
-      </span>
+    <div class="center-line"></div>
+    <div class="container shows-view">
+        <div id="featured-show-container">
+            <span class="featured-show">
+                <show show="vm.featuredShow" index="vm.featuredIndex" current-date="vm.currentDate"></show>
+            </span>
+        </div>
+        <div id="controls">
+            <div ng-click="vm.getUpdatedSavedShows(); showSavedShows = !showSavedShows; pressed ? pressed = '' : pressed = 'pressed'" ng-class="pressed" class="btn">Saved Shows</div>
+        </div>
+        <div ng-if="!showSavedShows" class="shows-container">
+            <span class="box" ng-repeat="show in vm.shows">
+                <show show="show" index="$index" current-date="vm.currentDate"></show>
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </span>
+        </div>
+        <div ng-if="showSavedShows" class="saved-shows-container">
+            <span class="box" ng-repeat="show in vm.savedShows">
+                <show show="show" index="$index" type="saved" current-date="vm.currentDate"></show>
+                <span class="line1"></span>
+                <span class="line2"></span>
+            </span>
+        </div>
     </div>
-    <div id="controls">
-      <div ng-click="vm.getUpdatedSavedShows(); showSavedShows = !showSavedShows; pressed ? pressed = '' : pressed = 'pressed'" ng-class="pressed" class="btn">Saved Shows</div>
-    </div>
-    <div ng-if="!showSavedShows" class="shows-container">
-      <span class="box" ng-repeat="show in vm.shows">
-        <show show="show" index="$index" current-date="vm.currentDate"></show>
-        <span class="line1"></span>
-        <span class="line2"></span>
-      </span>
-    </div>
-    <div ng-if="showSavedShows" class="saved-shows-container">
-      <span class="box" ng-repeat="show in vm.savedShows">
-        <show show="show" index="$index" type="saved" current-date="vm.currentDate"></show>
-        <span class="line1"></span>
-        <span class="line2"></span>
-      </span>
-    </div>
-  </div>
-  <footer class="page-footer">
-     <div class="container">
-       <div class="row">
-         <div class="col l6 s12">
-           <h5>Lalela</h5>
-           <p>Lalela helps you find shows in your area by letting you listen to previews of the music</p>
-
-
-         </div>
-       </div>
-     </div>
-     <div class="footer-copyright">
-       <div class="container">
-       Made by <a class="purple-text" href="http://dominiqueclarke.github.io/portfolio">Dominique Clarke</a>
-       </div>
-     </div>
-   </footer>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                  <h5>Lalela</h5>
+                  <p>Lalela helps you find shows in your area by letting you listen to previews of the music</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="purple-text" href="http://dominiqueclarke.github.io/portfolio">Dominique Clarke</a>
+            </div>
+        </div>
+    </footer>
 </div>

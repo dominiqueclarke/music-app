@@ -1,5 +1,7 @@
 const {Strategy: FBStrategy} = require('passport-facebook');
+
 let config;
+
 if ( process.env.NODE_ENV !== "production" ) {
   config = require( "../../../config" );
 }
