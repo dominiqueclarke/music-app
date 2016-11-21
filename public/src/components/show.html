@@ -1,38 +1,49 @@
 <div
-  class="show-container z-depth-1"
-  ng-init="vm.isFeaturedShow && show.Artists[0].songPreviews ? vm.playSong(show, index + type) : null"
-  ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index + type); vm.showOpeners(show)"
-  ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index + type); vm.hideOpeners()"
+    class="show-container z-depth-1"
+    ng-init="vm.isFeaturedShow && show.Artists[0].songPreviews ? vm.playSong(show, index + type) : null"
+    ng-mouseenter="vm.isFeaturedShow ? null : vm.playSong(show.Artists, index + type); vm.showOpeners(show)"
+    ng-mouseleave="vm.isFeaturedShow ? null : vm.stopSong(index + type); vm.hideOpeners()"
 >
-  <!-- <div class="venue-image show{{index}}"></div> -->
-  <img class="showImage{{index}}{{type}} artwork" ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
-  <p class="byline">{{vm.byline}}</p>
-  <input type="text" class="musicPlayer{{index}}{{type}}" ng-value="{{vm.currentSongTime}}">
-  <span class="ticket-url z-depth-1" ng-show="show.TicketUrl">
-        <a ng-href="{{show.TicketUrl}}" target="_blank">Purchase Tickets</a>
-  </span>
-    <span class="ticket-url" ng-show="!show.TicketUrl">
+    <img
+        class="showImage{{index}}{{type}} artwork"
+        ng-src="{{show.Artists[0].artistArtworkUrl}}"/>
+    <p class="byline">{{vm.byline}}</p>
+    <input
+        type="text"
+        class="musicPlayer{{index}}{{type}}"
+        ng-value="{{vm.currentSongTime}}">
+    <span
+        class="ticket-url z-depth-1"
+        ng-show="show.TicketUrl">
+        <a
+            ng-href="{{show.TicketUrl}}"
+            target="_blank">Purchase Tickets</a>
+    </span>
+    <span
+        class="ticket-url"
+        ng-show="!show.TicketUrl">
         <span>Contact venue for tickets</span>
     </span>
     <span class="date z-depth-1">
-      <div class="week-day">{{vm.show.dateObj.weekDay}}</div>
-      <div class="month">{{vm.show.dateObj.month}}</div>
-      <div class="day">{{vm.show.dateObj.day}}</div>
-      <div ng-if="vm.date.hour !== '001:0'">
+        <div class="week-day">{{vm.show.dateObj.weekDay}}</div>
+        <div class="month">{{vm.show.dateObj.month}}</div>
+        <div class="day">{{vm.show.dateObj.day}}</div>
         <div class="hour">{{vm.show.dateObj.time}}</div>
         <div class="period">{{vm.show.dateObj.period}}</div>
-      </div>
-      <!-- <div>{{vm.show.Date}}</div> -->
     </span>
-  <div class="caption z-depth-1">
-    <span>{{show.Artists[0].Name}}</span>
-    <br/>
-    <span ng-if="opener">&amp; {{opener}}<br/></span>
-    <span ng-if="!opener && show.Artists.length > 2">&amp; {{show.Artists.length - 1}} other artists<br/></span>
-    <span ng-if="!opener && show.Artists.length === 2">&amp; {{show.Artists[1].Name}}<br/></span>
-    <span ng-if="show.Venue.Url">at <a ng-href="{{show.Venue.Url}}">{{show.Venue.Name}}</a></span>
-    <span ng-if="!show.Venue.Url">at {{show.Venue.Name}}</span>
-    <br/>
-  </div>
-  <span class="star{{index}} save-show" ng-class="vm.show.saved" ng-click="vm.saveShow(vm.show)"></span>
+    <div class="caption z-depth-1">
+        <span>{{show.Artists[0].Name}}</span>
+        <br/>
+        <span ng-if="opener">&amp; {{opener}}<br/></span>
+        <span ng-if="!opener && show.Artists.length > 2">&amp; {{show.Artists.length - 1}} other artists<br/></span>
+        <span ng-if="!opener && show.Artists.length === 2">&amp; {{show.Artists[1].Name}}<br/></span>
+        <span ng-if="show.Venue.Url">at <a ng-href="{{show.Venue.Url}}">{{show.Venue.Name}}</a></span>
+        <span ng-if="!show.Venue.Url">at {{show.Venue.Name}}</span>
+        <br/>
+    </div>
+    <span
+        class="star{{index}} save-show"
+        ng-class="vm.show.saved"
+        ng-click="vm.saveShow(vm.show)">
+    </span>
 </div>
